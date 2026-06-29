@@ -736,6 +736,12 @@ function Contact() {
           <p className="text-muted-foreground leading-relaxed max-w-md mb-8">
             Loop binnen voor koffie, lunch, borrel of diner. Reserveren kan telefonisch of direct online.
           </p>
+          <button
+            type="button"
+            className="btn-primary mb-10 wereserve-cta"
+          >
+            Direct reserveren
+          </button>
 
           <div className="border-y border-border divide-y divide-border mb-8">
             {contactItems.map((item) => {
