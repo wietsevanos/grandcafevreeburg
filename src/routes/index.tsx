@@ -561,15 +561,13 @@ function Dave() {
         <div className="lg:col-span-7 reveal-right order-1 lg:order-2">
           <p className="eyebrow mb-5">Maak kennis met</p>
           <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
-            Dave, een vertrouwd <span className="italic text-bordeaux">gezicht</span> in de horeca.
+            Achter Grand Café Vreeburg staat een vertrouwd <span className="italic text-bordeaux">gezicht</span> in de horeca: Dave.
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-5">
-            Met jarenlange ervaring en een onmiskenbare passie voor gastvrijheid bouwt Dave aan een
-            plek waar iedereen zich thuis voelt, van vaste gast tot toevallige passant.
+            Met zijn passie voor gastvrijheid, oog voor kwaliteit en liefde voor mooie momenten brengt hij straks een plek tot leven waar iedereen zich welkom voelt. Een grand café waar je binnenloopt voor een goede kop koffie, blijft hangen voor een gezellige borrel en graag terugkomt voor een heerlijk diner.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            Hij gelooft in kleine gebaren, eerlijke producten en een goed glas wijn op het juiste
-            moment. Kom hem ontmoeten aan het Kerkplein.
+            Dave gelooft in kleine gebaren, eerlijke producten en een goed glas wijn op het juiste moment. Kom hem ontmoeten aan het Kerkplein.
           </p>
         </div>
       </div>
