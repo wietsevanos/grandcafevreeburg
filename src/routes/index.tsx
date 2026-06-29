@@ -176,15 +176,15 @@ function Hero() {
         </p>
 
         <div className="reveal delay-3 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-          <a href="#menu" className="btn-primary">
-            Bekijk menukaart <ArrowRight className="h-4 w-4" />
-          </a>
           <button
             type="button"
-            className="btn-ghost-light wereserve-cta"
+            className="btn-primary wereserve-cta"
           >
             Reserveer een tafel
           </button>
+          <a href="#menu" className="btn-ghost-light">
+            Bekijk menukaart <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
       </div>
 
