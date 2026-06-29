@@ -30,6 +30,7 @@ import drinksImg from "@/assets/drinks.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import dessertImg from "@/assets/dessert.jpg";
 import logoAsset from "@/assets/vreeburg-logo.png.asset.json";
+import headerLogoAsset from "@/assets/vreeburg-logo-header.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -80,7 +81,7 @@ function Navbar() {
       <div className="container-x flex items-center justify-between gap-6">
         <a href="#home" aria-label="Grand Café Vreeburg" className="flex items-center">
           <img
-            src={logoAsset.url}
+            src={headerLogoAsset.url}
             alt="Grand Café Vreeburg"
             className={`h-10 md:h-12 w-auto transition-all duration-500 ${
               scrolled ? "" : "brightness-0 invert"
