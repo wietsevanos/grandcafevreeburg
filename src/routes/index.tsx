@@ -1,14 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
-  Coffee,
-  UtensilsCrossed,
-  Wine,
-  Sparkles,
-  Leaf,
   MapPin,
-  Heart,
-  Sun,
   ChevronDown,
   Plus,
   Minus,
