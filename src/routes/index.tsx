@@ -567,7 +567,7 @@ function Dave() {
             Met zijn passie voor gastvrijheid, oog voor kwaliteit en liefde voor mooie momenten brengt hij straks een plek tot leven waar iedereen zich welkom voelt. Een grand café waar je binnenloopt voor een goede kop koffie, blijft hangen voor een gezellige borrel en graag terugkomt voor een heerlijk diner.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            Dave gelooft in kleine gebaren, eerlijke producten en een goed glas wijn op het juiste moment. Kom hem ontmoeten aan het Kerkplein.
+            Dave gelooft in kleine gebaren, eerlijke producten en een goed glas wijn op het juiste moment. We kijken ernaar uit je te verwelkomen.
           </p>
         </div>
       </div>
