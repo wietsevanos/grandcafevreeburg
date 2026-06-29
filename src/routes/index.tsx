@@ -203,7 +203,7 @@ function About() {
             en eindigt met een glas wijn onder kaarslicht.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            Koffie, lunch, borrel of diner — bij Vreeburg ben je altijd thuis. Gastvrij, eerlijk en
+            Koffie, lunch, borrel of diner, bij Vreeburg ben je altijd thuis. Gastvrij, eerlijk en
             met liefde voor het ambacht.
           </p>
 
@@ -270,7 +270,7 @@ function Gallery() {
             </h2>
           </div>
           <p className="text-muted-foreground max-w-md md:justify-self-end reveal-right">
-            Van de eerste espresso om half tien tot het laatste glas rode wijn — elk moment van de
+            Van de eerste espresso om half tien tot het laatste glas rode wijn, elk moment van de
             dag heeft zijn eigen ritme.
           </p>
         </div>
@@ -551,11 +551,11 @@ function Dave() {
         <div className="lg:col-span-7 reveal-right order-1 lg:order-2">
           <p className="eyebrow mb-5">Maak kennis met</p>
           <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
-            Dave — een vertrouwd <span className="italic text-bordeaux">gezicht</span> in de horeca.
+            Dave, een vertrouwd <span className="italic text-bordeaux">gezicht</span> in de horeca.
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-5">
             Met jarenlange ervaring en een onmiskenbare passie voor gastvrijheid bouwt Dave aan een
-            plek waar iedereen zich thuis voelt — van vaste gast tot toevallige passant.
+            plek waar iedereen zich thuis voelt, van vaste gast tot toevallige passant.
           </p>
           <p className="text-muted-foreground leading-relaxed">
             Hij gelooft in kleine gebaren, eerlijke producten en een goed glas wijn op het juiste
