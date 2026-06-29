@@ -79,13 +79,14 @@ function Navbar() {
       }`}
     >
       <div className="container-x flex items-center justify-between gap-6">
-        <a
-          href="#home"
-          className={`font-display text-xl md:text-2xl tracking-tight transition-colors ${
-            scrolled ? "text-foreground" : "text-cream"
-          }`}
-        >
-          Grand Café <span className="italic text-bordeaux">Vreeburg</span>
+        <a href="#home" aria-label="Grand Café Vreeburg" className="flex items-center">
+          <img
+            src={logoAsset.url}
+            alt="Grand Café Vreeburg"
+            className={`h-10 md:h-12 w-auto transition-all duration-500 ${
+              scrolled ? "" : "brightness-0 invert"
+            }`}
+          />
         </a>
 
         <nav className="hidden md:flex items-center gap-8 text-sm">
