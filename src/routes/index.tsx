@@ -16,11 +16,12 @@ import {
 import { useReveal } from "@/hooks/use-reveal";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
 import heroImg from "@/assets/hero-counter.png.asset.json";
-import coffeeImg from "@/assets/coffee.jpg";
-import lunchImg from "@/assets/lunch.jpg";
-import cocktailsImg from "@/assets/cocktails.jpg";
-import dinnerImg from "@/assets/dinner.jpg";
-import terraceImg from "@/assets/terrace.jpg";
+import coffeeImg from "@/assets/sfeer-coffee.png.asset.json";
+import lunchImg from "@/assets/sfeer-sandwich.png.asset.json";
+import cocktailsImg from "@/assets/sfeer-cocktails.png.asset.json";
+import dinnerImg from "@/assets/sfeer-burger.png.asset.json";
+import terraceImg from "@/assets/sfeer-terras.png.asset.json";
+import beersImg from "@/assets/sfeer-beers.png.asset.json";
 import aboutTerraceAsset from "@/assets/about-terrace.png.asset.json";
 import aboutFacadeAsset from "@/assets/about-facade.png.asset.json";
 import aboutDiningAsset from "@/assets/about-dining.png.asset.json";
@@ -258,12 +259,12 @@ function About() {
 
 function Gallery() {
   const items = [
-    { src: coffeeImg, label: "Koffie", h: "h-[420px]" },
-    { src: cocktailsImg, label: "Cocktails", h: "h-[300px]" },
-    { src: lunchImg, label: "Lunch", h: "h-[360px]" },
-    { src: dinnerImg, label: "Diner", h: "h-[440px]" },
-    { src: drinksImg, label: "Wijn & Bier", h: "h-[320px]" },
-    { src: terraceImg, label: "Terras", h: "h-[400px]" },
+    { src: coffeeImg.url, label: "Koffie", h: "h-[420px]" },
+    { src: cocktailsImg.url, label: "Cocktails", h: "h-[300px]" },
+    { src: lunchImg.url, label: "Lunch", h: "h-[360px]" },
+    { src: dinnerImg.url, label: "Diner", h: "h-[440px]" },
+    { src: beersImg.url, label: "Wijn & Bier", h: "h-[320px]" },
+    { src: terraceImg.url, label: "Terras", h: "h-[400px]" },
   ];
   return (
     <section className="py-24 md:py-32 bg-secondary/40">
@@ -613,12 +614,12 @@ function Reviews() {
 
 function InstagramFeed() {
   const posts = [
-    { img: coffeeImg, caption: "Goedemorgen Bloemendaal ☕" },
-    { img: cocktailsImg, caption: "Vrijdagavond signature ✨" },
-    { img: lunchImg, caption: "Lunch met zon op het terras" },
-    { img: dinnerImg, caption: "Vanavond op de kaart" },
-    { img: dessertImg, caption: "Zoete afsluiter" },
-    { img: terraceImg, caption: "Aan het Kerkplein" },
+    { img: coffeeImg.url, caption: "Goedemorgen Bloemendaal ☕" },
+    { img: cocktailsImg.url, caption: "Vrijdagavond signature ✨" },
+    { img: lunchImg.url, caption: "Lunch met zon op het terras" },
+    { img: dinnerImg.url, caption: "Vanavond op de kaart" },
+    { img: beersImg.url, caption: "Proost 🍺" },
+    { img: terraceImg.url, caption: "Aan het Kerkplein" },
   ];
   return (
     <section className="py-28 md:py-32">
