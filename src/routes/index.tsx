@@ -773,9 +773,11 @@ function Footer() {
       <div className="container-x">
         <div className="grid md:grid-cols-4 gap-10 mb-14">
           <div className="md:col-span-2">
-            <p className="font-display text-3xl text-cream mb-4">
-              Grand Café <span className="italic text-gold">Vreeburg</span>
-            </p>
+            <img
+              src={logoAsset.url}
+              alt="Grand Café Vreeburg"
+              className="h-16 w-auto mb-5 brightness-0 invert"
+            />
             <p className="text-cream/60 max-w-sm text-sm leading-relaxed">
               Ontmoeten. Genieten. Samen proosten. Een warm grand café aan het Kerkplein in
               Bloemendaal.
