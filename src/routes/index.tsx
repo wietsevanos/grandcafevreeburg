@@ -106,9 +106,12 @@ function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="#contact" className="hidden sm:inline-flex btn-primary">
+          <button
+            type="button"
+            className="hidden sm:inline-flex btn-primary wereserve-cta"
+          >
             Reserveren
-          </a>
+          </button>
           <button
             aria-label="Menu"
             onClick={() => setOpen((v) => !v)}
