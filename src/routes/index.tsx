@@ -139,9 +139,12 @@ function Navbar() {
               {l.label}
             </a>
           ))}
-          <a href="#contact" className="btn-primary w-full">
+          <button
+            type="button"
+            className="btn-primary w-full wereserve-cta"
+          >
             Reserveren
-          </a>
+          </button>
         </div>
       )}
     </header>
