@@ -845,7 +845,7 @@ function Index() {
       <About />
       <Gallery />
       <MenuSection />
-      <Why />
+      
       <Careers />
       <Dave />
       <Reviews />
