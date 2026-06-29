@@ -83,7 +83,7 @@ function Navbar() {
           <img
             src={headerLogoAsset.url}
             alt="Grand Café Vreeburg"
-            className={`h-10 md:h-12 w-auto transition-all duration-500 ${
+            className={`h-7 md:h-10 w-auto transition-all duration-500 ${
               scrolled ? "" : "brightness-0 invert"
             }`}
           />
