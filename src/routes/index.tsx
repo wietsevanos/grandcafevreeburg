@@ -21,7 +21,7 @@ import {
   Quote,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/hero-counter.png.asset.json";
 import coffeeImg from "@/assets/coffee.jpg";
 import lunchImg from "@/assets/lunch.jpg";
 import cocktailsImg from "@/assets/cocktails.jpg";
