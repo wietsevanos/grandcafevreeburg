@@ -21,6 +21,7 @@ import {
   Quote,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
+import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
 import heroImg from "@/assets/hero-counter.png.asset.json";
 import coffeeImg from "@/assets/coffee.jpg";
 import lunchImg from "@/assets/lunch.jpg";
@@ -105,9 +106,12 @@ function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="#contact" className="hidden sm:inline-flex btn-primary">
+          <button
+            type="button"
+            className="hidden sm:inline-flex btn-primary wereserve-cta"
+          >
             Reserveren
-          </a>
+          </button>
           <button
             aria-label="Menu"
             onClick={() => setOpen((v) => !v)}
@@ -135,9 +139,12 @@ function Navbar() {
               {l.label}
             </a>
           ))}
-          <a href="#contact" className="btn-primary w-full">
+          <button
+            type="button"
+            className="btn-primary w-full wereserve-cta"
+          >
             Reserveren
-          </a>
+          </button>
         </div>
       )}
     </header>
@@ -172,9 +179,12 @@ function Hero() {
           <a href="#menu" className="btn-primary">
             Bekijk menukaart <ArrowRight className="h-4 w-4" />
           </a>
-          <a href="#contact" className="btn-ghost-light">
+          <button
+            type="button"
+            className="btn-ghost-light wereserve-cta"
+          >
             Reserveer een tafel
-          </a>
+          </button>
         </div>
       </div>
 
@@ -726,7 +736,7 @@ function Contact() {
             Tot ziens aan het <span className="italic text-bordeaux">Kerkplein</span>.
           </h2>
           <p className="text-muted-foreground leading-relaxed max-w-md mb-8">
-            Loop binnen voor koffie, lunch, borrel of diner. Reserveren kan gewoon telefonisch.
+            Loop binnen voor koffie, lunch, borrel of diner. Reserveren kan telefonisch of direct online.
           </p>
 
           <div className="border-y border-border divide-y divide-border mb-8">
@@ -864,6 +874,7 @@ function Index() {
   useReveal();
   return (
     <main className="bg-background text-foreground">
+      <WeReserveWidgetClient />
       <Navbar />
       <Hero />
       <About />
