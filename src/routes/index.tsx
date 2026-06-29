@@ -105,17 +105,17 @@ function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
           <button
             type="button"
-            className="hidden sm:inline-flex btn-primary wereserve-cta"
+            className="btn-primary px-4 py-2 text-xs md:text-sm wereserve-cta"
           >
             Reserveren
           </button>
           <button
             aria-label="Menu"
             onClick={() => setOpen((v) => !v)}
-            className={`md:hidden grid h-10 w-10 place-items-center rounded-lg border ${
+            className={`md:hidden grid h-9 w-9 place-items-center rounded-lg border ${
               scrolled ? "border-border text-foreground" : "border-cream/50 text-cream"
             }`}
           >
