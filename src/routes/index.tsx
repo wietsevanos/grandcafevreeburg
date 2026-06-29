@@ -874,6 +874,7 @@ function Index() {
   useReveal();
   return (
     <main className="bg-background text-foreground">
+      <WeReserveWidgetClient />
       <Navbar />
       <Hero />
       <About />
