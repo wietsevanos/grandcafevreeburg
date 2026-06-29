@@ -736,7 +736,7 @@ function Contact() {
             Tot ziens aan het <span className="italic text-bordeaux">Kerkplein</span>.
           </h2>
           <p className="text-muted-foreground leading-relaxed max-w-md mb-8">
-            Loop binnen voor koffie, lunch, borrel of diner. Reserveren kan gewoon telefonisch.
+            Loop binnen voor koffie, lunch, borrel of diner. Reserveren kan telefonisch of direct online.
           </p>
 
           <div className="border-y border-border divide-y divide-border mb-8">
