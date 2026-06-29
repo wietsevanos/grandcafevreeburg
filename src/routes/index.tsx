@@ -226,7 +226,36 @@ function About() {
         </div>
 
         <div className="lg:col-span-7 relative reveal-right">
-          <div className="relative grid grid-cols-12 gap-4 md:gap-6">
+          {/* Mobile: simple stacked layout */}
+          <div className="grid grid-cols-2 gap-3 lg:hidden">
+            <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-soft)]">
+              <img
+                src={aboutLunchAsset.url}
+                alt="Lunchgerecht bij Vreeburg"
+                loading="lazy"
+                className="w-full h-56 sm:h-72 object-cover"
+              />
+            </div>
+            <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-soft)]">
+              <img
+                src={aboutTerraceAsset.url}
+                alt="Gezellig terras aan het Kerkplein"
+                loading="lazy"
+                className="w-full h-56 sm:h-72 object-cover"
+              />
+            </div>
+            <div className="col-span-2 img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)]">
+              <img
+                src={aboutFacadeAsset.url}
+                alt="Gevel van Grand Café Vreeburg"
+                loading="lazy"
+                className="w-full h-52 sm:h-64 object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Desktop: editorial overlapping layout */}
+          <div className="relative grid-cols-12 gap-6 hidden lg:grid">
             <div className="col-span-8 img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)]">
               <img
                 src={aboutLunchAsset.url}
