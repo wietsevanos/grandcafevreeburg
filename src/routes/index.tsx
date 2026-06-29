@@ -47,7 +47,7 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Ontmoeten. Genieten. Samen proosten. Kerkplein 16, Bloemendaal.",
       },
-      { property: "og:image", content: heroImg },
+      { property: "og:image", content: heroImg.url },
     ],
   }),
   component: Index,
@@ -148,7 +148,7 @@ function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <img
-        src={heroImg}
+        src={heroImg.url}
         alt="Sfeervol interieur van Grand Café Vreeburg in Bloemendaal"
         className="absolute inset-0 h-full w-full object-cover"
         width={1920}
