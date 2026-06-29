@@ -179,9 +179,12 @@ function Hero() {
           <a href="#menu" className="btn-primary">
             Bekijk menukaart <ArrowRight className="h-4 w-4" />
           </a>
-          <a href="#contact" className="btn-ghost-light">
+          <button
+            type="button"
+            className="btn-ghost-light wereserve-cta"
+          >
             Reserveer een tafel
-          </a>
+          </button>
         </div>
       </div>
 
