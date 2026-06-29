@@ -259,12 +259,12 @@ function About() {
 
 function Gallery() {
   const items = [
-    { src: coffeeImg, label: "Koffie", h: "h-[420px]" },
-    { src: cocktailsImg, label: "Cocktails", h: "h-[300px]" },
-    { src: lunchImg, label: "Lunch", h: "h-[360px]" },
-    { src: dinnerImg, label: "Diner", h: "h-[440px]" },
-    { src: drinksImg, label: "Wijn & Bier", h: "h-[320px]" },
-    { src: terraceImg, label: "Terras", h: "h-[400px]" },
+    { src: coffeeImg.url, label: "Koffie", h: "h-[420px]" },
+    { src: cocktailsImg.url, label: "Cocktails", h: "h-[300px]" },
+    { src: lunchImg.url, label: "Lunch", h: "h-[360px]" },
+    { src: dinnerImg.url, label: "Diner", h: "h-[440px]" },
+    { src: beersImg.url, label: "Wijn & Bier", h: "h-[320px]" },
+    { src: terraceImg.url, label: "Terras", h: "h-[400px]" },
   ];
   return (
     <section className="py-24 md:py-32 bg-secondary/40">
