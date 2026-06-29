@@ -442,45 +442,6 @@ function MenuSection() {
   );
 }
 
-function Why() {
-  const items = [
-    { icon: Heart, label: "Gastvrij" },
-    { icon: Leaf, label: "Verse producten" },
-    { icon: Sparkles, label: "Gezellige sfeer" },
-    { icon: Coffee, label: "Goede koffie" },
-    { icon: UtensilsCrossed, label: "Lunch & diner" },
-    { icon: Wine, label: "Borrel & wijn" },
-    { icon: Sun, label: "Zonnig terras" },
-    { icon: MapPin, label: "Centrale locatie" },
-  ];
-  return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
-      <div className="container-x">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-4 reveal-left">
-            <p className="eyebrow mb-4">Waarom Vreeburg</p>
-            <h2 className="font-display text-4xl md:text-5xl leading-tight">
-              Acht redenen om <span className="italic text-bordeaux">binnen te lopen</span>.
-            </h2>
-          </div>
-          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {items.map((it, i) => (
-              <div
-                key={it.label}
-                className={`reveal delay-${(i % 4) + 1} group flex flex-col items-start gap-4 p-5 md:p-6 rounded-xl border border-border bg-card/50 lift`}
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-lg bg-bordeaux/8 text-bordeaux transition-all duration-500 group-hover:bg-bordeaux group-hover:text-cream group-hover:rotate-6">
-                  <it.icon className="h-5 w-5" />
-                </span>
-                <span className="font-medium">{it.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function Careers() {
   const jobs = [
