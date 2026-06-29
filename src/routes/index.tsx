@@ -227,24 +227,24 @@ function About() {
           <div className="relative grid grid-cols-12 gap-4 md:gap-6">
             <div className="col-span-8 img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)]">
               <img
-                src={interiorImg}
-                alt="Sfeer in het café"
+                src={aboutTerraceAsset.url}
+                alt="Gezellig terras aan het Kerkplein"
                 loading="lazy"
                 className="w-full h-[420px] object-cover"
               />
             </div>
             <div className="col-span-4 mt-12 img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-soft)]">
               <img
-                src={coffeeImg}
-                alt="Verse cappuccino"
+                src={aboutDiningAsset.url}
+                alt="Diner met wijn in warme sfeer"
                 loading="lazy"
                 className="w-full h-[280px] object-cover"
               />
             </div>
             <div className="col-span-7 col-start-3 -mt-10 img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)] border-8 border-background relative z-10">
               <img
-                src={terraceImg}
-                alt="Terras aan het Kerkplein"
+                src={aboutFacadeAsset.url}
+                alt="Gevel van Grand Café Vreeburg"
                 loading="lazy"
                 className="w-full h-[240px] object-cover"
               />
