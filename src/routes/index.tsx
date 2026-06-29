@@ -1,29 +1,839 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import {
+  Coffee,
+  UtensilsCrossed,
+  Wine,
+  Sparkles,
+  Leaf,
+  MapPin,
+  Heart,
+  Sun,
+  ChevronDown,
+  Plus,
+  Minus,
+  Phone,
+  Mail,
+  Clock,
+  Instagram,
+  ArrowRight,
+  Star,
+  Quote,
+} from "lucide-react";
+import { useReveal } from "@/hooks/use-reveal";
+import heroImg from "@/assets/hero.jpg";
+import coffeeImg from "@/assets/coffee.jpg";
+import lunchImg from "@/assets/lunch.jpg";
+import cocktailsImg from "@/assets/cocktails.jpg";
+import dinnerImg from "@/assets/dinner.jpg";
+import terraceImg from "@/assets/terrace.jpg";
+import daveImg from "@/assets/dave.jpg";
+import drinksImg from "@/assets/drinks.jpg";
+import interiorImg from "@/assets/interior.jpg";
+import dessertImg from "@/assets/dessert.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Grand Café Vreeburg — Bloemendaal" },
+      {
+        name: "description",
+        content:
+          "Grand Café Vreeburg in het hart van Bloemendaal. Ontmoeten, genieten en samen proosten. Koffie, lunch, borrel en diner aan het Kerkplein.",
+      },
+      { property: "og:title", content: "Grand Café Vreeburg — Bloemendaal" },
+      {
+        property: "og:description",
+        content: "Ontmoeten. Genieten. Samen proosten. Kerkplein 16, Bloemendaal.",
+      },
+      { property: "og:image", content: heroImg },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const links = [
+    { href: "#home", label: "Home" },
+    { href: "#over", label: "Over ons" },
+    { href: "#menu", label: "Menukaart" },
+    { href: "#werken", label: "Werken bij" },
+    { href: "#contact", label: "Contact" },
+  ];
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-background/90 backdrop-blur-md border-b border-border py-3"
+          : "bg-transparent py-6"
+      }`}
     >
+      <div className="container-x flex items-center justify-between gap-6">
+        <a
+          href="#home"
+          className={`font-display text-xl md:text-2xl tracking-tight transition-colors ${
+            scrolled ? "text-foreground" : "text-cream"
+          }`}
+        >
+          Grand Café <span className="italic text-bordeaux">Vreeburg</span>
+        </a>
+
+        <nav className="hidden md:flex items-center gap-8 text-sm">
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className={`link-underline transition-colors ${
+                scrolled ? "text-foreground/80 hover:text-bordeaux" : "text-cream/90 hover:text-cream"
+              }`}
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-3">
+          <a href="#contact" className="hidden sm:inline-flex btn-primary">
+            Reserveren
+          </a>
+          <button
+            aria-label="Menu"
+            onClick={() => setOpen((v) => !v)}
+            className={`md:hidden grid h-10 w-10 place-items-center rounded-lg border ${
+              scrolled ? "border-border text-foreground" : "border-cream/50 text-cream"
+            }`}
+          >
+            <div className="space-y-1.5">
+              <span className="block h-px w-5 bg-current" />
+              <span className="block h-px w-5 bg-current" />
+            </div>
+          </button>
+        </div>
+      </div>
+
+      {open && (
+        <div className="md:hidden mt-3 mx-4 rounded-xl border border-border bg-background/95 backdrop-blur p-5 space-y-3 shadow-lg">
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="block text-foreground/90 hover:text-bordeaux"
+            >
+              {l.label}
+            </a>
+          ))}
+          <a href="#contact" className="btn-primary w-full">
+            Reserveren
+          </a>
+        </div>
+      )}
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
+        src={heroImg}
+        alt="Sfeervol interieur van Grand Café Vreeburg in Bloemendaal"
+        className="absolute inset-0 h-full w-full object-cover"
+        width={1920}
+        height={1280}
       />
-    </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/45 to-foreground/80" />
+
+      <div className="relative z-10 container-x text-center text-cream">
+        <p className="reveal eyebrow text-gold mb-6">— Sinds 2026 · Kerkplein, Bloemendaal —</p>
+        <h1 className="reveal delay-1 font-display text-5xl sm:text-6xl md:text-8xl leading-[1.02] mb-6">
+          Grand Café <span className="italic">Vreeburg</span>
+        </h1>
+        <p className="reveal delay-2 max-w-xl mx-auto text-cream/85 text-lg md:text-xl font-light">
+          Ontmoeten. Genieten. Samen proosten.
+        </p>
+
+        <div className="reveal delay-3 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="#menu" className="btn-primary">
+            Bekijk menukaart <ArrowRight className="h-4 w-4" />
+          </a>
+          <a href="#contact" className="btn-ghost-light">
+            Reserveer een tafel
+          </a>
+        </div>
+      </div>
+
+      <a
+        href="#over"
+        aria-label="Scroll naar beneden"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/80 hover:text-cream transition-colors scroll-bob"
+      >
+        <ChevronDown className="h-6 w-6" />
+      </a>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section id="over" className="relative py-28 md:py-40">
+      <div className="container-x grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <div className="lg:col-span-5 reveal-left">
+          <p className="eyebrow mb-5">Over ons</p>
+          <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
+            Een warm welkom in <span className="italic text-bordeaux">het hart</span> van Bloemendaal.
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-5">
+            Aan het Kerkplein vind je een plek waar de dag rustig begint met een verse cappuccino
+            en eindigt met een glas wijn onder kaarslicht.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            Koffie, lunch, borrel of diner — bij Vreeburg ben je altijd thuis. Gastvrij, eerlijk en
+            met liefde voor het ambacht.
+          </p>
+
+          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 text-sm">
+            <a href="#menu" className="link-underline text-bordeaux font-medium">
+              Bekijk menukaart →
+            </a>
+            <a href="#contact" className="link-underline font-medium">
+              Vind ons aan het Kerkplein →
+            </a>
+          </div>
+        </div>
+
+        <div className="lg:col-span-7 relative reveal-right">
+          <div className="relative grid grid-cols-12 gap-4 md:gap-6">
+            <div className="col-span-8 img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)]">
+              <img
+                src={interiorImg}
+                alt="Sfeer in het café"
+                loading="lazy"
+                className="w-full h-[420px] object-cover"
+              />
+            </div>
+            <div className="col-span-4 mt-12 img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-soft)]">
+              <img
+                src={coffeeImg}
+                alt="Verse cappuccino"
+                loading="lazy"
+                className="w-full h-[280px] object-cover"
+              />
+            </div>
+            <div className="col-span-7 col-start-3 -mt-10 img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)] border-8 border-background relative z-10">
+              <img
+                src={terraceImg}
+                alt="Terras aan het Kerkplein"
+                loading="lazy"
+                className="w-full h-[240px] object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Gallery() {
+  const items = [
+    { src: coffeeImg, label: "Koffie", h: "h-[420px]" },
+    { src: cocktailsImg, label: "Cocktails", h: "h-[300px]" },
+    { src: lunchImg, label: "Lunch", h: "h-[360px]" },
+    { src: dinnerImg, label: "Diner", h: "h-[440px]" },
+    { src: drinksImg, label: "Wijn & Bier", h: "h-[320px]" },
+    { src: terraceImg, label: "Terras", h: "h-[400px]" },
+  ];
+  return (
+    <section className="py-24 md:py-32 bg-secondary/40">
+      <div className="container-x">
+        <div className="grid md:grid-cols-2 gap-8 items-end mb-14">
+          <div className="reveal-left">
+            <p className="eyebrow mb-4">Sfeer</p>
+            <h2 className="font-display text-4xl md:text-5xl leading-tight">
+              Een dag bij <span className="italic text-bordeaux">Vreeburg</span>
+            </h2>
+          </div>
+          <p className="text-muted-foreground max-w-md md:justify-self-end reveal-right">
+            Van de eerste espresso om half tien tot het laatste glas rode wijn — elk moment van de
+            dag heeft zijn eigen ritme.
+          </p>
+        </div>
+
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6 [column-fill:_balance]">
+          {items.map((it, i) => (
+            <div
+              key={it.label}
+              className={`reveal-zoom delay-${(i % 4) + 1} mb-4 md:mb-6 break-inside-avoid img-zoom rounded-xl overflow-hidden relative group`}
+            >
+              <img
+                src={it.src}
+                alt={it.label}
+                loading="lazy"
+                className={`w-full ${it.h} object-cover`}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
+                <span className="text-cream font-display text-xl italic">{it.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const MENU = [
+  {
+    cat: "Koffie",
+    items: [
+      ["Espresso", "Single origin, donker gebrand", "3,20"],
+      ["Cappuccino", "Met fluweelzachte melkschuim", "3,80"],
+      ["Latte Macchiato", "Drie lagen, langzaam geserveerd", "4,20"],
+      ["Verse muntthee", "Met honing", "3,60"],
+    ],
+  },
+  {
+    cat: "Lunch",
+    items: [
+      ["Burrata & tomaat", "Heirloom tomaten, basilicum, olijfolie", "13,50"],
+      ["Tosti Vreeburg", "Old Amsterdam, truffelmayo, ui", "9,50"],
+      ["Soep van de dag", "Met sourdough", "8,50"],
+      ["Steak sandwich", "Bavette, mosterd, gekarameliseerde ui", "16,50"],
+    ],
+  },
+  {
+    cat: "Hoofdgerechten",
+    items: [
+      ["Zalmfilet", "Seizoensgroente, beurre blanc", "26,50"],
+      ["Tournedos", "Pepersaus, frites, salade", "32,50"],
+      ["Risotto met paddenstoelen", "Truffel, parmezaan", "22,00"],
+      ["Catch of the day", "Vraag onze bediening", "MP"],
+    ],
+  },
+  {
+    cat: "Wijnen",
+    items: [
+      ["Sauvignon Blanc", "Loire, Frankrijk", "6,50"],
+      ["Chardonnay", "Bourgogne", "7,50"],
+      ["Pinot Noir", "Languedoc", "7,00"],
+      ["Bordeaux Supérieur", "Château huiselijk", "8,50"],
+    ],
+  },
+  {
+    cat: "Bieren",
+    items: [
+      ["Pils van de tap", "Vers en koud", "3,20"],
+      ["Witbier", "Met citroen", "4,20"],
+      ["IPA lokaal", "Haarlem brouwerij", "5,50"],
+      ["Trappist", "Donker en vol", "5,80"],
+    ],
+  },
+  {
+    cat: "Cocktails",
+    items: [
+      ["Negroni", "Klassiek, met sinaasappel", "11,50"],
+      ["Aperol Spritz", "Bruisend en fris", "9,50"],
+      ["Espresso Martini", "Vreeburg signature", "12,00"],
+      ["Old Fashioned", "Bourbon, suiker, bitters", "12,50"],
+    ],
+  },
+  {
+    cat: "Desserts",
+    items: [
+      ["Chocolade fondant", "Vanille ijs, bramen", "9,50"],
+      ["Crème brûlée", "Vanille uit Madagaskar", "8,50"],
+      ["Kaasplankje", "Selectie van vier", "12,50"],
+      ["Affogato", "Espresso over vanille ijs", "6,50"],
+    ],
+  },
+];
+
+function MenuSection() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section id="menu" className="py-28 md:py-36 relative">
+      <div className="container-x max-w-5xl">
+        <div className="text-center mb-14 reveal">
+          <p className="eyebrow mb-4">Menukaart</p>
+          <h2 className="font-display text-4xl md:text-5xl mb-4">
+            Eerlijk, vers en met <span className="italic text-bordeaux">karakter</span>
+          </h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Onze kaart wisselt mee met het seizoen. Een kleine greep uit wat je bij ons vindt.
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-card border border-border shadow-[var(--shadow-soft)] overflow-hidden reveal">
+          {MENU.map((g, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={g.cat} className="border-b border-border last:border-b-0">
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between gap-4 px-6 md:px-10 py-6 text-left group"
+                >
+                  <span className="font-display text-2xl md:text-3xl group-hover:text-bordeaux transition-colors">
+                    {g.cat}
+                  </span>
+                  <span
+                    className={`grid h-9 w-9 place-items-center rounded-full border border-border transition-all duration-500 ${
+                      isOpen ? "bg-bordeaux text-cream border-bordeaux rotate-180" : ""
+                    }`}
+                  >
+                    {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+                  </span>
+                </button>
+                <div
+                  className={`grid transition-all duration-700 ease-out ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 md:px-10 pb-8 grid sm:grid-cols-2 gap-x-10 gap-y-5">
+                      {g.items.map(([name, desc, price]) => (
+                        <div key={name} className="flex items-baseline gap-4">
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-baseline gap-2">
+                              <span className="font-medium truncate">{name}</span>
+                              <span className="flex-1 border-b border-dotted border-border/80 translate-y-[-3px]" />
+                              <span className="text-bordeaux font-medium tabular-nums shrink-0">
+                                € {price}
+                              </span>
+                            </div>
+                            <p className="text-sm text-muted-foreground mt-1">{desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Why() {
+  const items = [
+    { icon: Heart, label: "Gastvrij" },
+    { icon: Leaf, label: "Verse producten" },
+    { icon: Sparkles, label: "Gezellige sfeer" },
+    { icon: Coffee, label: "Goede koffie" },
+    { icon: UtensilsCrossed, label: "Lunch & diner" },
+    { icon: Wine, label: "Borrel & wijn" },
+    { icon: Sun, label: "Zonnig terras" },
+    { icon: MapPin, label: "Centrale locatie" },
+  ];
+  return (
+    <section className="py-24 md:py-32 relative overflow-hidden">
+      <div className="container-x">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-4 reveal-left">
+            <p className="eyebrow mb-4">Waarom Vreeburg</p>
+            <h2 className="font-display text-4xl md:text-5xl leading-tight">
+              Acht redenen om <span className="italic text-bordeaux">binnen te lopen</span>.
+            </h2>
+          </div>
+          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {items.map((it, i) => (
+              <div
+                key={it.label}
+                className={`reveal delay-${(i % 4) + 1} group flex flex-col items-start gap-4 p-5 md:p-6 rounded-xl border border-border bg-card/50 lift`}
+              >
+                <span className="grid h-11 w-11 place-items-center rounded-lg bg-bordeaux/8 text-bordeaux transition-all duration-500 group-hover:bg-bordeaux group-hover:text-cream group-hover:rotate-6">
+                  <it.icon className="h-5 w-5" />
+                </span>
+                <span className="font-medium">{it.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Careers() {
+  const jobs = [
+    { title: "Keuken", desc: "Sous-chefs en koks met passie voor verse producten." },
+    { title: "Bediening", desc: "Gastvrije collega's die het verschil maken." },
+    { title: "Afwas", desc: "De stille kracht achter een goed draaiende keuken." },
+  ];
+  return (
+    <section id="werken" className="py-28 md:py-36 bg-foreground text-cream relative overflow-hidden">
+      <div className="absolute inset-0 opacity-15">
+        <img src={interiorImg} alt="" className="w-full h-full object-cover" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-foreground via-foreground/95 to-foreground/85" />
+
+      <div className="container-x relative">
+        <div className="grid lg:grid-cols-12 gap-12 mb-14 items-end">
+          <div className="lg:col-span-7 reveal-left">
+            <p className="eyebrow text-gold mb-5">Werken bij Vreeburg</p>
+            <h2 className="font-display text-4xl md:text-5xl leading-tight">
+              Bouw met ons mee aan een <span className="italic text-gold">nieuw thuis</span> voor Bloemendaal.
+            </h2>
+          </div>
+          <p className="lg:col-span-5 text-cream/75 reveal-right">
+            We zoeken enthousiaste collega's die houden van gastvrijheid, kwaliteit en gezelligheid.
+            Word onderdeel van een hecht team.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-5 md:gap-6 mb-12">
+          {jobs.map((j, i) => (
+            <div
+              key={j.title}
+              className={`reveal delay-${i + 1} group p-8 rounded-xl border border-cream/15 bg-cream/[0.04] backdrop-blur transition-all duration-500 hover:bg-cream/[0.08] hover:-translate-y-1`}
+            >
+              <div className="flex items-center justify-between mb-6">
+                <span className="font-display text-3xl">{j.title}</span>
+                <span className="grid h-9 w-9 place-items-center rounded-full border border-cream/30 transition-transform duration-500 group-hover:rotate-45 group-hover:border-gold group-hover:text-gold">
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </div>
+              <p className="text-cream/70 text-sm leading-relaxed">{j.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="reveal">
+          <a
+            href="mailto:werken@grandcafevreeburg.nl"
+            className="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-gold text-foreground font-medium hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] transition-all duration-500"
+          >
+            Solliciteer direct <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Dave() {
+  return (
+    <section className="py-28 md:py-36">
+      <div className="container-x grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <div className="lg:col-span-5 reveal-left order-2 lg:order-1">
+          <div className="relative">
+            <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)] max-w-md">
+              <img src={daveImg} alt="Dave, gastheer van Grand Café Vreeburg" loading="lazy" className="w-full h-[560px] object-cover" />
+            </div>
+            <div className="absolute -bottom-6 -right-2 md:-right-10 bg-cream rounded-xl p-6 max-w-[240px] shadow-[var(--shadow-lift)] border border-border">
+              <Quote className="h-5 w-5 text-bordeaux mb-3" />
+              <p className="font-display italic text-lg leading-snug">
+                "Iedereen die binnenkomt moet zich welkom voelen."
+              </p>
+              <p className="text-xs text-muted-foreground mt-3">— Dave</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:col-span-7 reveal-right order-1 lg:order-2">
+          <p className="eyebrow mb-5">Maak kennis met</p>
+          <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
+            Dave — een vertrouwd <span className="italic text-bordeaux">gezicht</span> in de horeca.
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-5">
+            Met jarenlange ervaring en een onmiskenbare passie voor gastvrijheid bouwt Dave aan een
+            plek waar iedereen zich thuis voelt — van vaste gast tot toevallige passant.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            Hij gelooft in kleine gebaren, eerlijke producten en een goed glas wijn op het juiste
+            moment. Kom hem ontmoeten aan het Kerkplein.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Reviews() {
+  const data = [
+    {
+      name: "Mariska",
+      text: "Heerlijk gegeten en wat een gastvrijheid. Dit wordt onze nieuwe vaste stek in Bloemendaal.",
+    },
+    {
+      name: "Jeroen",
+      text: "Beste cappuccino van het dorp en een prachtig interieur. De zaterdagochtenden zijn weer compleet.",
+    },
+    {
+      name: "Familie van der Linden",
+      text: "Fijn diner, prachtige wijnen en een team dat oprecht aandacht heeft. We komen terug.",
+    },
+    {
+      name: "Sophie",
+      text: "Het terras is een verademing op een zonnige dag. Aperol Spritz en zon — meer heb je niet nodig.",
+    },
+  ];
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((v) => (v + 1) % data.length), 6000);
+    return () => clearInterval(t);
+  }, [data.length]);
+
+  return (
+    <section className="py-28 md:py-36 bg-secondary/40">
+      <div className="container-x max-w-4xl text-center">
+        <p className="eyebrow mb-5 reveal">Wat gasten zeggen</p>
+        <div className="flex justify-center gap-1 mb-10 reveal">
+          {[0, 1, 2, 3, 4].map((s) => (
+            <Star key={s} className="h-4 w-4 fill-gold text-gold" />
+          ))}
+        </div>
+
+        <div className="relative min-h-[160px] reveal">
+          {data.map((r, idx) => (
+            <blockquote
+              key={r.name}
+              className={`absolute inset-0 transition-all duration-700 ${
+                i === idx ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+              }`}
+            >
+              <p className="font-display text-2xl md:text-3xl leading-snug italic">"{r.text}"</p>
+              <footer className="mt-6 text-sm text-muted-foreground tracking-wide uppercase">
+                — {r.name}
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+
+        <div className="mt-12 flex justify-center gap-2">
+          {data.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setI(idx)}
+              aria-label={`Review ${idx + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                i === idx ? "w-10 bg-bordeaux" : "w-4 bg-border hover:bg-foreground/40"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InstagramFeed() {
+  const posts = [
+    { img: coffeeImg, caption: "Goedemorgen Bloemendaal ☕" },
+    { img: cocktailsImg, caption: "Vrijdagavond signature ✨" },
+    { img: lunchImg, caption: "Lunch met zon op het terras" },
+    { img: dinnerImg, caption: "Vanavond op de kaart" },
+    { img: dessertImg, caption: "Zoete afsluiter" },
+    { img: terraceImg, caption: "Aan het Kerkplein" },
+  ];
+  return (
+    <section className="py-28 md:py-32">
+      <div className="container-x">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div className="reveal-left">
+            <p className="eyebrow mb-4">Volg ons</p>
+            <h2 className="font-display text-4xl md:text-5xl">
+              @grandcafe<span className="italic text-bordeaux">vreeburg</span>
+            </h2>
+          </div>
+          <a
+            href="https://www.instagram.com/grandcafevreeburg/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="reveal-right inline-flex items-center gap-2 link-underline text-bordeaux font-medium"
+          >
+            <Instagram className="h-4 w-4" /> Bekijk Instagram
+          </a>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+          {posts.map((p, i) => (
+            <a
+              key={i}
+              href="https://www.instagram.com/grandcafevreeburg/"
+              target="_blank"
+              rel="noreferrer noopener"
+              className={`reveal-zoom delay-${(i % 4) + 1} img-zoom rounded-xl overflow-hidden relative group aspect-square block`}
+            >
+              <img src={p.img} alt={p.caption} loading="lazy" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center text-cream p-3 text-center">
+                <Instagram className="h-6 w-6" />
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="py-28 md:py-36 bg-secondary/40">
+      <div className="container-x grid lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="lg:col-span-5 reveal-left">
+          <p className="eyebrow mb-5">Contact</p>
+          <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
+            Tot ziens aan het <span className="italic text-bordeaux">Kerkplein</span>.
+          </h2>
+
+          <div className="space-y-6 text-sm">
+            <div className="flex items-start gap-4">
+              <span className="grid h-10 w-10 place-items-center rounded-lg bg-bordeaux/8 text-bordeaux shrink-0">
+                <MapPin className="h-4 w-4" />
+              </span>
+              <div className="min-w-0">
+                <p className="font-medium text-base">Grand Café Vreeburg</p>
+                <p className="text-muted-foreground">Kerkplein 16, 2061 JD Bloemendaal</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="grid h-10 w-10 place-items-center rounded-lg bg-bordeaux/8 text-bordeaux shrink-0">
+                <Phone className="h-4 w-4" />
+              </span>
+              <div>
+                <p className="font-medium text-base">Bel ons</p>
+                <a href="tel:+31235000000" className="text-muted-foreground link-underline">
+                  023 — 500 00 00
+                </a>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="grid h-10 w-10 place-items-center rounded-lg bg-bordeaux/8 text-bordeaux shrink-0">
+                <Mail className="h-4 w-4" />
+              </span>
+              <div>
+                <p className="font-medium text-base">E-mail</p>
+                <a
+                  href="mailto:hallo@grandcafevreeburg.nl"
+                  className="text-muted-foreground link-underline"
+                >
+                  hallo@grandcafevreeburg.nl
+                </a>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="grid h-10 w-10 place-items-center rounded-lg bg-bordeaux/8 text-bordeaux shrink-0">
+                <Clock className="h-4 w-4" />
+              </span>
+              <div>
+                <p className="font-medium text-base mb-1">Openingstijden</p>
+                <ul className="text-muted-foreground space-y-1">
+                  <li className="flex justify-between gap-8"><span>Maandag</span><span>Gesloten</span></li>
+                  <li className="flex justify-between gap-8"><span>Dinsdag – Donderdag</span><span>09:00 – 23:00</span></li>
+                  <li className="flex justify-between gap-8"><span>Vrijdag – Zaterdag</span><span>09:00 – 01:00</span></li>
+                  <li className="flex justify-between gap-8"><span>Zondag</span><span>10:00 – 22:00</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <a href="tel:+31235000000" className="btn-primary mt-10">
+            Reserveer een tafel
+          </a>
+        </div>
+
+        <div className="lg:col-span-7 reveal-right">
+          <div className="rounded-xl overflow-hidden shadow-[var(--shadow-lift)] border border-border h-[480px] md:h-full min-h-[480px]">
+            <iframe
+              title="Locatie Grand Café Vreeburg"
+              src="https://www.google.com/maps?q=Kerkplein+16,+2061+JD+Bloemendaal&output=embed"
+              className="w-full h-full"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-foreground text-cream/80 pt-20 pb-10">
+      <div className="container-x">
+        <div className="grid md:grid-cols-4 gap-10 mb-14">
+          <div className="md:col-span-2">
+            <p className="font-display text-3xl text-cream mb-4">
+              Grand Café <span className="italic text-gold">Vreeburg</span>
+            </p>
+            <p className="text-cream/60 max-w-sm text-sm leading-relaxed">
+              Ontmoeten. Genieten. Samen proosten. Een warm grand café aan het Kerkplein in
+              Bloemendaal.
+            </p>
+          </div>
+          <div>
+            <p className="text-cream font-medium mb-4 text-sm uppercase tracking-wider">Menu</p>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#over" className="link-underline">Over ons</a></li>
+              <li><a href="#menu" className="link-underline">Menukaart</a></li>
+              <li><a href="#werken" className="link-underline">Werken bij</a></li>
+              <li><a href="#contact" className="link-underline">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <p className="text-cream font-medium mb-4 text-sm uppercase tracking-wider">Contact</p>
+            <ul className="space-y-2 text-sm text-cream/70">
+              <li>Kerkplein 16</li>
+              <li>2061 JD Bloemendaal</li>
+              <li>
+                <a href="mailto:hallo@grandcafevreeburg.nl" className="link-underline">
+                  hallo@grandcafevreeburg.nl
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/grandcafevreeburg/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 link-underline"
+                >
+                  <Instagram className="h-4 w-4" /> Instagram
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-cream/10 pt-8 flex flex-col sm:flex-row justify-between gap-4 text-xs text-cream/50">
+          <p>© {new Date().getFullYear()} Grand Café Vreeburg. Alle rechten voorbehouden.</p>
+          <p>Bloemendaal — met liefde gemaakt.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function Index() {
+  useReveal();
+  return (
+    <main className="bg-background text-foreground">
+      <Navbar />
+      <Hero />
+      <About />
+      <Gallery />
+      <MenuSection />
+      <Why />
+      <Careers />
+      <Dave />
+      <Reviews />
+      <InstagramFeed />
+      <Contact />
+      <Footer />
+    </main>
   );
 }
