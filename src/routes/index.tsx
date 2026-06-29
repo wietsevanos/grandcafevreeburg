@@ -31,6 +31,7 @@ import daveImg from "@/assets/dave.jpg";
 import drinksImg from "@/assets/drinks.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import dessertImg from "@/assets/dessert.jpg";
+import logoAsset from "@/assets/vreeburg-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -79,13 +80,14 @@ function Navbar() {
       }`}
     >
       <div className="container-x flex items-center justify-between gap-6">
-        <a
-          href="#home"
-          className={`font-display text-xl md:text-2xl tracking-tight transition-colors ${
-            scrolled ? "text-foreground" : "text-cream"
-          }`}
-        >
-          Grand Café <span className="italic text-bordeaux">Vreeburg</span>
+        <a href="#home" aria-label="Grand Café Vreeburg" className="flex items-center">
+          <img
+            src={logoAsset.url}
+            alt="Grand Café Vreeburg"
+            className={`h-10 md:h-12 w-auto transition-all duration-500 ${
+              scrolled ? "" : "brightness-0 invert"
+            }`}
+          />
         </a>
 
         <nav className="hidden md:flex items-center gap-8 text-sm">
@@ -156,9 +158,12 @@ function Hero() {
 
       <div className="relative z-10 container-x text-center text-cream">
         <p className="reveal eyebrow text-gold mb-6">— Sinds 2026 · Kerkplein, Bloemendaal —</p>
-        <h1 className="reveal delay-1 font-display text-5xl sm:text-6xl md:text-8xl leading-[1.02] mb-6">
-          Grand Café <span className="italic">Vreeburg</span>
-        </h1>
+        <h1 className="sr-only">Grand Café Vreeburg</h1>
+        <img
+          src={logoAsset.url}
+          alt="Grand Café Vreeburg — eten & drinken"
+          className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)] brightness-0 invert"
+        />
         <p className="reveal delay-2 max-w-xl mx-auto text-cream/85 text-lg md:text-xl font-light">
           Ontmoeten. Genieten. Samen proosten.
         </p>
@@ -768,9 +773,11 @@ function Footer() {
       <div className="container-x">
         <div className="grid md:grid-cols-4 gap-10 mb-14">
           <div className="md:col-span-2">
-            <p className="font-display text-3xl text-cream mb-4">
-              Grand Café <span className="italic text-gold">Vreeburg</span>
-            </p>
+            <img
+              src={logoAsset.url}
+              alt="Grand Café Vreeburg"
+              className="h-16 w-auto mb-5 brightness-0 invert"
+            />
             <p className="text-cream/60 max-w-sm text-sm leading-relaxed">
               Ontmoeten. Genieten. Samen proosten. Een warm grand café aan het Kerkplein in
               Bloemendaal.
