@@ -17,9 +17,7 @@ const WIDGET_CONFIG = {
   ctaSelector: ".wereserve-cta",
 };
 
-export function WeReserveWidget() {
-  return null;
-}
+let scriptLoadPromise: Promise<void> | null = null;
 
 export function loadWeReserveWidget() {
   if (typeof window === "undefined") return;
@@ -30,15 +28,25 @@ export function loadWeReserveWidget() {
   }
 
   const existing = document.querySelector(`script[src="${SCRIPT_SRC}"]`);
-  if (existing) return;
+  if (existing) {
+    // Script tag exists but may not have loaded yet; rely on the queued promise.
+    return;
+  }
 
-  const script = document.createElement("script");
-  script.src = SCRIPT_SRC;
-  script.async = true;
-  script.onload = () => {
+  if (!scriptLoadPromise) {
+    scriptLoadPromise = new Promise<void>((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = SCRIPT_SRC;
+      script.async = true;
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error("Failed to load WeReserve widget"));
+      document.body.appendChild(script);
+    });
+  }
+
+  scriptLoadPromise.then(() => {
     if (window.wereserve) {
       window.wereserve.setupBookWidget(WIDGET_CONFIG);
     }
-  };
-  document.body.appendChild(script);
+  });
 }
