@@ -31,6 +31,7 @@ import daveImg from "@/assets/dave.jpg";
 import drinksImg from "@/assets/drinks.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import dessertImg from "@/assets/dessert.jpg";
+import logoAsset from "@/assets/vreeburg-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
