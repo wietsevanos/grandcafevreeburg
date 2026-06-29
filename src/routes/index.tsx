@@ -16,11 +16,12 @@ import {
 import { useReveal } from "@/hooks/use-reveal";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
 import heroImg from "@/assets/hero-counter.png.asset.json";
-import coffeeImg from "@/assets/coffee.jpg";
-import lunchImg from "@/assets/lunch.jpg";
-import cocktailsImg from "@/assets/cocktails.jpg";
-import dinnerImg from "@/assets/dinner.jpg";
-import terraceImg from "@/assets/terrace.jpg";
+import coffeeImg from "@/assets/sfeer-coffee.png.asset.json";
+import lunchImg from "@/assets/sfeer-sandwich.png.asset.json";
+import cocktailsImg from "@/assets/sfeer-cocktails.png.asset.json";
+import dinnerImg from "@/assets/sfeer-burger.png.asset.json";
+import terraceImg from "@/assets/sfeer-terras.png.asset.json";
+import beersImg from "@/assets/sfeer-beers.png.asset.json";
 import aboutTerraceAsset from "@/assets/about-terrace.png.asset.json";
 import aboutFacadeAsset from "@/assets/about-facade.png.asset.json";
 import aboutDiningAsset from "@/assets/about-dining.png.asset.json";
