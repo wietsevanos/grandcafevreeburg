@@ -27,7 +27,7 @@ import lunchImg from "@/assets/lunch.jpg";
 import cocktailsImg from "@/assets/cocktails.jpg";
 import dinnerImg from "@/assets/dinner.jpg";
 import terraceImg from "@/assets/terrace.jpg";
-import daveImg from "@/assets/dave.jpg";
+import daveImg from "@/assets/dave-portrait.jpg.asset.json";
 import drinksImg from "@/assets/drinks.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import dessertImg from "@/assets/dessert.jpg";
@@ -536,7 +536,7 @@ function Dave() {
         <div className="lg:col-span-5 reveal-left order-2 lg:order-1">
           <div className="relative">
             <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)] max-w-md">
-              <img src={daveImg} alt="Dave, gastheer van Grand Café Vreeburg" loading="lazy" className="w-full h-[560px] object-cover" />
+              <img src={daveImg.url} alt="Dave, gastheer van Grand Café Vreeburg" loading="lazy" className="w-full h-[560px] object-cover object-top" />
             </div>
             <div className="absolute -bottom-6 -right-2 md:-right-10 bg-cream rounded-xl p-6 max-w-[240px] shadow-[var(--shadow-lift)] border border-border">
               <Quote className="h-5 w-5 text-bordeaux mb-3" />
@@ -686,80 +686,163 @@ function InstagramFeed() {
 }
 
 function Contact() {
+  const cards = [
+    {
+      icon: MapPin,
+      label: "Bezoek",
+      title: "Kerkplein 16",
+      sub: "2061 JD Bloemendaal",
+      href: "https://www.google.com/maps?q=Kerkplein+16,+2061+JD+Bloemendaal",
+      cta: "Open in Maps",
+    },
+    {
+      icon: Phone,
+      label: "Bel",
+      title: "023 — 500 00 00",
+      sub: "Reserveren & vragen",
+      href: "tel:+31235000000",
+      cta: "Bel direct",
+    },
+    {
+      icon: Mail,
+      label: "Mail",
+      title: "hallo@grandcafevreeburg.nl",
+      sub: "Reacties binnen 24 uur",
+      href: "mailto:hallo@grandcafevreeburg.nl",
+      cta: "Stuur e-mail",
+    },
+  ];
+
+  const hours: [string, string][] = [
+    ["Maandag", "Gesloten"],
+    ["Dinsdag – Donderdag", "09:00 – 23:00"],
+    ["Vrijdag – Zaterdag", "09:00 – 01:00"],
+    ["Zondag", "10:00 – 22:00"],
+  ];
+
   return (
-    <section id="contact" className="py-28 md:py-36 bg-secondary/40">
-      <div className="container-x grid lg:grid-cols-12 gap-12 lg:gap-16">
-        <div className="lg:col-span-5 reveal-left">
+    <section id="contact" className="py-28 md:py-40 bg-secondary/40 relative overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <div className="container-x">
+        {/* Header */}
+        <div className="max-w-3xl mb-16 md:mb-24 reveal">
           <p className="eyebrow mb-5">Contact</p>
-          <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
+          <h2 className="font-display text-4xl md:text-6xl leading-[1.05] mb-6">
             Tot ziens aan het <span className="italic text-bordeaux">Kerkplein</span>.
           </h2>
+          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl">
+            Loop binnen, bel even, of stuur een berichtje — wij staan klaar met een warm welkom.
+          </p>
+        </div>
 
-          <div className="space-y-6 text-sm">
-            <div className="flex items-start gap-4">
-              <span className="grid h-10 w-10 place-items-center rounded-lg bg-bordeaux/8 text-bordeaux shrink-0">
-                <MapPin className="h-4 w-4" />
-              </span>
-              <div className="min-w-0">
-                <p className="font-medium text-base">Grand Café Vreeburg</p>
-                <p className="text-muted-foreground">Kerkplein 16, 2061 JD Bloemendaal</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="grid h-10 w-10 place-items-center rounded-lg bg-bordeaux/8 text-bordeaux shrink-0">
-                <Phone className="h-4 w-4" />
-              </span>
-              <div>
-                <p className="font-medium text-base">Bel ons</p>
-                <a href="tel:+31235000000" className="text-muted-foreground link-underline">
-                  023 — 500 00 00
-                </a>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="grid h-10 w-10 place-items-center rounded-lg bg-bordeaux/8 text-bordeaux shrink-0">
-                <Mail className="h-4 w-4" />
-              </span>
-              <div>
-                <p className="font-medium text-base">E-mail</p>
-                <a
-                  href="mailto:hallo@grandcafevreeburg.nl"
-                  className="text-muted-foreground link-underline"
-                >
-                  hallo@grandcafevreeburg.nl
-                </a>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="grid h-10 w-10 place-items-center rounded-lg bg-bordeaux/8 text-bordeaux shrink-0">
-                <Clock className="h-4 w-4" />
-              </span>
-              <div>
-                <p className="font-medium text-base mb-1">Openingstijden</p>
-                <ul className="text-muted-foreground space-y-1">
-                  <li className="flex justify-between gap-8"><span>Maandag</span><span>Gesloten</span></li>
-                  <li className="flex justify-between gap-8"><span>Dinsdag – Donderdag</span><span>09:00 – 23:00</span></li>
-                  <li className="flex justify-between gap-8"><span>Vrijdag – Zaterdag</span><span>09:00 – 01:00</span></li>
-                  <li className="flex justify-between gap-8"><span>Zondag</span><span>10:00 – 22:00</span></li>
-                </ul>
-              </div>
+        {/* Quick contact cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-16 md:mb-20">
+          {cards.map((c, i) => {
+            const Icon = c.icon;
+            return (
+              <a
+                key={c.label}
+                href={c.href}
+                target={c.href.startsWith("http") ? "_blank" : undefined}
+                rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="group relative block rounded-2xl bg-background border border-border p-7 md:p-8 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lift)] hover:border-bordeaux/30 reveal"
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
+                <div className="flex items-start justify-between mb-8">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-bordeaux/8 text-bordeaux transition-all duration-500 group-hover:bg-bordeaux group-hover:text-cream group-hover:scale-110">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/70">
+                    {c.label}
+                  </span>
+                </div>
+                <p className="font-display text-2xl md:text-[26px] leading-tight mb-1.5 break-words">
+                  {c.title}
+                </p>
+                <p className="text-sm text-muted-foreground mb-6">{c.sub}</p>
+                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-medium text-foreground/80 transition-all duration-300 group-hover:text-bordeaux group-hover:gap-3">
+                  {c.cta}
+                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </span>
+              </a>
+            );
+          })}
+        </div>
+
+        {/* Map + Hours */}
+        <div className="grid lg:grid-cols-12 gap-6 md:gap-8">
+          <div className="lg:col-span-7 reveal-left">
+            <div className="relative group rounded-2xl overflow-hidden shadow-[var(--shadow-lift)] border border-border h-[420px] md:h-[560px]">
+              <iframe
+                title="Locatie Grand Café Vreeburg"
+                src="https://www.google.com/maps?q=Kerkplein+16,+2061+JD+Bloemendaal&output=embed"
+                className="w-full h-full transition-transform duration-700 group-hover:scale-[1.02]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <a
+                href="https://www.google.com/maps?q=Kerkplein+16,+2061+JD+Bloemendaal"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-5 left-5 right-5 md:right-auto inline-flex items-center justify-between gap-6 bg-background/95 backdrop-blur px-5 py-4 rounded-xl border border-border shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+              >
+                <span>
+                  <span className="block text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-0.5">
+                    Bloemendaal
+                  </span>
+                  <span className="font-display text-lg leading-none">Kerkplein 16</span>
+                </span>
+                <span className="text-xs uppercase tracking-[0.18em] font-medium text-bordeaux">
+                  Route →
+                </span>
+              </a>
             </div>
           </div>
 
-          <a href="tel:+31235000000" className="btn-primary mt-10">
-            Reserveer een tafel
-          </a>
-        </div>
+          <div className="lg:col-span-5 reveal-right">
+            <div className="h-full rounded-2xl bg-foreground text-cream p-8 md:p-10 flex flex-col">
+              <div className="flex items-center gap-3 mb-8">
+                <span className="grid h-10 w-10 place-items-center rounded-lg bg-cream/10 text-gold">
+                  <Clock className="h-4 w-4" />
+                </span>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-cream/60">Openingstijden</p>
+              </div>
 
-        <div className="lg:col-span-7 reveal-right">
-          <div className="rounded-xl overflow-hidden shadow-[var(--shadow-lift)] border border-border h-[480px] md:h-full min-h-[480px]">
-            <iframe
-              title="Locatie Grand Café Vreeburg"
-              src="https://www.google.com/maps?q=Kerkplein+16,+2061+JD+Bloemendaal&output=embed"
-              className="w-full h-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+              <ul className="divide-y divide-cream/10 mb-10">
+                {hours.map(([day, time]) => {
+                  const closed = time === "Gesloten";
+                  return (
+                    <li
+                      key={day}
+                      className="flex items-center justify-between gap-6 py-4 transition-colors hover:text-gold"
+                    >
+                      <span className="text-sm md:text-base">{day}</span>
+                      <span
+                        className={`font-display text-base md:text-lg tabular-nums ${
+                          closed ? "text-cream/40 italic" : "text-cream"
+                        }`}
+                      >
+                        {time}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+
+              <div className="mt-auto pt-6 border-t border-cream/10">
+                <p className="text-sm text-cream/70 mb-5">
+                  Liever direct een tafel? Bel ons even — dan regelen we het.
+                </p>
+                <a
+                  href="tel:+31235000000"
+                  className="inline-flex w-full items-center justify-center gap-2 bg-gold text-foreground font-medium px-6 py-4 rounded-lg transition-all duration-300 hover:bg-cream hover:-translate-y-0.5"
+                >
+                  <Phone className="h-4 w-4" />
+                  Reserveer een tafel
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
