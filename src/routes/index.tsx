@@ -614,12 +614,12 @@ function Reviews() {
 
 function InstagramFeed() {
   const posts = [
-    { img: coffeeImg, caption: "Goedemorgen Bloemendaal ☕" },
-    { img: cocktailsImg, caption: "Vrijdagavond signature ✨" },
-    { img: lunchImg, caption: "Lunch met zon op het terras" },
-    { img: dinnerImg, caption: "Vanavond op de kaart" },
-    { img: dessertImg, caption: "Zoete afsluiter" },
-    { img: terraceImg, caption: "Aan het Kerkplein" },
+    { img: coffeeImg.url, caption: "Goedemorgen Bloemendaal ☕" },
+    { img: cocktailsImg.url, caption: "Vrijdagavond signature ✨" },
+    { img: lunchImg.url, caption: "Lunch met zon op het terras" },
+    { img: dinnerImg.url, caption: "Vanavond op de kaart" },
+    { img: beersImg.url, caption: "Proost 🍺" },
+    { img: terraceImg.url, caption: "Aan het Kerkplein" },
   ];
   return (
     <section className="py-28 md:py-32">
