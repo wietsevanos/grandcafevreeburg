@@ -157,9 +157,12 @@ function Hero() {
 
       <div className="relative z-10 container-x text-center text-cream">
         <p className="reveal eyebrow text-gold mb-6">— Sinds 2026 · Kerkplein, Bloemendaal —</p>
-        <h1 className="reveal delay-1 font-display text-5xl sm:text-6xl md:text-8xl leading-[1.02] mb-6">
-          Grand Café <span className="italic">Vreeburg</span>
-        </h1>
+        <h1 className="sr-only">Grand Café Vreeburg</h1>
+        <img
+          src={logoAsset.url}
+          alt="Grand Café Vreeburg — eten & drinken"
+          className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)] brightness-0 invert"
+        />
         <p className="reveal delay-2 max-w-xl mx-auto text-cream/85 text-lg md:text-xl font-light">
           Ontmoeten. Genieten. Samen proosten.
         </p>
