@@ -12,8 +12,8 @@ declare global {
 
 const SCRIPT_SRC = "https://app.wereserve.nl/widget/book/latest";
 const WIDGET_CONFIG = {
-  url: "https://app.wereserve.nl/widget/book/1275",
-  urlMobile: "https://app.wereserve.nl/m/reservate/1275",
+  url: "https://app.wereserve.nl/widget/book/1272",
+  urlMobile: "https://app.wereserve.nl/m/reservate/1272",
   ctaSelector: ".wereserve-cta",
 };
 
