@@ -697,22 +697,22 @@ function Contact() {
     {
       icon: MapPin,
       label: "Adres",
-      value: "Kerkplein 16, 2061 JD Bloemendaal",
-      href: "https://www.google.com/maps?q=Kerkplein+16,+2061+JD+Bloemendaal",
+      value: "Kerkplein 16, Bloemendaal",
+      href: "https://www.google.com/maps?q=Kerkplein+16+Bloemendaal",
       cta: "Route",
     },
     {
       icon: Phone,
       label: "Telefoon",
-      value: "023 — 500 00 00",
-      href: "tel:+31235000000",
+      value: "+31 (0)23 74 30 125",
+      href: "tel:+31237430125",
       cta: "Bel",
     },
     {
       icon: Mail,
       label: "E-mail",
-      value: "hallo@grandcafevreeburg.nl",
-      href: "mailto:hallo@grandcafevreeburg.nl",
+      value: "Info@grandcafevreeburg.nl",
+      href: "mailto:Info@grandcafevreeburg.nl",
       cta: "Mail",
     },
   ];
