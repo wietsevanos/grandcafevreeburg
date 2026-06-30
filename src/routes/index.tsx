@@ -30,7 +30,7 @@ import cocktailsImg from "@/assets/sfeer-cocktails.png.asset.json";
 import dinnerImg from "@/assets/sfeer-burger.png.asset.json";
 import terraceImg from "@/assets/sfeer-terras.png.asset.json";
 import beersImg from "@/assets/sfeer-beers.png.asset.json";
-import aboutTerraceAsset from "@/assets/about-terrace.png.asset.json";
+
 import aboutFacadeAsset from "@/assets/about-facade.png.asset.json";
 import aboutLunchAsset from "@/assets/about-lunch.png.asset.json";
 import historicFacade1 from "@/assets/historic-facade-1.jpg.asset.json";
