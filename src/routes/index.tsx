@@ -25,6 +25,8 @@ import beersImg from "@/assets/sfeer-beers.png.asset.json";
 import aboutTerraceAsset from "@/assets/about-terrace.png.asset.json";
 import aboutFacadeAsset from "@/assets/about-facade.png.asset.json";
 import aboutLunchAsset from "@/assets/about-lunch.png.asset.json";
+import historicFacade1 from "@/assets/historic-facade-1.jpg.asset.json";
+import historicFacade2 from "@/assets/historic-facade-2.jpg.asset.json";
 import daveImg from "@/assets/dave-portrait.jpg.asset.json";
 import drinksImg from "@/assets/drinks.jpg";
 import interiorImg from "@/assets/interior.jpg";
