@@ -76,8 +76,7 @@ function Navbar() {
     { href: "#home", label: "Home" },
     { href: "#over", label: "Over ons" },
     { href: "#menu", label: "Menukaart" },
-    { href: "#vieren", label: "Vieren" },
-    { href: "#zakelijk", label: "Zakelijk" },
+    { href: "#events", label: "Vieren & zakelijk" },
     { href: "#werken", label: "Werken bij" },
     { href: "#contact", label: "Contact" },
   ];
@@ -579,172 +578,129 @@ function RequestForm({ kind, idPrefix, accent = "bordeaux" }: RequestFormProps) 
   );
 }
 
-function Celebrate() {
-  return (
-    <section id="vieren" className="relative py-28 md:py-36 overflow-hidden">
-      <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-bordeaux/10 blur-3xl pointer-events-none" />
+function Events() {
+  const [open, setOpen] = useState<"vieren" | "zakelijk" | null>(null);
 
-      <div className="container-x relative">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center mb-16 md:mb-20">
-          <div className="lg:col-span-6 reveal-left">
-            <p className="eyebrow mb-5 inline-flex items-center gap-2">
-              <Sparkles className="h-3.5 w-3.5 text-gold" /> Feesten & vieringen
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
-              Iets te <span className="italic text-bordeaux">vieren</span>?
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-5">
-              Iets te vieren? Bij Grand Café Vreeburg bent u aan het juiste adres. Of u nu een
-              informeel diner of een groots feest wilt organiseren, wij denken graag met u mee om
-              uw viering onvergetelijk te maken.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              Graag nemen wij de tijd om uw wensen te bespreken en een voorstel op maat te maken.
-              Van de ontvangst tot het laatste drankje zorgt ons team ervoor dat u en uw gasten
-              onbezorgd kunnen genieten.
-            </p>
-
-            <ul className="grid sm:grid-cols-2 gap-3 text-sm">
-              {[
-                { icon: PartyPopper, label: "Verjaardagen & jubilea" },
-                { icon: Users, label: "Familie & vrienden" },
-                { icon: Utensils, label: "Voorstel op maat" },
-                { icon: Sparkles, label: "Onvergetelijke avond" },
-              ].map(({ icon: Icon, label }) => (
-                <li
-                  key={label}
-                  className="flex items-center gap-3 rounded-lg border border-border bg-card/50 px-4 py-3 transition-all duration-300 hover:border-bordeaux/40 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
-                >
-                  <Icon className="h-4 w-4 text-bordeaux shrink-0" />
-                  <span>{label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:col-span-6 reveal-right">
-            <figure className="relative">
-              <div className="img-zoom rounded-2xl overflow-hidden shadow-[var(--shadow-lift)]">
-                <img
-                  src={cocktailsImg.url}
-                  alt="Sfeervolle viering bij Grand Café Vreeburg"
-                  loading="lazy"
-                  className="w-full h-[440px] md:h-[560px] object-cover"
-                />
-              </div>
-              <div className="hidden md:flex absolute -bottom-6 -left-6 items-center gap-3 bg-cream rounded-xl px-5 py-4 shadow-[var(--shadow-lift)] border border-border">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-bordeaux text-cream">
-                  <PartyPopper className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="font-display italic text-lg leading-none">Op maat gemaakt</p>
-                  <p className="text-xs text-muted-foreground mt-1">Voor elke gelegenheid</p>
-                </div>
-              </div>
-            </figure>
-          </div>
-        </div>
-
-        <div className="max-w-3xl mx-auto reveal">
-          <div className="text-center mb-8">
-            <p className="eyebrow mb-3">Aanvraag</p>
-            <h3 className="font-display text-3xl md:text-4xl">
-              Vertel ons over uw <span className="italic text-bordeaux">viering</span>
-            </h3>
-          </div>
-          <RequestForm kind="vieren" idPrefix="vier" accent="bordeaux" />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Business() {
-  const features = [
+  const cards = [
     {
-      icon: Users,
-      title: "Tot 35 personen",
-      desc: "Een aparte zaal met comfortabele en informele sfeer.",
+      key: "vieren" as const,
+      eyebrow: "Feesten & vieringen",
+      eyebrowIcon: Sparkles,
+      title: "Iets te vieren",
+      titleAccent: "vieren",
+      image: cocktailsImg.url,
+      paragraphs: [
+        "Iets te vieren? Bij Grand Café Vreeburg bent u aan het juiste adres! Of u nu een informeel diner of een groots feest wilt geven, wij denken graag met u mee om uw viering onvergetelijk te maken!",
+        "Graag nemen wij de tijd om uw wensen te bespreken en een voorstel op maat te maken: van de ontvangst tot het laatste drankje zorgt ons team ervoor dat u en uw gasten onbezorgd kunnen genieten.",
+      ],
+      idPrefix: "vier",
     },
     {
-      icon: Presentation,
-      title: "Vergaderen & presenteren",
-      desc: "Opstelling en inrichting volledig naar uw wens.",
-    },
-    {
-      icon: Utensils,
-      title: "Culinaire invulling",
-      desc: "Van koffie en lunch tot een afsluitend diner.",
+      key: "zakelijk" as const,
+      eyebrow: "Zakelijk",
+      eyebrowIcon: Briefcase,
+      title: "Zakelijke bijeenkomst",
+      titleAccent: "bijeenkomst",
+      image: interiorImg,
+      paragraphs: [
+        "Op zoek naar een informele locatie voor een vergadering, presentatie, training of zakelijke bijeenkomst? De aparte zaal van Grand Café Vreeburg biedt een comfortabele en informele omgeving voor bijeenkomsten tot 35 personen.",
+        "Wij denken graag met u mee over het verloop van de bijeenkomst: de inrichting van de zaal, de gewenste opstelling en de culinaire invulling van de dag. Wij nemen dit graag uit handen zodat u zich volledig kunt richten op uw gasten en de inhoud van uw bijeenkomst.",
+      ],
+      idPrefix: "zak",
     },
   ];
 
   return (
-    <section id="zakelijk" className="relative py-28 md:py-36 bg-secondary/40 overflow-hidden">
-      <div className="container-x relative">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start mb-16 md:mb-20">
-          <div className="lg:col-span-5 reveal-left lg:sticky lg:top-28">
-            <p className="eyebrow mb-5 inline-flex items-center gap-2">
-              <Briefcase className="h-3.5 w-3.5 text-bordeaux" /> Zakelijk
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
-              Zakelijke <span className="italic text-bordeaux">bijeenkomsten</span>
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-5">
-              Op zoek naar een informele locatie voor een vergadering, presentatie, training of
-              zakelijke bijeenkomst?
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-5">
-              De aparte zaal van Grand Café Vreeburg biedt een comfortabele en informele omgeving
-              voor bijeenkomsten tot ongeveer 35 personen.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Wij denken graag met u mee over het verloop van de bijeenkomst, de inrichting van de
-              zaal, de gewenste opstelling en de culinaire invulling van de dag. Wij nemen dit
-              graag uit handen, zodat u zich volledig kunt richten op uw gasten en de inhoud van
-              uw bijeenkomst.
-            </p>
-          </div>
+    <section id="events" className="relative py-20 md:py-28 bg-secondary/30 overflow-hidden">
+      <div className="absolute -top-24 right-0 h-72 w-72 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 left-0 h-72 w-72 rounded-full bg-bordeaux/10 blur-3xl pointer-events-none" />
 
-          <div className="lg:col-span-7 reveal-right">
-            <div className="grid sm:grid-cols-2 gap-5 md:gap-6 mb-10">
-              {features.map((f, i) => {
-                const Icon = f.icon;
-                return (
+      <div className="container-x relative">
+        <div className="text-center max-w-2xl mx-auto mb-12 reveal">
+          <p className="eyebrow mb-3">Vieren & zakelijk</p>
+          <h2 className="font-display text-3xl md:text-4xl leading-tight">
+            Maak van uw moment <span className="italic text-bordeaux">iets bijzonders</span>
+          </h2>
+        </div>
+
+        <div id="vieren" className="sr-only" aria-hidden />
+        <div id="zakelijk" className="sr-only" aria-hidden />
+
+        <div className="grid md:grid-cols-2 gap-5 md:gap-6">
+          {cards.map((c, i) => {
+            const isOpen = open === c.key;
+            const Icon = c.eyebrowIcon;
+            return (
+              <article
+                key={c.key}
+                className={`reveal delay-${i + 1} group rounded-2xl border border-border bg-card overflow-hidden shadow-[var(--shadow-soft)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] flex flex-col`}
+              >
+                <div className="relative h-44 md:h-52 overflow-hidden">
+                  <img
+                    src={c.image}
+                    alt={c.title}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/10 to-transparent" />
+                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cream/95 backdrop-blur text-[10px] uppercase tracking-[0.18em] text-foreground">
+                    <Icon className="h-3 w-3 text-bordeaux" />
+                    {c.eyebrow}
+                  </div>
+                </div>
+
+                <div className="p-6 md:p-8 flex flex-col flex-1">
+                  <h3 className="font-display text-2xl md:text-3xl leading-tight mb-4">
+                    {c.title.split(c.titleAccent)[0]}
+                    <span className="italic text-bordeaux">{c.titleAccent}</span>
+                    {c.title.split(c.titleAccent)[1]}
+                  </h3>
+                  <div className="space-y-3 text-sm md:text-[15px] text-muted-foreground leading-relaxed flex-1">
+                    {c.paragraphs.map((p, idx) => (
+                      <p key={idx}>{p}</p>
+                    ))}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setOpen(isOpen ? null : c.key)}
+                    aria-expanded={isOpen}
+                    className="mt-6 inline-flex items-center justify-between gap-3 w-full px-5 py-3 rounded-xl border border-border hover:border-bordeaux/50 hover:bg-bordeaux/[0.03] transition-all duration-300 group/btn"
+                  >
+                    <span className="inline-flex items-center gap-3 text-sm font-medium">
+                      <span
+                        className={`grid h-7 w-7 place-items-center rounded-full border border-border text-bordeaux transition-all duration-500 ${
+                          isOpen ? "bg-bordeaux text-cream border-bordeaux rotate-180" : ""
+                        }`}
+                      >
+                        {isOpen ? <Minus className="h-3.5 w-3.5" /> : <Plus className="h-3.5 w-3.5" />}
+                      </span>
+                      Aanvraagformulier
+                    </span>
+                    <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground group-hover/btn:text-bordeaux transition-colors">
+                      {isOpen ? "Sluit" : "Open"}
+                    </span>
+                  </button>
+
                   <div
-                    key={f.title}
-                    className={`reveal delay-${i + 1} group p-7 rounded-2xl border border-border bg-card transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] hover:border-bordeaux/40 ${
-                      i === 2 ? "sm:col-span-2" : ""
+                    className={`grid transition-all duration-700 ease-out ${
+                      isOpen ? "grid-rows-[1fr] opacity-100 mt-5" : "grid-rows-[0fr] opacity-0"
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-5">
-                      <span className="grid h-11 w-11 place-items-center rounded-xl bg-bordeaux/10 text-bordeaux transition-all duration-500 group-hover:bg-bordeaux group-hover:text-cream">
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <ArrowRight className="h-4 w-4 text-muted-foreground transition-all duration-500 group-hover:text-bordeaux group-hover:translate-x-1" />
+                    <div className="overflow-hidden">
+                      <RequestForm kind={c.key} idPrefix={c.idPrefix} accent="bordeaux" />
                     </div>
-                    <h4 className="font-display text-2xl mb-2">{f.title}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
                   </div>
-                );
-              })}
-            </div>
-
-            <div className="reveal">
-              <div className="mb-6">
-                <p className="eyebrow mb-3">Aanvraag</p>
-                <h3 className="font-display text-3xl md:text-4xl">
-                  Plan uw <span className="italic text-bordeaux">bijeenkomst</span>
-                </h3>
-              </div>
-              <RequestForm kind="zakelijk" idPrefix="zak" accent="bordeaux" />
-            </div>
-          </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
+
 
 function Careers() {
   const jobs = [
@@ -1166,8 +1122,7 @@ function Index() {
       <About />
       <Gallery />
       <MenuSection />
-      <Celebrate />
-      <Business />
+      <Events />
       <Careers />
       <Dave />
       <Reviews />
