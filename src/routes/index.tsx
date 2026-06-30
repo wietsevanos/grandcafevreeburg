@@ -76,6 +76,7 @@ function Navbar() {
     { href: "#home", label: "Home" },
     { href: "#over", label: "Over ons" },
     { href: "#menu", label: "Menukaart" },
+    { href: "#galerij", label: "Galerij" },
     { href: "#events", label: "Vieren & zakelijk" },
     { href: "#werken", label: "Werken bij" },
     { href: "#contact", label: "Contact" },
@@ -317,11 +318,11 @@ function Gallery() {
     { src: terraceImg.url, label: "Terras", h: "h-[400px]" },
   ];
   return (
-    <section className="py-24 md:py-32 bg-secondary/40">
+    <section id="galerij" className="py-24 md:py-32 bg-secondary/40">
       <div className="container-x">
         <div className="grid md:grid-cols-2 gap-8 items-end mb-14">
           <div className="reveal-left">
-            <p className="eyebrow mb-4">Sfeer</p>
+            <p className="eyebrow mb-4">Galerij</p>
             <h2 className="font-display text-4xl md:text-5xl leading-tight">
               Een dag bij <span className="italic text-bordeaux">Vreeburg</span>
             </h2>
