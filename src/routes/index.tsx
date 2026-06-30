@@ -202,85 +202,94 @@ function Hero() {
 function About() {
   return (
     <section id="over" className="relative py-28 md:py-40">
-      <div className="container-x grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-        <div className="lg:col-span-5 reveal-left">
-          <p className="eyebrow mb-5">Over ons</p>
-          <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
-            Een warm welkom in <span className="italic text-bordeaux">het hart</span> van Bloemendaal.
-          </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-5">
-            Aan het Kerkplein vind je een plek waar de dag rustig begint met een verse cappuccino
-            en eindigt met een glas wijn onder kaarslicht.
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            Koffie, lunch, borrel of diner, bij Vreeburg ben je altijd thuis. Gastvrij, eerlijk en
-            met liefde voor het ambacht.
-          </p>
+      <div className="container-x">
+        {/* Intro */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          <div className="lg:col-span-6 reveal-left">
+            <p className="eyebrow mb-5">Over ons</p>
+            <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
+              Een vertrouwde naam, <span className="italic text-bordeaux">een nieuw hoofdstuk</span>.
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-5">
+              Vreeburg is al jarenlang een vertrouwde naam in Bloemendaal en heeft in juli 2026
+              haar deuren heropend als een eigentijdse ontmoetingsplek waar gastvrijheid,
+              kwaliteit en gezelligheid samenkomen.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Met trots bouwen wij voort op de rijke historie en geven wij Vreeburg een nieuwe
+              toekomst als de huiskamer van Bloemendaal, onder de naam Grand Café Vreeburg.
+            </p>
+          </div>
 
-          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 text-sm">
-            <a href="#menu" className="link-underline text-bordeaux font-medium">
-              Bekijk menukaart →
-            </a>
-            <a href="#contact" className="link-underline font-medium">
-              Vind ons aan het Kerkplein →
-            </a>
+          <div className="lg:col-span-6 reveal-right">
+            <figure className="relative">
+              <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)]">
+                <img
+                  src={historicFacade1.url}
+                  alt="Historische gevel van Vreeburg met restaurantbord"
+                  loading="lazy"
+                  className="w-full h-[440px] md:h-[520px] object-cover sepia-[0.15]"
+                />
+              </div>
+              <figcaption className="absolute -bottom-4 left-4 md:left-6 bg-background px-4 py-2 rounded-md shadow-[var(--shadow-soft)] text-xs tracking-[0.18em] uppercase text-muted-foreground">
+                Vreeburg, door de jaren heen
+              </figcaption>
+            </figure>
           </div>
         </div>
 
-        <div className="lg:col-span-7 relative reveal-right">
-          {/* Mobile: simple stacked layout */}
-          <div className="grid grid-cols-2 gap-3 lg:hidden">
-            <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-soft)]">
-              <img
-                src={aboutLunchAsset.url}
-                alt="Lunchgerecht bij Vreeburg"
-                loading="lazy"
-                className="w-full h-56 sm:h-72 object-cover"
-              />
-            </div>
-            <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-soft)]">
-              <img
-                src={aboutTerraceAsset.url}
-                alt="Gezellig terras aan het Kerkplein"
-                loading="lazy"
-                className="w-full h-56 sm:h-72 object-cover"
-              />
-            </div>
-            <div className="col-span-2 img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)]">
-              <img
-                src={aboutFacadeAsset.url}
-                alt="Gevel van Grand Café Vreeburg"
-                loading="lazy"
-                className="w-full h-52 sm:h-64 object-cover"
-              />
-            </div>
+        {/* Divider */}
+        <div className="my-20 md:my-28 flex items-center gap-6 reveal">
+          <div className="h-px flex-1 bg-border" />
+          <span className="font-display italic text-bordeaux text-lg">Een plek met geschiedenis</span>
+          <div className="h-px flex-1 bg-border" />
+        </div>
+
+        {/* Heritage block */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          <div className="lg:col-span-7 order-2 lg:order-1 reveal-left">
+            <figure className="relative">
+              <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)]">
+                <img
+                  src={historicFacade2.url}
+                  alt="Historisch terras van Vreeburg aan het Kerkplein"
+                  loading="lazy"
+                  className="w-full h-[420px] md:h-[520px] object-cover sepia-[0.1]"
+                />
+              </div>
+              <div className="hidden lg:block absolute -top-6 -right-6 w-40 h-40 rounded-xl overflow-hidden shadow-[var(--shadow-lift)] border-8 border-background">
+                <img
+                  src={aboutTerraceAsset.url}
+                  alt="Terras vandaag"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </figure>
           </div>
 
-          {/* Desktop: editorial overlapping layout */}
-          <div className="relative grid-cols-12 gap-6 hidden lg:grid">
-            <div className="col-span-8 img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)]">
-              <img
-                src={aboutLunchAsset.url}
-                alt="Lunchgerecht bij Vreeburg"
-                loading="lazy"
-                className="w-full h-[420px] object-cover"
-              />
-            </div>
-            <div className="col-span-4 img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-soft)]">
-              <img
-                src={aboutTerraceAsset.url}
-                alt="Gezellig terras aan het Kerkplein"
-                loading="lazy"
-                className="w-full h-[420px] object-cover"
-              />
-            </div>
-            <div className="col-span-7 col-start-3 -mt-10 img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)] border-8 border-background relative z-10">
-              <img
-                src={aboutFacadeAsset.url}
-                alt="Gevel van Grand Café Vreeburg"
-                loading="lazy"
-                className="w-full h-[240px] object-cover"
-              />
+          <div className="lg:col-span-5 order-1 lg:order-2 reveal-right">
+            <h3 className="font-display text-3xl md:text-4xl leading-tight mb-8">
+              Aan het <span className="italic text-bordeaux">Kerkplein</span>, het kloppend hart van Bloemendaal.
+            </h3>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-5">
+              Gelegen op een van de mooiste plekken van het dorp, rondom de karakteristieke
+              kerk aan het Kerkplein, zijn inwoners, bezoekers en passanten meer dan welkom
+              voor een ontspannen lunch, sfeervol diner of gezellige borrel.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Of u nu langskomt voor een kop koffie op het terras, een diner met familie en
+              vrienden, een zakelijke afspraak of een feestelijke gelegenheid, bij Grand Café
+              Vreeburg is iedereen welkom.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 text-sm">
+              <a href="#menu" className="link-underline text-bordeaux font-medium">
+                Bekijk menukaart →
+              </a>
+              <a href="#contact" className="link-underline font-medium">
+                Vind ons aan het Kerkplein →
+              </a>
             </div>
           </div>
         </div>
