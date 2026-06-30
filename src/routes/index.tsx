@@ -1169,7 +1169,8 @@ function Index() {
       <About />
       <Gallery />
       <MenuSection />
-      
+      <Celebrate />
+      <Business />
       <Careers />
       <Dave />
       <Reviews />
