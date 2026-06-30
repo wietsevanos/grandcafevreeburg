@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Grand Café Vreeburg — Bloemendaal" },
       {
         property: "og:description",
-        content: "Ontmoeten. Genieten. Samen proosten. Kerkplein 16, Bloemendaal.",
+        content: "Ontmoeten. Genieten. Samen proosten. Kerkplein 16 Bloemendaal.",
       },
       { property: "og:image", content: heroImg.url },
     ],
@@ -697,22 +697,22 @@ function Contact() {
     {
       icon: MapPin,
       label: "Adres",
-      value: "Kerkplein 16, 2061 JD Bloemendaal",
-      href: "https://www.google.com/maps?q=Kerkplein+16,+2061+JD+Bloemendaal",
+      value: "Kerkplein 16, Bloemendaal",
+      href: "https://www.google.com/maps?q=Kerkplein+16+Bloemendaal",
       cta: "Route",
     },
     {
       icon: Phone,
       label: "Telefoon",
-      value: "023 — 500 00 00",
-      href: "tel:+31235000000",
+      value: "+31 (0)23 74 30 125",
+      href: "tel:+31237430125",
       cta: "Bel",
     },
     {
       icon: Mail,
       label: "E-mail",
-      value: "hallo@grandcafevreeburg.nl",
-      href: "mailto:hallo@grandcafevreeburg.nl",
+      value: "Info@grandcafevreeburg.nl",
+      href: "mailto:Info@grandcafevreeburg.nl",
       cta: "Mail",
     },
   ];
@@ -792,16 +792,16 @@ function Contact() {
           <div className="overflow-hidden rounded-xl border border-border h-[300px] md:h-[390px]">
             <iframe
               title="Locatie Grand Café Vreeburg"
-              src="https://www.google.com/maps?q=Kerkplein+16,+2061+JD+Bloemendaal&output=embed"
+              src="https://www.google.com/maps?q=Kerkplein+16+Bloemendaal&output=embed"
               className="h-full w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-sm">
-            <p className="text-muted-foreground">Kerkplein 16 · 2061 JD Bloemendaal</p>
+            <p className="text-muted-foreground">Kerkplein 16 Bloemendaal</p>
             <a
-              href="https://www.google.com/maps?q=Kerkplein+16,+2061+JD+Bloemendaal"
+              href="https://www.google.com/maps?q=Kerkplein+16+Bloemendaal"
               target="_blank"
               rel="noopener noreferrer"
               className="link-underline font-medium text-bordeaux"
@@ -844,10 +844,10 @@ function Footer() {
             <p className="text-cream font-medium mb-4 text-sm uppercase tracking-wider">Contact</p>
             <ul className="space-y-2 text-sm text-cream/70">
               <li>Kerkplein 16</li>
-              <li>2061 JD Bloemendaal</li>
+              <li>Bloemendaal</li>
               <li>
-                <a href="mailto:hallo@grandcafevreeburg.nl" className="link-underline">
-                  hallo@grandcafevreeburg.nl
+                <a href="mailto:Info@grandcafevreeburg.nl" className="link-underline">
+                  Info@grandcafevreeburg.nl
                 </a>
               </li>
               <li>
