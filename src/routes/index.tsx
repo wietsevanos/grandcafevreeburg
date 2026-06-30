@@ -20,6 +20,7 @@ import {
   Utensils,
   Send,
   CheckCircle2,
+  Calendar,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
