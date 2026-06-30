@@ -1103,6 +1103,19 @@ function Footer() {
   );
 }
 
+function MobileReserveButton() {
+  return (
+    <button
+      type="button"
+      className="md:hidden fixed bottom-4 right-4 z-50 inline-flex items-center gap-2 rounded-full btn-primary px-4 py-3 shadow-lg wereserve-cta"
+      aria-label="Reserveer een tafel"
+    >
+      <Calendar className="h-4 w-4" />
+      <span className="text-sm font-medium">Reserveer</span>
+    </button>
+  );
+}
+
 function Index() {
   useReveal();
   return (
@@ -1120,6 +1133,7 @@ function Index() {
       <InstagramFeed />
       <Contact />
       <Footer />
+      <MobileReserveButton />
     </main>
   );
 }
