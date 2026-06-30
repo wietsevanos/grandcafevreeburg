@@ -24,24 +24,24 @@ import {
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
-import heroImg from "@/assets/hero-counter.png.asset.json";
-import coffeeImg from "@/assets/sfeer-coffee.png.asset.json";
-import lunchImg from "@/assets/sfeer-sandwich.png.asset.json";
-import cocktailsImg from "@/assets/sfeer-cocktails.png.asset.json";
-import dinnerImg from "@/assets/sfeer-burger.png.asset.json";
-import terraceImg from "@/assets/sfeer-terras.png.asset.json";
-import beersImg from "@/assets/sfeer-beers.png.asset.json";
+import heroImg from "@/assets/hero-counter.png";
+import coffeeImg from "@/assets/sfeer-coffee.png";
+import lunchImg from "@/assets/sfeer-sandwich.png";
+import cocktailsImg from "@/assets/sfeer-cocktails.png";
+import dinnerImg from "@/assets/sfeer-burger.png";
+import terraceImg from "@/assets/sfeer-terras.png";
+import beersImg from "@/assets/sfeer-beers.png";
 
-import aboutFacadeAsset from "@/assets/about-facade.png.asset.json";
-import aboutLunchAsset from "@/assets/about-lunch.png.asset.json";
-import historicFacade1 from "@/assets/historic-facade-1.jpg.asset.json";
-import historicFacade2 from "@/assets/historic-facade-2.jpg.asset.json";
-import daveImg from "@/assets/dave-portrait.jpg.asset.json";
+import aboutFacadeAsset from "@/assets/about-facade.png";
+import aboutLunchAsset from "@/assets/about-lunch.png";
+import historicFacade1 from "@/assets/historic-facade-1.jpg";
+import historicFacade2 from "@/assets/historic-facade-2.jpg";
+import daveImg from "@/assets/dave-portrait.jpg";
 import drinksImg from "@/assets/drinks.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import dessertImg from "@/assets/dessert.jpg";
-import logoAsset from "@/assets/vreeburg-logo.png.asset.json";
-import headerLogoAsset from "@/assets/vreeburg-logo-header.png.asset.json";
+import logoAsset from "@/assets/vreeburg-logo.png";
+import headerLogoAsset from "@/assets/vreeburg-logo-header.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -57,7 +57,7 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Ontmoeten. Genieten. Samen proosten. Kerkplein 16 Bloemendaal.",
       },
-      { property: "og:image", content: heroImg.url },
+      { property: "og:image", content: heroImg },
     ],
   }),
   component: Index,
@@ -94,7 +94,7 @@ function Navbar() {
       <div className="container-x flex items-center justify-between gap-6">
         <a href="#home" aria-label="Grand Café Vreeburg" className="flex items-center">
           <img
-            src={headerLogoAsset.url}
+            src={headerLogoAsset}
             alt="Grand Café Vreeburg"
             className={`h-7 md:h-10 w-auto transition-all duration-500 ${
               scrolled ? "" : "brightness-0 invert"
@@ -166,7 +166,7 @@ function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <img
-        src={heroImg.url}
+        src={heroImg}
         alt="Sfeervol interieur van Grand Café Vreeburg in Bloemendaal"
         className="absolute inset-0 h-full w-full object-cover"
         width={1920}
@@ -178,7 +178,7 @@ function Hero() {
         <p className="reveal eyebrow text-gold mb-6">Welkom bij Grand Café Vreeburg</p>
         <h1 className="sr-only">Grand Café Vreeburg</h1>
         <img
-          src={logoAsset.url}
+          src={logoAsset}
           alt="Grand Café Vreeburg — eten & drinken"
           className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)] brightness-0 invert"
         />
@@ -236,7 +236,7 @@ function About() {
             <figure className="relative">
               <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)]">
                 <img
-                  src={historicFacade1.url}
+                  src={historicFacade1}
                   alt="Historische gevel van Vreeburg met restaurantbord"
                   loading="lazy"
                   className="w-full h-[440px] md:h-[520px] object-cover sepia-[0.15]"
@@ -262,7 +262,7 @@ function About() {
             <figure className="relative">
               <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)]">
                 <img
-                  src={historicFacade2.url}
+                  src={historicFacade2}
                   alt="Historisch terras van Vreeburg aan het Kerkplein"
                   loading="lazy"
                   className="w-full h-[420px] md:h-[520px] object-cover sepia-[0.1]"
@@ -300,12 +300,12 @@ function About() {
 
 function Gallery() {
   const items = [
-    { src: coffeeImg.url, label: "Koffie", h: "h-[420px]" },
-    { src: cocktailsImg.url, label: "Cocktails", h: "h-[300px]" },
-    { src: lunchImg.url, label: "Lunch", h: "h-[360px]" },
-    { src: dinnerImg.url, label: "Diner", h: "h-[440px]" },
-    { src: beersImg.url, label: "Wijn & Bier", h: "h-[320px]" },
-    { src: terraceImg.url, label: "Terras", h: "h-[400px]" },
+    { src: coffeeImg, label: "Koffie", h: "h-[420px]" },
+    { src: cocktailsImg, label: "Cocktails", h: "h-[300px]" },
+    { src: lunchImg, label: "Lunch", h: "h-[360px]" },
+    { src: dinnerImg, label: "Diner", h: "h-[440px]" },
+    { src: beersImg, label: "Wijn & Bier", h: "h-[320px]" },
+    { src: terraceImg, label: "Terras", h: "h-[400px]" },
   ];
   return (
     <section id="galerij" className="py-24 md:py-32 bg-secondary/40">
@@ -579,7 +579,7 @@ function Events() {
       eyebrowIcon: Sparkles,
       title: "Iets te vieren",
       titleAccent: "vieren",
-      image: cocktailsImg.url,
+      image: cocktailsImg,
       paragraphs: [
         "Iets te vieren? Bij Grand Café Vreeburg bent u aan het juiste adres! Of u nu een informeel diner of een groots feest wilt geven, wij denken graag met u mee om uw viering onvergetelijk te maken!",
         "Graag nemen wij de tijd om uw wensen te bespreken en een voorstel op maat te maken: van de ontvangst tot het laatste drankje zorgt ons team ervoor dat u en uw gasten onbezorgd kunnen genieten.",
@@ -764,7 +764,7 @@ function Dave() {
         <div className="lg:col-span-5 reveal-left order-2 lg:order-1">
           <div className="relative">
             <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)] max-w-md">
-              <img src={daveImg.url} alt="Dave, gastheer van Grand Café Vreeburg" loading="lazy" className="w-full h-[560px] object-cover object-top" />
+              <img src={daveImg} alt="Dave, gastheer van Grand Café Vreeburg" loading="lazy" className="w-full h-[560px] object-cover object-top" />
             </div>
             <div className="absolute -bottom-6 -right-2 md:-right-10 bg-cream rounded-xl p-6 max-w-[240px] shadow-[var(--shadow-lift)] border border-border">
               <Quote className="h-5 w-5 text-bordeaux mb-3" />
@@ -874,12 +874,12 @@ function Reviews() {
 
 function InstagramFeed() {
   const posts = [
-    { img: coffeeImg.url, caption: "Goedemorgen Bloemendaal ☕" },
-    { img: cocktailsImg.url, caption: "Vrijdagavond signature ✨" },
-    { img: lunchImg.url, caption: "Lunch met zon op het terras" },
-    { img: dinnerImg.url, caption: "Vanavond op de kaart" },
-    { img: beersImg.url, caption: "Proost 🍺" },
-    { img: terraceImg.url, caption: "Aan het Kerkplein" },
+    { img: coffeeImg, caption: "Goedemorgen Bloemendaal ☕" },
+    { img: cocktailsImg, caption: "Vrijdagavond signature ✨" },
+    { img: lunchImg, caption: "Lunch met zon op het terras" },
+    { img: dinnerImg, caption: "Vanavond op de kaart" },
+    { img: beersImg, caption: "Proost 🍺" },
+    { img: terraceImg, caption: "Aan het Kerkplein" },
   ];
   return (
     <section className="py-28 md:py-32">
@@ -1052,7 +1052,7 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-14">
           <div className="md:col-span-2">
             <img
-              src={logoAsset.url}
+              src={logoAsset}
               alt="Grand Café Vreeburg"
               className="h-16 w-auto mb-5 brightness-0 invert"
             />
