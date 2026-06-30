@@ -173,20 +173,19 @@ function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/45 to-foreground/80" />
 
-      <div className="relative z-10 container-x text-center text-cream max-w-4xl">
+      <div className="relative z-10 container-x text-center text-cream">
         <p className="reveal eyebrow text-gold mb-6">— Sinds 2026 · Kerkplein, Bloemendaal —</p>
-        <h1 className="reveal delay-1 font-display text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6">
-          Welkom bij <span className="italic text-gold">Grand Café Vreeburg</span>
-        </h1>
-        <p className="reveal delay-2 max-w-2xl mx-auto text-cream/90 text-xl md:text-2xl font-light leading-relaxed mb-6">
-          Vanaf medio juli openen wij onze deuren aan het Kerkplein 16 in Bloemendaal.
-        </p>
-        <p className="reveal delay-3 max-w-2xl mx-auto text-cream/80 text-base md:text-lg font-light leading-relaxed">
-          Of u nu langskomt voor een kop koffie op het terras, een diner met familie en vrienden,
-          een zakelijke afspraak of een feestelijke gelegenheid, wees welkom bij Grand Café Vreeburg.
+        <h1 className="sr-only">Grand Café Vreeburg</h1>
+        <img
+          src={logoAsset.url}
+          alt="Grand Café Vreeburg — eten & drinken"
+          className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)] brightness-0 invert"
+        />
+        <p className="reveal delay-2 max-w-xl mx-auto text-cream/85 text-lg md:text-xl font-light">
+          Ontmoeten. Genieten. Samen proosten.
         </p>
 
-        <div className="reveal delay-4 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="reveal delay-3 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
           <button
             type="button"
             className="btn-primary wereserve-cta"
