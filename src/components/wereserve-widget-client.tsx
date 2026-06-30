@@ -86,14 +86,14 @@ export function WeReserveWidgetClient() {
             <div className="flex items-start gap-3 opacity-90">
               <Phone className="h-4 w-4 mt-0.5 shrink-0" />
               <div>
-                <div className="font-medium">023 525 1414</div>
+                <div className="font-medium">+31 (0)23 74 30 125</div>
                 <div className="opacity-60 text-xs">Voor groepen of vragen</div>
               </div>
             </div>
             <div className="flex items-start gap-3 opacity-90">
               <Mail className="h-4 w-4 mt-0.5 shrink-0" />
               <div>
-                <div className="font-medium">info@vreeburg.nl</div>
+                <div className="font-medium">Info@grandcafevreeburg.nl</div>
                 <div className="opacity-60 text-xs">We reageren snel</div>
               </div>
             </div>
