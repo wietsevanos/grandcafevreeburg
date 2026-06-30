@@ -174,7 +174,7 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/45 to-foreground/80" />
 
       <div className="relative z-10 container-x text-center text-cream">
-        <p className="reveal eyebrow text-gold mb-6">— Sinds 2026 · Kerkplein, Bloemendaal —</p>
+        <p className="reveal eyebrow text-gold mb-6">Welkom bij Grand Café Vreeburg</p>
         <h1 className="sr-only">Grand Café Vreeburg</h1>
         <img
           src={logoAsset.url}
@@ -182,7 +182,7 @@ function Hero() {
           className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)] brightness-0 invert"
         />
         <p className="reveal delay-2 max-w-xl mx-auto text-cream/85 text-lg md:text-xl font-light">
-          Ontmoeten. Genieten. Samen proosten.
+          Vanaf 7 juli openen wij onze deuren aan het Kerkplein 16 in Bloemendaal.
         </p>
 
         <div className="reveal delay-3 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
