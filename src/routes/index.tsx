@@ -15,14 +15,11 @@ import {
   Sparkles,
   PartyPopper,
   Users,
-  Calendar as CalendarIcon,
   Briefcase,
   Presentation,
   Utensils,
   Send,
   CheckCircle2,
-  User as UserIcon,
-  MessageSquare,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
