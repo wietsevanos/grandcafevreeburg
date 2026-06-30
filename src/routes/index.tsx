@@ -472,8 +472,8 @@ function MenuSection() {
 
 function Careers() {
   const jobs = [
-    { title: "Keuken", desc: "Sous-chefs en koks met passie voor verse producten." },
-    { title: "Bediening", desc: "Gastvrije collega's die het verschil maken." },
+    { title: "Keuken", desc: "Koks en assistenten met passie voor eerlijke, verse producten." },
+    { title: "Bediening", desc: "Gastvrije collega's die ieder bezoek nét wat mooier maken." },
     { title: "Afwas", desc: "De stille kracht achter een goed draaiende keuken." },
   ];
   return (
@@ -486,15 +486,16 @@ function Careers() {
       <div className="container-x relative">
         <div className="grid lg:grid-cols-12 gap-12 mb-14 items-end">
           <div className="lg:col-span-7 reveal-left">
-            <p className="eyebrow text-gold mb-5">Werken bij Vreeburg</p>
+            <p className="eyebrow text-gold mb-5">Werken bij</p>
             <h2 className="font-display text-4xl md:text-5xl leading-tight">
-              Bouw met ons mee aan een <span className="italic text-gold">nieuw thuis</span> voor Bloemendaal.
+              Wij zoeken <span className="italic text-gold">collega’s!</span>
             </h2>
           </div>
-          <p className="lg:col-span-5 text-cream/75 reveal-right">
-            We zoeken enthousiaste collega's die houden van gastvrijheid, kwaliteit en gezelligheid.
-            Word onderdeel van een hecht team.
-          </p>
+          <div className="lg:col-span-5 text-cream/75 reveal-right space-y-4">
+            <p>
+              De voorbereidingen voor de opening van Grand Café Vreeburg zijn in volle gang. Daarom zijn wij op zoek naar enthousiaste collega’s die samen met ons willen bouwen aan iets moois.
+            </p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 md:gap-6 mb-12">
@@ -514,12 +515,18 @@ function Careers() {
           ))}
         </div>
 
-        <div className="reveal">
+        <div className="max-w-3xl reveal">
+          <p className="text-cream/85 text-lg leading-relaxed mb-6">
+            Of je nu graag in de keuken staat, energie krijgt van gasten ontvangen of liever achter de schermen zorgt dat alles op rolletjes loopt; we hebben plek voor jou.
+          </p>
+          <p className="text-cream/75 leading-relaxed mb-8">
+            Lijkt het je leuk om vanaf het begin onderdeel te zijn van een nieuw team, mee te denken en samen een plek neer te zetten waar gastvrijheid, kwaliteit en gezelligheid centraal staan? Dan maken we graag kennis met je!
+          </p>
           <a
-            href="mailto:werken@grandcafevreeburg.nl"
+            href="mailto:dave@grandcafevreeburg.nl"
             className="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-gold text-foreground font-medium hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] transition-all duration-500"
           >
-            Solliciteer direct <ArrowRight className="h-4 w-4" />
+            Mail naar dave@grandcafevreeburg.nl <ArrowRight className="h-4 w-4" />
           </a>
         </div>
       </div>
