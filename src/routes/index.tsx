@@ -719,10 +719,9 @@ function Contact() {
 
   const hours: [string, string][] = [
     ["Maandag", "Gesloten"],
-    ["Dinsdag – Donderdag", "09:00 – 23:00"],
-    ["Vrijdag – Zaterdag", "09:00 – 01:00"],
-    ["Zondag", "10:00 – 22:00"],
+    ["Dinsdag – Zondag", "12:00 – 00:00"],
   ];
+  const kitchenNote = "Keuken tot 22:00";
 
   return (
     <section id="contact" className="py-20 md:py-28 bg-secondary/30 border-t border-border">
@@ -785,6 +784,7 @@ function Contact() {
                 </li>
               ))}
             </ul>
+            <p className="mt-3 text-xs text-muted-foreground">{kitchenNote}</p>
           </div>
         </div>
 
