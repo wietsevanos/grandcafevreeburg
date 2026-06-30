@@ -492,6 +492,261 @@ function MenuSection() {
 }
 
 
+
+type RequestFormProps = {
+  kind: "vieren" | "zakelijk";
+  idPrefix: string;
+  accent?: "bordeaux" | "gold";
+};
+
+function RequestForm({ kind, idPrefix, accent = "bordeaux" }: RequestFormProps) {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    // TODO: hook up to backend endpoint
+    await new Promise((r) => setTimeout(r, 700));
+    setLoading(false);
+    setSubmitted(true);
+  };
+
+  const btnClass =
+    accent === "gold"
+      ? "inline-flex items-center justify-center gap-3 w-full sm:w-auto px-7 py-4 rounded-xl bg-gold text-foreground font-medium hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] transition-all duration-500"
+      : "btn-primary w-full sm:w-auto";
+
+  if (submitted) {
+    return (
+      <div className="rounded-2xl border border-border bg-card p-10 text-center shadow-[var(--shadow-soft)] animate-[fade-in_0.5s_ease-out]">
+        <div className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-gold/20 text-bordeaux">
+          <CheckCircle2 className="h-7 w-7" />
+        </div>
+        <h4 className="font-display text-2xl md:text-3xl mb-3">Bedankt voor je aanvraag</h4>
+        <p className="text-muted-foreground max-w-md mx-auto">
+          We hebben je bericht ontvangen en nemen zo spoedig mogelijk contact met je op om de
+          {kind === "vieren" ? " viering" : " bijeenkomst"} samen vorm te geven.
+        </p>
+      </div>
+    );
+  }
+
+  const inputClass =
+    "peer w-full bg-transparent border-0 border-b border-border focus:border-bordeaux focus:ring-0 outline-none py-3 text-sm md:text-base placeholder-transparent transition-colors";
+  const labelClass =
+    "pointer-events-none absolute left-0 top-3 text-sm text-muted-foreground transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-bordeaux peer-[:not(:placeholder-shown)]:-top-2 peer-[:not(:placeholder-shown)]:text-xs";
+  const fieldClass = "relative pt-2";
+
+  return (
+    <form
+      onSubmit={onSubmit}
+      className="rounded-2xl border border-border bg-card p-6 md:p-10 shadow-[var(--shadow-soft)]"
+    >
+      <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
+        <div className={fieldClass}>
+          <input id={`${idPrefix}-naam`} name="naam" type="text" required placeholder="Naam" className={inputClass} />
+          <label htmlFor={`${idPrefix}-naam`} className={labelClass}>Naam</label>
+        </div>
+        <div className={fieldClass}>
+          <input id={`${idPrefix}-email`} name="email" type="email" required placeholder="E-mailadres" className={inputClass} />
+          <label htmlFor={`${idPrefix}-email`} className={labelClass}>E-mailadres</label>
+        </div>
+        <div className={fieldClass}>
+          <input id={`${idPrefix}-tel`} name="telefoon" type="tel" placeholder="Telefoonnummer" className={inputClass} />
+          <label htmlFor={`${idPrefix}-tel`} className={labelClass}>Telefoonnummer</label>
+        </div>
+        <div className={fieldClass}>
+          <input id={`${idPrefix}-datum`} name="datum" type="date" required placeholder="Datum" className={`${inputClass} text-foreground`} />
+          <label htmlFor={`${idPrefix}-datum`} className={`${labelClass} -top-2 text-xs`}>Datum</label>
+        </div>
+        <div className={`${fieldClass} sm:col-span-2`}>
+          <input id={`${idPrefix}-personen`} name="personen" type="number" min={1} required placeholder="Aantal personen" className={inputClass} />
+          <label htmlFor={`${idPrefix}-personen`} className={labelClass}>Aantal personen</label>
+        </div>
+        <div className={`${fieldClass} sm:col-span-2`}>
+          <textarea id={`${idPrefix}-bericht`} name="bericht" rows={4} placeholder="Bericht" className={`${inputClass} resize-none`} />
+          <label htmlFor={`${idPrefix}-bericht`} className={labelClass}>Bericht</label>
+        </div>
+      </div>
+
+      <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <p className="text-xs text-muted-foreground">We reageren meestal binnen 24 uur.</p>
+        <button type="submit" disabled={loading} className={btnClass}>
+          {loading ? "Versturen…" : "Aanvraag versturen"} <Send className="h-4 w-4" />
+        </button>
+      </div>
+    </form>
+  );
+}
+
+function Celebrate() {
+  return (
+    <section id="vieren" className="relative py-28 md:py-36 overflow-hidden">
+      <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-bordeaux/10 blur-3xl pointer-events-none" />
+
+      <div className="container-x relative">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center mb-16 md:mb-20">
+          <div className="lg:col-span-6 reveal-left">
+            <p className="eyebrow mb-5 inline-flex items-center gap-2">
+              <Sparkles className="h-3.5 w-3.5 text-gold" /> Feesten & vieringen
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
+              Iets te <span className="italic text-bordeaux">vieren</span>?
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-5">
+              Iets te vieren? Bij Grand Café Vreeburg bent u aan het juiste adres. Of u nu een
+              informeel diner of een groots feest wilt organiseren, wij denken graag met u mee om
+              uw viering onvergetelijk te maken.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              Graag nemen wij de tijd om uw wensen te bespreken en een voorstel op maat te maken.
+              Van de ontvangst tot het laatste drankje zorgt ons team ervoor dat u en uw gasten
+              onbezorgd kunnen genieten.
+            </p>
+
+            <ul className="grid sm:grid-cols-2 gap-3 text-sm">
+              {[
+                { icon: PartyPopper, label: "Verjaardagen & jubilea" },
+                { icon: Users, label: "Familie & vrienden" },
+                { icon: Utensils, label: "Voorstel op maat" },
+                { icon: Sparkles, label: "Onvergetelijke avond" },
+              ].map(({ icon: Icon, label }) => (
+                <li
+                  key={label}
+                  className="flex items-center gap-3 rounded-lg border border-border bg-card/50 px-4 py-3 transition-all duration-300 hover:border-bordeaux/40 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
+                >
+                  <Icon className="h-4 w-4 text-bordeaux shrink-0" />
+                  <span>{label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-6 reveal-right">
+            <figure className="relative">
+              <div className="img-zoom rounded-2xl overflow-hidden shadow-[var(--shadow-lift)]">
+                <img
+                  src={cocktailsImg.url}
+                  alt="Sfeervolle viering bij Grand Café Vreeburg"
+                  loading="lazy"
+                  className="w-full h-[440px] md:h-[560px] object-cover"
+                />
+              </div>
+              <div className="hidden md:flex absolute -bottom-6 -left-6 items-center gap-3 bg-cream rounded-xl px-5 py-4 shadow-[var(--shadow-lift)] border border-border">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-bordeaux text-cream">
+                  <PartyPopper className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="font-display italic text-lg leading-none">Op maat gemaakt</p>
+                  <p className="text-xs text-muted-foreground mt-1">Voor elke gelegenheid</p>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+
+        <div className="max-w-3xl mx-auto reveal">
+          <div className="text-center mb-8">
+            <p className="eyebrow mb-3">Aanvraag</p>
+            <h3 className="font-display text-3xl md:text-4xl">
+              Vertel ons over uw <span className="italic text-bordeaux">viering</span>
+            </h3>
+          </div>
+          <RequestForm kind="vieren" idPrefix="vier" accent="bordeaux" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Business() {
+  const features = [
+    {
+      icon: Users,
+      title: "Tot 35 personen",
+      desc: "Een aparte zaal met comfortabele en informele sfeer.",
+    },
+    {
+      icon: Presentation,
+      title: "Vergaderen & presenteren",
+      desc: "Opstelling en inrichting volledig naar uw wens.",
+    },
+    {
+      icon: Utensils,
+      title: "Culinaire invulling",
+      desc: "Van koffie en lunch tot een afsluitend diner.",
+    },
+  ];
+
+  return (
+    <section id="zakelijk" className="relative py-28 md:py-36 bg-secondary/40 overflow-hidden">
+      <div className="container-x relative">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start mb-16 md:mb-20">
+          <div className="lg:col-span-5 reveal-left lg:sticky lg:top-28">
+            <p className="eyebrow mb-5 inline-flex items-center gap-2">
+              <Briefcase className="h-3.5 w-3.5 text-bordeaux" /> Zakelijk
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
+              Zakelijke <span className="italic text-bordeaux">bijeenkomsten</span>
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-5">
+              Op zoek naar een informele locatie voor een vergadering, presentatie, training of
+              zakelijke bijeenkomst?
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-5">
+              De aparte zaal van Grand Café Vreeburg biedt een comfortabele en informele omgeving
+              voor bijeenkomsten tot ongeveer 35 personen.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Wij denken graag met u mee over het verloop van de bijeenkomst, de inrichting van de
+              zaal, de gewenste opstelling en de culinaire invulling van de dag. Wij nemen dit
+              graag uit handen, zodat u zich volledig kunt richten op uw gasten en de inhoud van
+              uw bijeenkomst.
+            </p>
+          </div>
+
+          <div className="lg:col-span-7 reveal-right">
+            <div className="grid sm:grid-cols-2 gap-5 md:gap-6 mb-10">
+              {features.map((f, i) => {
+                const Icon = f.icon;
+                return (
+                  <div
+                    key={f.title}
+                    className={`reveal delay-${i + 1} group p-7 rounded-2xl border border-border bg-card transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] hover:border-bordeaux/40 ${
+                      i === 2 ? "sm:col-span-2" : ""
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-5">
+                      <span className="grid h-11 w-11 place-items-center rounded-xl bg-bordeaux/10 text-bordeaux transition-all duration-500 group-hover:bg-bordeaux group-hover:text-cream">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <ArrowRight className="h-4 w-4 text-muted-foreground transition-all duration-500 group-hover:text-bordeaux group-hover:translate-x-1" />
+                    </div>
+                    <h4 className="font-display text-2xl mb-2">{f.title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="reveal">
+              <div className="mb-6">
+                <p className="eyebrow mb-3">Aanvraag</p>
+                <h3 className="font-display text-3xl md:text-4xl">
+                  Plan uw <span className="italic text-bordeaux">bijeenkomst</span>
+                </h3>
+              </div>
+              <RequestForm kind="zakelijk" idPrefix="zak" accent="bordeaux" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Careers() {
   const jobs = [
     { title: "Keuken", desc: "Koks en assistenten met passie voor eerlijke, verse producten." },
