@@ -30,7 +30,7 @@ import cocktailsImg from "@/assets/sfeer-cocktails.png.asset.json";
 import dinnerImg from "@/assets/sfeer-burger.png.asset.json";
 import terraceImg from "@/assets/sfeer-terras.png.asset.json";
 import beersImg from "@/assets/sfeer-beers.png.asset.json";
-import aboutTerraceAsset from "@/assets/about-terrace.png.asset.json";
+
 import aboutFacadeAsset from "@/assets/about-facade.png.asset.json";
 import aboutLunchAsset from "@/assets/about-lunch.png.asset.json";
 import historicFacade1 from "@/assets/historic-facade-1.jpg.asset.json";
@@ -267,14 +267,6 @@ function About() {
                   className="w-full h-[420px] md:h-[520px] object-cover sepia-[0.1]"
                 />
               </div>
-              <div className="hidden lg:block absolute -top-6 -right-6 w-40 h-40 rounded-xl overflow-hidden shadow-[var(--shadow-lift)] border-8 border-background">
-                <img
-                  src={aboutTerraceAsset.url}
-                  alt="Terras vandaag"
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-              </div>
             </figure>
           </div>
 
@@ -296,9 +288,6 @@ function About() {
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 text-sm">
               <a href="#menu" className="link-underline text-bordeaux font-medium">
                 Bekijk menukaart →
-              </a>
-              <a href="#contact" className="link-underline font-medium">
-                Vind ons aan het Kerkplein →
               </a>
             </div>
           </div>
