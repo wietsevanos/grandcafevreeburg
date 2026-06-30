@@ -1123,8 +1123,7 @@ function Index() {
       <About />
       <Gallery />
       <MenuSection />
-      <Celebrate />
-      <Business />
+      <Events />
       <Careers />
       <Dave />
       <Reviews />
