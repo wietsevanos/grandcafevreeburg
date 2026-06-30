@@ -76,8 +76,7 @@ function Navbar() {
     { href: "#home", label: "Home" },
     { href: "#over", label: "Over ons" },
     { href: "#menu", label: "Menukaart" },
-    { href: "#vieren", label: "Vieren" },
-    { href: "#zakelijk", label: "Zakelijk" },
+    { href: "#events", label: "Vieren & zakelijk" },
     { href: "#werken", label: "Werken bij" },
     { href: "#contact", label: "Contact" },
   ];
