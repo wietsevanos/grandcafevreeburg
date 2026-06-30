@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import {
   MapPin,
   ChevronDown,
@@ -12,6 +12,17 @@ import {
   ArrowRight,
   Star,
   Quote,
+  Sparkles,
+  PartyPopper,
+  Users,
+  Calendar as CalendarIcon,
+  Briefcase,
+  Presentation,
+  Utensils,
+  Send,
+  CheckCircle2,
+  User as UserIcon,
+  MessageSquare,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
