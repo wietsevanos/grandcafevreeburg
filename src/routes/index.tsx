@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { useEffect, useState, type FormEvent } from "react";
 import {
   MapPin,
@@ -43,25 +43,9 @@ import dessertImg from "@/assets/dessert.jpg";
 import logoAsset from "@/assets/vreeburg-logo.png";
 import headerLogoAsset from "@/assets/vreeburg-logo-header.png";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Grand Café Vreeburg — Bloemendaal" },
-      {
-        name: "description",
-        content:
-          "Grand Café Vreeburg in het hart van Bloemendaal. Ontmoeten, genieten en samen proosten. Koffie, lunch, borrel en diner aan het Kerkplein.",
-      },
-      { property: "og:title", content: "Grand Café Vreeburg — Bloemendaal" },
-      {
-        property: "og:description",
-        content: "Ontmoeten. Genieten. Samen proosten. Kerkplein 16 Bloemendaal.",
-      },
-      { property: "og:image", content: heroImg },
-    ],
-  }),
-  component: Index,
-});
+export default function IndexPage() {
+  return <Index />;
+}
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
