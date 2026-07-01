@@ -178,7 +178,7 @@ function Hero() {
             Reserveer een tafel
           </button>
           <a href="#menu" className="btn-ghost-light">
-            Bekijk menukaart <ArrowRight className="h-4 w-4" />
+            Menu binnenkort <ArrowRight className="h-4 w-4" />
           </a>
         </div>
       </div>
@@ -272,7 +272,7 @@ function About() {
 
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 text-sm">
               <a href="#menu" className="link-underline text-bordeaux font-medium">
-                Bekijk menukaart →
+                Menu binnenkort bekend →
               </a>
             </div>
           </div>
@@ -396,68 +396,44 @@ const MENU = [
   },
 ];
 
-function MenuSection() {
-  const [open, setOpen] = useState<number | null>(0);
+function AnnouncementSection() {
   return (
-    <section id="menu" className="py-28 md:py-36 relative">
-      <div className="container-x max-w-5xl">
-        <div className="text-center mb-14 reveal">
+    <section id="menu" className="py-28 md:py-36 relative overflow-hidden">
+      <div className="container-x max-w-4xl">
+        <div className="text-center mb-12 reveal">
           <p className="eyebrow mb-4">Menukaart</p>
           <h2 className="font-display text-4xl md:text-5xl mb-4">
-            Eerlijk, vers en met <span className="italic text-bordeaux">karakter</span>
+            Onze menukaart komt <span className="italic text-bordeaux">binnenkort</span> online
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Onze kaart wisselt mee met het seizoen. Een kleine greep uit wat je bij ons vindt.
+            We zijn druk bezig met het samenstellen van een nieuwe kaart vol eerlijke, verse gerechten.
           </p>
         </div>
 
-        <div className="rounded-2xl bg-card border border-border shadow-[var(--shadow-soft)] overflow-hidden reveal">
-          {MENU.map((g, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={g.cat} className="border-b border-border last:border-b-0">
-                <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 px-6 md:px-10 py-6 text-left group"
-                >
-                  <span className="font-display text-2xl md:text-3xl group-hover:text-bordeaux transition-colors">
-                    {g.cat}
-                  </span>
-                  <span
-                    className={`grid h-9 w-9 place-items-center rounded-full border border-border transition-all duration-500 ${
-                      isOpen ? "bg-bordeaux text-cream border-bordeaux rotate-180" : ""
-                    }`}
-                  >
-                    {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-                  </span>
-                </button>
-                <div
-                  className={`grid transition-all duration-700 ease-out ${
-                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <div className="px-6 md:px-10 pb-8 grid sm:grid-cols-2 gap-x-10 gap-y-5">
-                      {g.items.map(([name, desc, price]) => (
-                        <div key={name} className="flex items-baseline gap-4">
-                          <div className="min-w-0 flex-1">
-                            <div className="flex items-baseline gap-2">
-                              <span className="font-medium truncate">{name}</span>
-                              <span className="flex-1 border-b border-dotted border-border/80 translate-y-[-3px]" />
-                              <span className="text-bordeaux font-medium tabular-nums shrink-0">
-                                € {price}
-                              </span>
-                            </div>
-                            <p className="text-sm text-muted-foreground mt-1">{desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        <div className="reveal delay-1 rounded-2xl border border-border bg-card shadow-[var(--shadow-soft)] p-8 md:p-12 text-center relative overflow-hidden">
+          <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-bordeaux/10 blur-2xl pointer-events-none" />
+          <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-gold/10 blur-2xl pointer-events-none" />
+
+          <div className="relative inline-flex items-center justify-center h-16 w-16 rounded-full bg-bordeaux/10 text-bordeaux mb-6">
+            <Utensils className="h-7 w-7" />
+          </div>
+
+          <h3 className="font-display text-2xl md:text-3xl mb-4">
+            De menukaart wordt bekendgemaakt op <span className="italic text-bordeaux">zaterdag 4 juli</span>
+          </h3>
+          <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed mb-8">
+            Vanaf dan kun je hier onze complete menukaart bekijken: van lunch en diner tot borrel en desserts. 
+            Tot die tijd kun je uiteraard alvast reserveren; we informeren je graag persoonlijk over de mogelijkheden.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <button type="button" className="btn-primary wereserve-cta">
+              Reserveer alvast een tafel
+            </button>
+            <a href="#contact" className="btn-ghost">
+              Contact opnemen
+            </a>
+          </div>
         </div>
       </div>
     </section>
