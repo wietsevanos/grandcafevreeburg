@@ -416,31 +416,32 @@ function MenuSection() {
 
       {active && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-3 md:p-8 bg-foreground/70 backdrop-blur-sm animate-in fade-in duration-200"
+          className="fixed inset-0 z-[100] flex items-stretch md:items-center justify-center p-0 sm:p-3 md:p-6 bg-foreground/70 backdrop-blur-sm animate-in fade-in duration-200"
           onClick={() => setOpenId(null)}
           role="dialog"
           aria-modal="true"
           aria-label={`Menukaart ${active.label}`}
         >
           <div
-            className="relative w-full max-w-4xl h-[92vh] md:h-[88vh] bg-card rounded-2xl shadow-[var(--shadow-lift)] overflow-hidden flex flex-col animate-in zoom-in-95 duration-300"
+            className="relative w-full h-full sm:h-[95vh] md:h-[90vh] max-w-6xl bg-card sm:rounded-2xl shadow-[var(--shadow-lift)] overflow-hidden flex flex-col animate-in zoom-in-95 duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between gap-4 px-5 md:px-7 py-4 border-b border-border bg-card">
-              <div>
+            <div className="flex items-center justify-between gap-4 px-4 md:px-7 py-3 md:py-4 border-b border-border bg-card">
+              <div className="min-w-0">
                 <p className="eyebrow text-[0.65rem]">Menukaart</p>
-                <h3 className="font-display text-xl md:text-2xl leading-tight">
+                <h3 className="font-display text-lg md:text-2xl leading-tight truncate">
                   {active.label}
                 </h3>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 shrink-0">
                 <a
                   href={active.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hidden sm:inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-bordeaux transition-colors px-3 py-1.5 rounded-md border border-border hover:border-bordeaux/50"
+                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground hover:text-bordeaux transition-colors px-2.5 sm:px-3 py-1.5 rounded-md border border-border hover:border-bordeaux/50"
                 >
-                  Openen in nieuw tabblad
+                  <span className="hidden sm:inline">Openen in nieuw tabblad</span>
+                  <span className="sm:hidden">Openen</span>
                 </a>
                 <button
                   type="button"
@@ -452,13 +453,28 @@ function MenuSection() {
                 </button>
               </div>
             </div>
-            <div className="flex-1 bg-muted">
-              <iframe
+            <div className="flex-1 bg-muted overflow-auto">
+              <object
                 key={active.id}
-                src={`${active.url}#view=FitH&toolbar=0&navpanes=0`}
-                title={`Menukaart ${active.label}`}
-                className="w-full h-full border-0"
-              />
+                data={`${active.url}#view=FitH&zoom=page-width&toolbar=0&navpanes=0`}
+                type="application/pdf"
+                className="w-full h-full border-0 block"
+                aria-label={`Menukaart ${active.label}`}
+              >
+                <div className="w-full h-full flex flex-col items-center justify-center gap-4 p-6 text-center">
+                  <p className="text-sm text-muted-foreground max-w-xs">
+                    Je browser kan deze PDF niet direct tonen. Open de menukaart in een nieuw tabblad.
+                  </p>
+                  <a
+                    href={active.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary"
+                  >
+                    Open {active.label}
+                  </a>
+                </div>
+              </object>
             </div>
           </div>
         </div>
