@@ -330,110 +330,829 @@ function Gallery() {
   );
 }
 
-const MENU = [
+type PriceItem = {
+  name: string;
+  desc?: string;
+  price?: string;
+  price2?: string; // e.g. glas / fles or klein / groot
+  extras?: { label: string; price: string }[];
+  veg?: boolean;
+};
+
+type MenuGroup = {
+  title: string;
+  note?: string;
+  cols?: 1 | 2; // for compact list layouts
+  headers?: [string, string]; // e.g. ["Per glas", "Per fles"]
+  items: PriceItem[];
+};
+
+type MenuTab = {
+  id: string;
+  label: string;
+  tagline: string;
+  groups: MenuGroup[];
+  footnote?: string;
+};
+
+const MENU_DATA: MenuTab[] = [
   {
-    cat: "Koffie",
-    items: [
-      ["Espresso", "Single origin, donker gebrand", "3,20"],
-      ["Cappuccino", "Met fluweelzachte melkschuim", "3,80"],
-      ["Latte Macchiato", "Drie lagen, langzaam geserveerd", "4,20"],
-      ["Verse muntthee", "Met honing", "3,60"],
+    id: "lunch",
+    label: "Lunch",
+    tagline: "Al onze broodjes worden geserveerd op oerbrood (wit of bruin).",
+    groups: [
+      {
+        title: "Van de kaart",
+        items: [
+          {
+            name: "12-uurtje — kies uw favoriet",
+            desc:
+              "Vlees: carpaccio, rundvleeskroket & soep · Vis: tonijnsalade, garnalenkroketjes & soep · Vega: gebakken champignons, kaas-rucolakroket & soep",
+            price: "17,00",
+            veg: true,
+          },
+          {
+            name: "Carpaccio",
+            desc:
+              "Flinterdun rundvlees met rucola, rode ui, kappertjes, Parmezaanse kaas en truffelmayonaise",
+            price: "15,00",
+          },
+          {
+            name: "Tonijnsalade",
+            desc:
+              "Huisgemaakte tonijnsalade met ei, sla, rode ui, augurk en komkommer",
+            price: "13,50",
+            extras: [{ label: "Als Tuna Melt met gesmolten kaas", price: "+ 3,00" }],
+          },
+          {
+            name: "Warme geitenkaas",
+            desc: "Klassieker met zongedroogde tomaat, walnoot en balsamicodressing",
+            price: "13,50",
+            veg: true,
+          },
+          {
+            name: "Gerookte zalm",
+            desc:
+              "Rode ui, komkommer, kappertjes, zongedroogde tomaat en dillemayonaise",
+            price: "15,00",
+          },
+          {
+            name: "Club sandwich",
+            desc:
+              "Gegrilde kipdijfilet, ei, krokante bacon, sla, tomaat, augurk en rode ui — met chips",
+            price: "14,50",
+          },
+          {
+            name: "Smashed avocado",
+            desc:
+              "Avocado met rode ui, radijs, cherrytomaatjes, rucola, gepocheerd ei en chilivlokken",
+            price: "14,00",
+            veg: true,
+          },
+          {
+            name: "Spicy chicken",
+            desc: "Pittig gekruide kip met atjar, rode ui, rucola, bosui en krokante uitjes",
+            price: "14,50",
+          },
+          {
+            name: "Uitsmijter",
+            desc:
+              "Drie gebakken eieren naar keuze met: ham, kaas, bacon, tomaat, ui of champignons",
+            price: "vanaf 9,50",
+          },
+          {
+            name: "Kroketten",
+            desc: "Twee ambachtelijke rundvleeskroketten op brood met mosterdmayonaise",
+            price: "13,50",
+          },
+          {
+            name: "Tosti",
+            desc: "Naar keuze met jonge kaas, oude kaas, ham, tomaat of ui",
+            price: "6,00",
+          },
+        ],
+      },
     ],
   },
   {
-    cat: "Lunch",
-    items: [
-      ["Burrata & tomaat", "Heirloom tomaten, basilicum, olijfolie", "13,50"],
-      ["Tosti Vreeburg", "Old Amsterdam, truffelmayo, ui", "9,50"],
-      ["Soep van de dag", "Met sourdough", "8,50"],
-      ["Steak sandwich", "Bavette, mosterd, gekarameliseerde ui", "16,50"],
+    id: "diner",
+    label: "Diner",
+    tagline: "Onze chef laat zich inspireren door het seizoen.",
+    groups: [
+      {
+        title: "Soepen",
+        items: [
+          {
+            name: "Courgettesoep",
+            desc:
+              "Fluweelzachte courgettesoep, afgemaakt met chili-yoghurt en sesamzaad",
+            price: "9,00",
+            veg: true,
+          },
+          {
+            name: "Soep van het moment",
+            desc: "Vraag onze medewerkers naar de soep van vandaag",
+            price: "dagprijs",
+          },
+        ],
+      },
+      {
+        title: "Salades",
+        headers: ["Klein", "Groot"],
+        items: [
+          {
+            name: "Caesar salade",
+            desc:
+              "Kippendij, krokante spekjes, croutons, Parmezaan, ansjovis, ei en romige Caesardressing",
+            price: "17,50",
+            price2: "23,50",
+          },
+          {
+            name: "Warme geitenkaassalade",
+            desc:
+              "Gesmolten geitenkaas met zoete vijgen, appel, walnoot en honing-tijmdressing",
+            price: "15,00",
+            price2: "20,00",
+            veg: true,
+          },
+        ],
+      },
+      {
+        title: "Voorgerechten",
+        items: [
+          {
+            name: "Broodplankje",
+            desc: "Vers brood om te delen, met aïoli en kruidenboter",
+            price: "8,00",
+            veg: true,
+          },
+          {
+            name: "Carpaccio",
+            desc:
+              "Truffelmayonaise, Parmezaan, geroosterde pittenmix, rucola, rode ui, kappertjes en zongedroogde tomaat",
+            price: "15,00",
+            extras: [{ label: "Met eendenlever", price: "+ 6,50" }],
+          },
+          {
+            name: "Krokante zalmsushi",
+            desc:
+              "Zalmsushi in tempura met wasabimayonaise, wakame, kool, edamame en furikake",
+            price: "16,00",
+          },
+          {
+            name: "Spicy gamba's",
+            desc:
+              "Sappige gamba's in pittige kruidenolie met tomaat en bosui — met brood om te dippen",
+            price: "15,00",
+          },
+          {
+            name: "Steak tartaar",
+            desc:
+              "Rundertartaar op krokante brioche met dragonmayonaise en gedroogde eidooier",
+            price: "14,00",
+          },
+          {
+            name: "Saint Marcellin",
+            desc:
+              "Romige Franse kaas met geroosterde walnoot, honing-walnootdressing en knapperige toast",
+            price: "15,00",
+            veg: true,
+          },
+          {
+            name: "Aubergine melanzane",
+            desc:
+              "Aubergine met burrata, tomatensaus, frisse salade, Parmezaan en pangrattato",
+            price: "15,00",
+            veg: true,
+          },
+        ],
+      },
+      {
+        title: "Hoofdgerechten",
+        items: [
+          {
+            name: "Sliptong",
+            desc:
+              "Drie in boter gebakken sliptongen met remoulade, frisse salade en citroen",
+            price: "28,50",
+          },
+          {
+            name: "Ossenhaas",
+            desc:
+              "Botermals gebakken ossenhaas met pastinaakcrème, gepofte tomaat, ratatouille en aardappelgratin — met rode wijnsaus of pepersaus",
+            price: "29,50",
+            extras: [
+              { label: "Met eendenlever", price: "+ 6,50" },
+              { label: "Met extra saus", price: "+ 4,00" },
+            ],
+          },
+          {
+            name: "Spareribs",
+            desc: "Malse spareribs met koolsla en aïoli — Hot, Sweet of BBQ",
+            price: "23,50",
+          },
+          {
+            name: "Saté van kip of varkenshaas",
+            desc:
+              "Met pindasaus, atjar, komkommeratjar, cassavekroepoek, krokante uitjes en bosui",
+            price: "21,50",
+          },
+          {
+            name: "Black Angus burger",
+            desc:
+              "Sla, tomaat, augurk, rode ui, krokante bacon, gesmolten cheddar en huisgemaakte burgersaus — met friet",
+            price: "22,50",
+          },
+          {
+            name: "Bloemkoolsteak",
+            desc:
+              "Geroosterde bloemkool met romige groentesaus, geroosterde hazelnoot en basilicumolie",
+            price: "24,50",
+            veg: true,
+          },
+          {
+            name: "Tonijnsteak",
+            desc: "Gegrilde tonijn met seizoensgroente en een frisse dressing",
+            price: "23,00",
+          },
+          {
+            name: "Tagliatelle alla Nerano",
+            desc:
+              "Crème van courgette en basilicum, met Parmezaan, gefrituurde courgette en verse basilicum",
+            price: "25,00",
+            veg: true,
+          },
+          {
+            name: "Shortrib",
+            desc:
+              "Lang gegaard rundvlees met honing-miso glaze, aardappelpuree, bimi en bosui",
+            price: "27,50",
+          },
+        ],
+      },
+      {
+        title: "Bijgerechten",
+        cols: 2,
+        items: [
+          { name: "Huisgemaakte friet met mayonaise", price: "5,00" },
+          { name: "Truffel-Parmezaan friet", price: "7,00" },
+          { name: "Gemengde salade", price: "5,00" },
+          { name: "Rijst", price: "4,00" },
+        ],
+      },
+    ],
+    footnote: "🌱 = vegetarisch",
+  },
+  {
+    id: "bar-bites",
+    label: "Bar Bites",
+    tagline: "Om te delen, of om lekker voor uzelf te houden.",
+    groups: [
+      {
+        title: "Snacks & plankjes",
+        items: [
+          { name: "Brood met aïoli en kruidenboter", price: "8,00", veg: true },
+          { name: "Gemengde noten en olijven", price: "7,50", veg: true },
+          { name: "Nacho's", price: "9,50" },
+          { name: "Aziatische borrelplank", price: "29,50" },
+          { name: "Hollandse borrelplank", price: "29,50" },
+          { name: "Charcuterie", price: "29,50" },
+          { name: "Kaasplankje", price: "15,00", veg: true },
+        ],
+      },
+      {
+        title: "Bittergarnituur",
+        note: "Per portie van 8 stuks",
+        cols: 2,
+        items: [
+          { name: "Karaage", price: "9,50" },
+          { name: "Oma Bob's bitterballen", price: "9,50" },
+          { name: "Vlammetjes", price: "9,50" },
+          { name: "Garnalenkroketten", price: "9,50" },
+          { name: "Kaastengels", price: "9,50" },
+          { name: "Mini frikadelletjes", price: "9,50" },
+          { name: "Gyoza's", price: "9,50" },
+          { name: "Gemengd bittergarnituur", price: "14,50" },
+        ],
+      },
     ],
   },
   {
-    cat: "Hoofdgerechten",
-    items: [
-      ["Zalmfilet", "Seizoensgroente, beurre blanc", "26,50"],
-      ["Tournedos", "Pepersaus, frites, salade", "32,50"],
-      ["Risotto met paddenstoelen", "Truffel, parmezaan", "22,00"],
-      ["Catch of the day", "Vraag onze bediening", "MP"],
+    id: "dranken",
+    label: "Dranken",
+    tagline: "Van een espresso tot een goed gemixte cocktail.",
+    groups: [
+      {
+        title: "Koffie & Thee",
+        cols: 2,
+        items: [
+          { name: "Espresso / Dubbele espresso" },
+          { name: "Koffie" },
+          { name: "Koffie verkeerd" },
+          { name: "Cappuccino" },
+          { name: "Flat white" },
+          { name: "Latte macchiato" },
+          { name: "Thee" },
+          { name: "Verse munt- of gemberthee" },
+          { name: "Warme chocolademelk" },
+        ],
+      },
+      {
+        title: "Frisdranken",
+        cols: 2,
+        items: [
+          { name: "Coca-Cola / Zero" },
+          { name: "Fanta Orange / Cassis" },
+          { name: "Sprite Zero" },
+          { name: "Fuze Tea Green / Sparkling" },
+          { name: "Royal Bliss Tonic" },
+          { name: "Royal Bliss Bitter Lemon" },
+          { name: "Royal Bliss Ginger Ale" },
+          { name: "Old Jamaican Ginger Beer" },
+          { name: "Rivella" },
+          { name: "Minute Maid Tomatensap" },
+          { name: "Chaudfontaine plat 0,25 / 0,5" },
+          { name: "Chaudfontaine bruisend 0,25 / 0,5" },
+        ],
+      },
+      {
+        title: "Sap & zuivel",
+        cols: 2,
+        items: [
+          { name: "Olmenhorst appelsap" },
+          { name: "Chocomel" },
+          { name: "Fristi" },
+          { name: "Verse jus d'orange" },
+        ],
+      },
+      {
+        title: "Bieren van het vat",
+        cols: 2,
+        items: [
+          { name: "Heineken (fluit / vaas)" },
+          { name: "IJwit" },
+          { name: "Affligem Blond" },
+          { name: "Woeste Golf" },
+          { name: "Woeste Golf Lentebock" },
+        ],
+      },
+      {
+        title: "Bieren op fles",
+        cols: 2,
+        items: [
+          { name: "Amstel Radler 2% / 0%" },
+          { name: "Lagunitas IPA" },
+          { name: "Affligem Dubbel / Tripel / Blond 0%" },
+          { name: "La Chouffe" },
+          { name: "Duvel" },
+          { name: "Apple Bandit Juicy Apple" },
+          { name: "Amstel Rosé" },
+          { name: "Brand IPA 0%" },
+          { name: "Texels Skuumkoppe 0%" },
+          { name: "Heineken 0%" },
+        ],
+      },
+      {
+        title: "Gin Tonic",
+        cols: 2,
+        items: [
+          { name: "Bombay Sapphire" },
+          { name: "Hendrick's Gin" },
+          { name: "Gin Mare" },
+          { name: "Bobby's" },
+        ],
+      },
+      {
+        title: "In de mix",
+        cols: 2,
+        items: [
+          { name: "Moscow Mule" },
+          { name: "Dark & Stormy" },
+          { name: "Aperol Spritz" },
+          { name: "Limoncello Spritz" },
+          { name: "Italian Iced Tea" },
+          { name: "Balon 43" },
+        ],
+      },
+      {
+        title: "Cocktails",
+        cols: 2,
+        items: [
+          { name: "Espresso Martini" },
+          { name: "Mojito" },
+          { name: "Hazel's Heaven" },
+        ],
+      },
+      {
+        title: "Mocktails",
+        cols: 2,
+        items: [
+          { name: "Virgin Mojito" },
+          { name: "Virgin Aperol Spritz" },
+          { name: "Ginger Fizz" },
+          { name: "Virgin Moscow Mule" },
+        ],
+      },
     ],
+    footnote: "Vraag onze bediening naar de actuele prijzen.",
   },
   {
-    cat: "Wijnen",
-    items: [
-      ["Sauvignon Blanc", "Loire, Frankrijk", "6,50"],
-      ["Chardonnay", "Bourgogne", "7,50"],
-      ["Pinot Noir", "Languedoc", "7,00"],
-      ["Bordeaux Supérieur", "Château huiselijk", "8,50"],
-    ],
-  },
-  {
-    cat: "Bieren",
-    items: [
-      ["Pils van de tap", "Vers en koud", "3,20"],
-      ["Witbier", "Met citroen", "4,20"],
-      ["IPA lokaal", "Haarlem brouwerij", "5,50"],
-      ["Trappist", "Donker en vol", "5,80"],
-    ],
-  },
-  {
-    cat: "Cocktails",
-    items: [
-      ["Negroni", "Klassiek, met sinaasappel", "11,50"],
-      ["Aperol Spritz", "Bruisend en fris", "9,50"],
-      ["Espresso Martini", "Vreeburg signature", "12,00"],
-      ["Old Fashioned", "Bourbon, suiker, bitters", "12,50"],
-    ],
-  },
-  {
-    cat: "Desserts",
-    items: [
-      ["Chocolade fondant", "Vanille ijs, bramen", "9,50"],
-      ["Crème brûlée", "Vanille uit Madagaskar", "8,50"],
-      ["Kaasplankje", "Selectie van vier", "12,50"],
-      ["Affogato", "Espresso over vanille ijs", "6,50"],
+    id: "wijnen",
+    label: "Wijnkaart",
+    tagline: "Goede wijn brengt mensen samen. Proost op mooie momenten.",
+    groups: [
+      {
+        title: "Mousserend",
+        headers: ["Per glas", "Per fles"],
+        items: [
+          {
+            name: "Cava Xenius Brut",
+            desc: "Spanje — fris, levendig en elegant met fijne bubbels",
+            price: "6,75",
+            price2: "39,95",
+          },
+          {
+            name: "Champagne Besserat Bleu Brut",
+            desc: "Frankrijk — verfijnde champagne met citrus, brioche en zachte mousse",
+            price: "—",
+            price2: "75,00",
+          },
+        ],
+      },
+      {
+        title: "Wit — per glas",
+        headers: ["Per glas", "Per fles"],
+        items: [
+          {
+            name: "J. Fernando Verdejo",
+            desc: "Spanje — aromatisch, fris en licht kruidig",
+            price: "5,95",
+            price2: "29,75",
+          },
+          {
+            name: "Maso di Mezzo Pinot Grigio",
+            desc: "Italië — fris en soepel met tonen van appel en peer",
+            price: "6,50",
+            price2: "32,50",
+          },
+          {
+            name: "La Baume Viognier",
+            desc: "Frankrijk — vol en zacht met aroma's van rijp steenfruit",
+            price: "7,50",
+            price2: "37,50",
+          },
+          {
+            name: "Lynx Chardonnay",
+            desc: "Verenigde Staten — rijk en rond met subtiele houtinvloeden",
+            price: "8,25",
+            price2: "40,00",
+          },
+        ],
+      },
+      {
+        title: "Rosé — per glas",
+        headers: ["Per glas", "Per fles"],
+        items: [
+          {
+            name: "Les Galets Rosé",
+            desc: "Vin de Pays d'Oc, Frankrijk — droog en fruitig met aardbei en framboos",
+            price: "6,50",
+            price2: "32,50",
+          },
+        ],
+      },
+      {
+        title: "Rood — per glas",
+        headers: ["Per glas", "Per fles"],
+        items: [
+          {
+            name: "Reliëf Merlot",
+            desc: "Frankrijk — zacht, fruitig en toegankelijk",
+            price: "5,95",
+            price2: "29,75",
+          },
+          {
+            name: "Calusari Pinot Noir",
+            desc: "Roemenië — elegant met rood fruit en verfijnde tannines",
+            price: "6,00",
+            price2: "30,00",
+          },
+          {
+            name: "Chiaro Primitivo",
+            desc: "Italië — vol, warm en kruidig met donker fruit",
+            price: "6,25",
+            price2: "32,50",
+          },
+          {
+            name: "Luna de Anna Tempranillo",
+            desc: "Spanje — soepel en fruitgedreven met lichte kruidigheid",
+            price: "7,00",
+            price2: "35,00",
+          },
+        ],
+      },
+      {
+        title: "Witte wijnen — per fles",
+        items: [
+          {
+            name: "Orenia Réserve Blanc",
+            desc: "Rhône, Frankrijk — rijp geel fruit, witte bloemen en frisse afdronk",
+            price: "45,00",
+          },
+          {
+            name: "Reverdy Pouilly-Fumé",
+            desc: "Loire, Frankrijk — citrus, kruisbes en elegante vuursteen",
+            price: "45,00",
+          },
+          {
+            name: "Sisquella",
+            desc: "Costers del Segre, Spanje — citrus, wit fruit en subtiele mineraliteit",
+            price: "45,00",
+          },
+          {
+            name: "Bocins Blanc",
+            desc: "Priorat, Spanje — rijpe perzik, citrus en verfijnde houttoets",
+            price: "45,00",
+          },
+          {
+            name: "Prisma Pecorino",
+            desc: "Abruzzen, Italië — citrus, witte bloesem en mooie mineraliteit",
+            price: "45,00",
+          },
+          {
+            name: "Thanisch Schieffereich Riesling",
+            desc: "Moezel, Duitsland — limoen, groene appel en elegante frisheid",
+            price: "45,00",
+          },
+          {
+            name: "Perdeberg Barrel Fermented Chenin Blanc",
+            desc: "Paarl, Zuid-Afrika — tropisch fruit, honing en frisse zuren",
+            price: "45,00",
+          },
+          {
+            name: "Bread & Butter Chardonnay",
+            desc: "Californië, VS — vanille, boter, rijpe perzik en lange afdronk",
+            price: "45,00",
+          },
+        ],
+      },
+      {
+        title: "Rosé — per fles",
+        items: [
+          {
+            name: "Ultimate Provence",
+            desc: "Provence, Frankrijk — rood zomerfruit, citrus en Provençaalse kruiden",
+            price: "45,00",
+          },
+        ],
+      },
+      {
+        title: "Rode wijnen — per fles",
+        items: [
+          {
+            name: "Terrissimo Beaumes de Venise",
+            desc: "Rhône, Frankrijk — zwart fruit, peper en zijdezachte tannines",
+            price: "47,50",
+          },
+          {
+            name: "Château Piney",
+            desc: "Bordeaux, Frankrijk — klassiek met cassis en cederhout",
+            price: "47,50",
+          },
+          {
+            name: "Seis de Luberri",
+            desc: "Rioja, Spanje — rijpe kersen, vanille en subtiele houtrijping",
+            price: "47,50",
+          },
+          {
+            name: "Altos de Inurrieta",
+            desc: "Navarra, Spanje — Graciano, Cabernet Sauvignon & Syrah, kruidig en vol",
+            price: "47,50",
+          },
+          {
+            name: "Vajra Langhe Nebbiolo",
+            desc: "Piëmonte, Italië — rozen, kersen en verfijnde tannines",
+            price: "47,50",
+          },
+          {
+            name: "Falasco Amarone della Valpolicella",
+            desc: "Veneto, Italië — rozijnen, chocolade en rijp zwart fruit",
+            price: "47,50",
+          },
+          {
+            name: "Coterie by Wildeberg",
+            desc: "Western Cape, Zuid-Afrika — Cabernet Franc & Malbec, vol en krachtig",
+            price: "47,50",
+          },
+          {
+            name: "Bread & Butter Pinot Noir",
+            desc: "Californië, VS — rijpe kersen, aardbei en subtiele kruiden",
+            price: "47,50",
+          },
+        ],
+      },
+      {
+        title: "Alcoholvrij",
+        cols: 2,
+        items: [
+          { name: "Oddbird Spumante — Italië", price: "8,50" },
+          { name: "Oddbird Sparkling Rosé — Frankrijk", price: "8,50" },
+        ],
+      },
+      {
+        title: "Dessertwijnen",
+        items: [
+          {
+            name: "Nittnaus Exquisit Beerenauslese (37,5 cl)",
+            desc: "Oostenrijk — intens zoet met abrikoos, honing en tropisch fruit",
+            price: "9,00",
+          },
+          {
+            name: "Domaine des Forges Pineau des Charentes",
+            desc: "Frankrijk — karamel, gedroogd fruit en noten",
+            price: "10,00",
+          },
+        ],
+      },
+      {
+        title: "Port Barros — Portugal",
+        cols: 2,
+        items: [
+          { name: "Barros Ruby", price: "7,50" },
+          { name: "Barros Tawny", price: "7,50" },
+          { name: "Barros White", price: "7,50" },
+          { name: "Barros LBV", price: "10,00" },
+          { name: "Barros 10 Years Old Tawny", price: "12,50" },
+        ],
+      },
     ],
   },
 ];
 
-function AnnouncementSection() {
+function MenuItemRow({ item, headers }: { item: PriceItem; headers?: [string, string] }) {
+  const hasTwo = item.price2 !== undefined;
   return (
-    <section id="menu" className="py-28 md:py-36 relative overflow-hidden">
-      <div className="container-x max-w-4xl">
+    <div className="py-5 border-b border-border/60 last:border-b-0">
+      <div className="flex items-baseline gap-4">
+        <h4 className="font-display text-lg md:text-xl text-foreground flex-1 leading-snug">
+          {item.name}
+          {item.veg && (
+            <span className="ml-2 text-xs align-middle text-forest" title="Vegetarisch">
+              🌱
+            </span>
+          )}
+        </h4>
+        <span
+          className="hidden sm:block flex-1 border-b border-dotted border-border/70 translate-y-[-0.35rem]"
+          aria-hidden
+        />
+        {hasTwo ? (
+          <div className="flex gap-6 tabular-nums text-bordeaux font-medium whitespace-nowrap">
+            <span>€ {item.price}</span>
+            <span>€ {item.price2}</span>
+          </div>
+        ) : item.price ? (
+          <span className="tabular-nums text-bordeaux font-medium whitespace-nowrap">
+            {item.price === "dagprijs" || item.price.startsWith("vanaf") ? item.price : `€ ${item.price}`}
+          </span>
+        ) : null}
+      </div>
+      {item.desc && (
+        <p className="text-muted-foreground text-sm md:text-[15px] leading-relaxed mt-1.5 max-w-2xl">
+          {item.desc}
+        </p>
+      )}
+      {item.extras && item.extras.length > 0 && (
+        <ul className="mt-2 space-y-1">
+          {item.extras.map((ex) => (
+            <li
+              key={ex.label}
+              className="flex items-baseline gap-3 text-sm text-muted-foreground"
+            >
+              <span className="italic">{ex.label}</span>
+              <span className="flex-1 border-b border-dotted border-border/50 translate-y-[-0.25rem]" />
+              <span className="tabular-nums text-bordeaux/90 whitespace-nowrap">
+                € {ex.price.replace("+ ", "")}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+      {headers && hasTwo && (
+        <p className="sr-only">
+          {headers[0]}: € {item.price}. {headers[1]}: € {item.price2}.
+        </p>
+      )}
+    </div>
+  );
+}
+
+function MenuGroupBlock({ group }: { group: MenuGroup }) {
+  return (
+    <div className="reveal">
+      <div className="flex items-baseline gap-4 mb-4">
+        <h3 className="font-display text-2xl md:text-3xl text-foreground">{group.title}</h3>
+        <span className="hairline" />
+        {group.note && (
+          <span className="text-xs uppercase tracking-widest text-muted-foreground">
+            {group.note}
+          </span>
+        )}
+      </div>
+      {group.headers && (
+        <div className="hidden sm:flex justify-end gap-6 text-xs uppercase tracking-widest text-muted-foreground pb-2 border-b border-border/60">
+          <span className="w-16 text-right">{group.headers[0]}</span>
+          <span className="w-16 text-right">{group.headers[1]}</span>
+        </div>
+      )}
+      <div
+        className={
+          group.cols === 2
+            ? "grid sm:grid-cols-2 sm:gap-x-10"
+            : "grid grid-cols-1"
+        }
+      >
+        {group.items.map((it) => (
+          <MenuItemRow key={it.name} item={it} headers={group.headers} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MenuSection() {
+  const [active, setActive] = useState<string>(MENU_DATA[0].id);
+  const current = MENU_DATA.find((m) => m.id === active) ?? MENU_DATA[0];
+
+  return (
+    <section id="menu" className="py-28 md:py-36 relative overflow-hidden bg-secondary/30">
+      <div className="container-x">
         <div className="text-center mb-12 reveal">
           <p className="eyebrow mb-4">Menukaart</p>
           <h2 className="font-display text-4xl md:text-5xl mb-4">
-            Onze menukaart komt <span className="italic text-bordeaux">binnenkort</span> online
+            Onze <span className="italic text-bordeaux">kaart</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            We zijn druk bezig met het samenstellen van een nieuwe kaart vol eerlijke, verse gerechten.
+            Van ontspannen lunch tot sfeervol diner, met een goed glas erbij. Alle prijzen in euro's.
           </p>
         </div>
 
-        <div className="reveal delay-1 rounded-2xl border border-border bg-card shadow-[var(--shadow-soft)] p-8 md:p-12 text-center relative overflow-hidden">
-          <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-bordeaux/10 blur-2xl pointer-events-none" />
-          <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-gold/10 blur-2xl pointer-events-none" />
+        {/* Tabs */}
+        <div className="reveal delay-1 flex flex-wrap justify-center gap-2 md:gap-3 mb-12">
+          {MENU_DATA.map((tab) => {
+            const isActive = tab.id === active;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActive(tab.id)}
+                className={
+                  "px-5 md:px-6 py-2.5 rounded-full text-sm md:text-[15px] font-medium transition-all duration-300 border " +
+                  (isActive
+                    ? "bg-bordeaux text-cream border-bordeaux shadow-[var(--shadow-soft)]"
+                    : "bg-background/70 text-foreground border-border hover:border-bordeaux/60 hover:text-bordeaux")
+                }
+              >
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
 
-          <div className="relative inline-flex items-center justify-center h-16 w-16 rounded-full bg-bordeaux/10 text-bordeaux mb-6">
-            <Utensils className="h-7 w-7" />
+        {/* Panel */}
+        <div
+          key={current.id}
+          className="reveal max-w-4xl mx-auto bg-card border border-border rounded-2xl shadow-[var(--shadow-soft)] p-6 md:p-12 relative overflow-hidden"
+        >
+          <div className="absolute -top-16 -right-16 h-52 w-52 rounded-full bg-bordeaux/5 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-16 -left-16 h-52 w-52 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
+
+          <div className="relative text-center mb-10">
+            <h3 className="font-display text-3xl md:text-4xl text-foreground">
+              {current.label}
+            </h3>
+            <p className="text-muted-foreground mt-2 max-w-lg mx-auto italic">
+              {current.tagline}
+            </p>
           </div>
 
-          <h3 className="font-display text-2xl md:text-3xl mb-4">
-            De menukaart wordt bekendgemaakt op <span className="italic text-bordeaux">zaterdag 4 juli</span>
-          </h3>
-          <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed mb-8">
-            Vanaf dan kun je hier onze complete menukaart bekijken: van lunch en diner tot borrel en desserts. 
-            Tot die tijd kun je uiteraard alvast reserveren; we informeren je graag persoonlijk over de mogelijkheden.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button type="button" className="btn-primary wereserve-cta">
-              Reserveer alvast een tafel
-            </button>
-            <a href="#contact" className="btn-ghost">
-              Contact opnemen
-            </a>
+          <div className="relative space-y-14">
+            {current.groups.map((g) => (
+              <MenuGroupBlock key={g.title} group={g} />
+            ))}
           </div>
+
+          {current.footnote && (
+            <p className="relative mt-12 pt-6 border-t border-border/60 text-center text-sm text-muted-foreground">
+              {current.footnote}
+            </p>
+          )}
+        </div>
+
+        <div className="text-center mt-12 reveal">
+          <button type="button" className="btn-primary wereserve-cta">
+            Reserveer een tafel
+          </button>
         </div>
       </div>
     </section>
