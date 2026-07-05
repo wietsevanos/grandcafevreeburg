@@ -330,11 +330,11 @@ function Gallery() {
   );
 }
 
-import lunchPdf from "@/assets/menus/lunch.pdf.asset.json";
-import dinerPdf from "@/assets/menus/diner.pdf.asset.json";
-import barBitesPdf from "@/assets/menus/bar-bites.pdf.asset.json";
-import drankenPdf from "@/assets/menus/dranken.pdf.asset.json";
-import wijnkaartPdf from "@/assets/menus/wijnkaart.pdf.asset.json";
+const lunchPdf = { url: "/menus/lunch.pdf" };
+const dinerPdf = { url: "/menus/diner.pdf" };
+const barBitesPdf = { url: "/menus/bar-bites.pdf" };
+const drankenPdf = { url: "/menus/dranken.pdf" };
+const wijnkaartPdf = { url: "/menus/wijnkaart.pdf" };
 
 type MenuCard = {
   id: string;
