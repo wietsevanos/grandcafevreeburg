@@ -1804,7 +1804,7 @@ function Index() {
       <Hero />
       <About />
       <Gallery />
-      <AnnouncementSection />
+      <MenuSection />
       <Events />
       <Careers />
       <Dave />
