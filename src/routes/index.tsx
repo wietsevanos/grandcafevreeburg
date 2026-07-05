@@ -345,14 +345,15 @@ type MenuCard = {
   label: string;
   tagline: string;
   url: string;
+  Icon: typeof Utensils;
 };
 
 const MENU_CARDS: MenuCard[] = [
-  { id: "lunch", label: "Lunch", tagline: "Broodjes, salades en klassiekers", url: lunchPdf.url },
-  { id: "diner", label: "Diner", tagline: "Voor-, hoofd- en bijgerechten", url: dinerPdf.url },
-  { id: "bar-bites", label: "Bar Bites", tagline: "Om te delen bij de borrel", url: barBitesPdf.url },
-  { id: "dranken", label: "Dranken", tagline: "Koffie, fris, bier & cocktails", url: drankenPdf.url },
-  { id: "wijnen", label: "Wijnkaart", tagline: "Zorgvuldig geselecteerde wijnen", url: wijnkaartPdf.url },
+  { id: "lunch", label: "Lunch", tagline: "Broodjes, salades en klassiekers", url: lunchPdf.url, Icon: UtensilsCrossed },
+  { id: "diner", label: "Diner", tagline: "Voor-, hoofd- en bijgerechten", url: dinerPdf.url, Icon: Utensils },
+  { id: "bar-bites", label: "Bar Bites", tagline: "Om te delen bij de borrel", url: barBitesPdf.url, Icon: Soup },
+  { id: "dranken", label: "Dranken", tagline: "Koffie, fris, bier & cocktails", url: drankenPdf.url, Icon: GlassWater },
+  { id: "wijnen", label: "Wijnkaart", tagline: "Zorgvuldig geselecteerde wijnen", url: wijnkaartPdf.url, Icon: Wine },
 ];
 
 function MenuSection() {
