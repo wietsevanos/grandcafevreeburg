@@ -178,7 +178,7 @@ function Hero() {
             Reserveer een tafel
           </button>
           <a href="#menu" className="btn-ghost-light">
-            Menu binnenkort <ArrowRight className="h-4 w-4" />
+            Bekijk menukaart <ArrowRight className="h-4 w-4" />
           </a>
         </div>
       </div>
@@ -272,7 +272,7 @@ function About() {
 
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 text-sm">
               <a href="#menu" className="link-underline text-bordeaux font-medium">
-                Menu binnenkort bekend →
+                Bekijk onze menukaart →
               </a>
             </div>
           </div>
