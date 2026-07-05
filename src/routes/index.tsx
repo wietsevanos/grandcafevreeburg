@@ -1049,7 +1049,7 @@ function MenuItemRow({ item, headers }: { item: PriceItem; headers?: [string, st
 
 function MenuGroupBlock({ group }: { group: MenuGroup }) {
   return (
-    <div className="reveal">
+    <div>
       <div className="flex items-baseline gap-4 mb-4">
         <h3 className="font-display text-2xl md:text-3xl text-foreground">{group.title}</h3>
         <span className="hairline" />
@@ -1122,7 +1122,7 @@ function MenuSection() {
         {/* Panel */}
         <div
           key={current.id}
-          className="reveal max-w-4xl mx-auto bg-card border border-border rounded-2xl shadow-[var(--shadow-soft)] p-6 md:p-12 relative overflow-hidden"
+          className="max-w-4xl mx-auto bg-card border border-border rounded-2xl shadow-[var(--shadow-soft)] p-6 md:p-12 relative overflow-hidden"
         >
           <div className="absolute -top-16 -right-16 h-52 w-52 rounded-full bg-bordeaux/5 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-16 -left-16 h-52 w-52 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
