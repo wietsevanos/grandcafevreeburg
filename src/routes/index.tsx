@@ -18,6 +18,10 @@ import {
   Briefcase,
   Presentation,
   Utensils,
+  UtensilsCrossed,
+  Wine,
+  GlassWater,
+  Soup,
   Send,
   CheckCircle2,
   Calendar,
@@ -341,14 +345,15 @@ type MenuCard = {
   label: string;
   tagline: string;
   url: string;
+  Icon: typeof Utensils;
 };
 
 const MENU_CARDS: MenuCard[] = [
-  { id: "lunch", label: "Lunch", tagline: "Broodjes, salades en klassiekers", url: lunchPdf.url },
-  { id: "diner", label: "Diner", tagline: "Voor-, hoofd- en bijgerechten", url: dinerPdf.url },
-  { id: "bar-bites", label: "Bar Bites", tagline: "Om te delen bij de borrel", url: barBitesPdf.url },
-  { id: "dranken", label: "Dranken", tagline: "Koffie, fris, bier & cocktails", url: drankenPdf.url },
-  { id: "wijnen", label: "Wijnkaart", tagline: "Zorgvuldig geselecteerde wijnen", url: wijnkaartPdf.url },
+  { id: "lunch", label: "Lunch", tagline: "Broodjes, salades en klassiekers", url: lunchPdf.url, Icon: UtensilsCrossed },
+  { id: "diner", label: "Diner", tagline: "Voor-, hoofd- en bijgerechten", url: dinerPdf.url, Icon: Utensils },
+  { id: "bar-bites", label: "Bar Bites", tagline: "Om te delen bij de borrel", url: barBitesPdf.url, Icon: Soup },
+  { id: "dranken", label: "Dranken", tagline: "Koffie, fris, bier & cocktails", url: drankenPdf.url, Icon: GlassWater },
+  { id: "wijnen", label: "Wijnkaart", tagline: "Zorgvuldig geselecteerde wijnen", url: wijnkaartPdf.url, Icon: Wine },
 ];
 
 function MenuSection() {
@@ -382,30 +387,39 @@ function MenuSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto">
-          {MENU_CARDS.map((card, i) => (
-            <button
-              key={card.id}
-              type="button"
-              onClick={() => setOpenId(card.id)}
-              className={`reveal-zoom delay-${(i % 5) + 1} group text-left bg-card border border-border rounded-2xl p-6 md:p-7 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-lift)] hover:-translate-y-1 hover:border-bordeaux/50 transition-all duration-500 cursor-pointer relative overflow-hidden`}
-            >
-              <div className="absolute -top-10 -right-10 h-24 w-24 rounded-full bg-bordeaux/5 blur-2xl pointer-events-none group-hover:bg-bordeaux/10 transition-colors" />
-              <div className="relative">
-                <Utensils className="h-6 w-6 text-bordeaux mb-4" />
-                <h3 className="font-display text-xl md:text-2xl leading-tight mb-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-6 max-w-6xl mx-auto">
+          {MENU_CARDS.map((card, i) => {
+            const Icon = card.Icon;
+            return (
+              <button
+                key={card.id}
+                type="button"
+                onClick={() => setOpenId(card.id)}
+                className={`reveal-zoom delay-${(i % 5) + 1} group text-center bg-card border border-border rounded-2xl px-6 pt-10 pb-8 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-lift)] hover:-translate-y-1 hover:border-bordeaux/40 transition-all duration-500 cursor-pointer relative overflow-hidden flex flex-col items-center`}
+              >
+                <div className="absolute inset-x-0 -top-24 h-40 bg-gradient-to-b from-gold/10 to-transparent pointer-events-none" />
+
+                <div className="relative mb-6">
+                  <div className="h-20 w-20 rotate-45 bg-accent border border-gold/40 rounded-md flex items-center justify-center shadow-[var(--shadow-soft)] group-hover:bg-gold/25 group-hover:border-gold/60 transition-colors duration-500">
+                    <Icon className="h-7 w-7 -rotate-45 text-foreground" strokeWidth={1.5} />
+                  </div>
+                </div>
+
+                <h3 className="font-display text-2xl leading-tight mb-2">
                   {card.label}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-snug mb-5">
+                <p className="text-sm text-muted-foreground leading-snug mb-6 max-w-[16rem]">
                   {card.tagline}
                 </p>
-                <span className="inline-flex items-center gap-1.5 text-sm font-medium text-bordeaux link-underline">
-                  Bekijk kaart <ArrowRight className="h-4 w-4" />
+
+                <span className="mt-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-foreground text-sm font-medium tracking-wide border border-gold/30 group-hover:bg-bordeaux group-hover:text-cream group-hover:border-bordeaux transition-colors duration-300">
+                  Bekijk menu <ArrowRight className="h-3.5 w-3.5" />
                 </span>
-              </div>
-            </button>
-          ))}
+              </button>
+            );
+          })}
         </div>
+
 
         <div className="text-center mt-14 reveal">
           <button type="button" className="btn-primary wereserve-cta">
