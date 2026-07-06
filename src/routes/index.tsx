@@ -41,7 +41,7 @@ import interiorImg from "@/assets/interior.jpg";
 import dessertImg from "@/assets/dessert.jpg";
 import logoAsset from "@/assets/vreeburg-logo.png";
 import headerLogoAsset from "@/assets/vreeburg-logo-header.png";
-import heroSketchAsset from "@/assets/hero-sketch.png.asset.json";
+import heroSketchAsset from "@/assets/hero-sketch.png";
 
 export default function IndexPage() {
   return <Index />;
