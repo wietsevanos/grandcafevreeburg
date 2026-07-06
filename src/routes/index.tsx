@@ -41,6 +41,7 @@ import interiorImg from "@/assets/interior.jpg";
 import dessertImg from "@/assets/dessert.jpg";
 import logoAsset from "@/assets/vreeburg-logo.png";
 import headerLogoAsset from "@/assets/vreeburg-logo-header.png";
+import heroSketchAsset from "@/assets/hero-sketch.png.asset.json";
 
 export default function IndexPage() {
   return <Index />;
@@ -146,6 +147,12 @@ function Navbar() {
 function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cream">
+      <img
+        src={heroSketchAsset.url}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 m-auto max-w-[min(520px,85vw)] max-h-[55vh] md:max-w-[640px] md:max-h-[60vh] w-full h-full object-contain opacity-15 pointer-events-none select-none"
+      />
       <div className="relative z-10 container-x text-center text-foreground">
         <p className="reveal eyebrow text-bordeaux mb-6">Welkom bij Grand Café Vreeburg</p>
         <h1 className="sr-only">Grand Café Vreeburg</h1>
