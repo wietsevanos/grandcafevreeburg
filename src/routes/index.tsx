@@ -161,7 +161,7 @@ function Hero() {
           alt="Grand Café Vreeburg — eten & drinken"
           className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)]"
         />
-        <p className="reveal delay-2 max-w-xl mx-auto text-foreground/80 text-lg md:text-xl font-light">
+        <p className="reveal delay-2 max-w-xl mx-auto text-foreground text-lg md:text-xl font-normal">
           Vanaf 7 juli openen wij onze deuren aan het Kerkplein 16 in Bloemendaal.
         </p>
 
@@ -172,7 +172,7 @@ function Hero() {
           >
             Reserveer een tafel
           </button>
-          <a href="#menu" className="btn-ghost">
+          <a href="#menu" className="btn-ghost bg-cream/55 backdrop-blur-sm border-foreground/40 hover:bg-foreground hover:text-cream hover:border-foreground">
             Bekijk menukaart <ArrowRight className="h-4 w-4" />
           </a>
         </div>
