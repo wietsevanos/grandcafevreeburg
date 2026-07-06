@@ -69,10 +69,10 @@ function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 border-b ${
         scrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border py-3"
-          : "bg-transparent py-6"
+          ? "bg-background/90 backdrop-blur-md border-border py-3"
+          : "bg-cream/80 border-transparent py-6"
       }`}
     >
       <div className="container-x flex items-center justify-between gap-6">
@@ -80,9 +80,7 @@ function Navbar() {
           <img
             src={headerLogoAsset}
             alt="Grand Café Vreeburg"
-            className={`h-7 md:h-10 w-auto transition-all duration-500 ${
-              scrolled ? "" : "brightness-0 invert"
-            }`}
+            className={`h-7 md:h-10 w-auto transition-all duration-500`}
           />
         </a>
 
@@ -92,7 +90,7 @@ function Navbar() {
               key={l.href}
               href={l.href}
               className={`link-underline transition-colors ${
-                scrolled ? "text-foreground/80 hover:text-bordeaux" : "text-cream/90 hover:text-cream"
+                scrolled ? "text-foreground/80 hover:text-bordeaux" : "text-foreground/80 hover:text-bordeaux"
               }`}
             >
               {l.label}
@@ -111,7 +109,7 @@ function Navbar() {
             aria-label="Menu"
             onClick={() => setOpen((v) => !v)}
             className={`md:hidden grid h-9 w-9 place-items-center rounded-lg border ${
-              scrolled ? "border-border text-foreground" : "border-cream/50 text-cream"
+              scrolled ? "border-border text-foreground" : "border-foreground/40 text-foreground"
             }`}
           >
             <div className="space-y-1.5">
