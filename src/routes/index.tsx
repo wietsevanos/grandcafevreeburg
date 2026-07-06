@@ -151,7 +151,7 @@ function Hero() {
         src={heroSketchAsset.url}
         alt=""
         aria-hidden="true"
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[min(520px,85vw)] md:max-w-[640px] h-auto max-h-[55vh] md:max-h-[60vh] object-contain opacity-25 pointer-events-none select-none"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[min(620px,92vw)] md:max-w-[780px] h-auto max-h-[62vh] md:max-h-[72vh] object-contain opacity-25 pointer-events-none select-none"
       />
       <div className="relative z-10 container-x text-center text-foreground">
         <p className="reveal eyebrow text-bordeaux mb-6">Welkom bij Grand Café Vreeburg</p>
