@@ -41,7 +41,7 @@ import interiorImg from "@/assets/interior.jpg";
 import dessertImg from "@/assets/dessert.jpg";
 import logoAsset from "@/assets/vreeburg-logo.png";
 import headerLogoAsset from "@/assets/vreeburg-logo-header.png";
-import heroSketchAsset from "@/assets/hero-sketch.png.asset.json";
+import heroSketchAsset from "@/assets/hero-sketch.png";
 
 export default function IndexPage() {
   return <Index />;
@@ -148,7 +148,7 @@ function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cream">
       <img
-        src={heroSketchAsset.url}
+        src={heroSketchAsset}
         alt=""
         aria-hidden="true"
         className="absolute left-1/2 top-[36%] md:top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[min(680px,94vw)] md:max-w-[900px] h-auto max-h-[66vh] md:max-h-[78vh] object-contain opacity-30 contrast-125 pointer-events-none select-none"
