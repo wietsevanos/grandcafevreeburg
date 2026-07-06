@@ -365,36 +365,41 @@ function MenuSection() {
   }, [openId]);
 
   return (
-    <section id="menu" className="py-28 md:py-36 relative overflow-hidden bg-secondary/30">
-      <div className="container-x">
-        <div className="text-center mb-14 reveal">
-          <p className="eyebrow mb-4">Menukaart</p>
-          <h2 className="font-display text-4xl md:text-5xl mb-4">
-            Onze <span className="italic text-bordeaux">kaart</span>
+    <section id="menu" className="py-28 md:py-36 relative overflow-hidden bg-foreground text-cream">
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute -top-1/2 -right-1/4 w-[60vw] h-[60vw] rounded-full bg-gold/20 blur-[120px]" />
+        <div className="absolute -bottom-1/2 -left-1/4 w-[50vw] h-[50vw] rounded-full bg-bordeaux/20 blur-[120px]" />
+      </div>
+
+      <div className="container-x relative">
+        <div className="text-center mb-16 reveal">
+          <p className="eyebrow text-gold mb-4">Menukaart</p>
+          <h2 className="font-display text-4xl md:text-5xl mb-4 text-cream">
+            Onze <span className="italic text-gold">kaart</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-cream/70 max-w-xl mx-auto">
             Kies een categorie om de bijbehorende menukaart te bekijken.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 max-w-6xl mx-auto">
           {MENU_CARDS.map((card, i) => (
             <button
               key={card.id}
               type="button"
               onClick={() => setOpenId(card.id)}
-              className={`reveal-zoom delay-${(i % 5) + 1} group text-left bg-card border border-border rounded-2xl p-6 md:p-7 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-lift)] hover:-translate-y-1 hover:border-bordeaux/50 transition-all duration-500 cursor-pointer relative overflow-hidden`}
+              className={`reveal-zoom delay-${(i % 5) + 1} group text-left bg-cream/[0.03] border border-cream/10 rounded-2xl p-6 md:p-7 shadow-[0_1px_2px_rgba(0,0,0,0.2),0_12px_28px_-10px_rgba(0,0,0,0.4)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.25),0_20px_40px_-16px_rgba(0,0,0,0.5)] hover:-translate-y-1 hover:border-gold/30 hover:bg-cream/[0.06] transition-all duration-500 cursor-pointer relative overflow-hidden`}
             >
-              <div className="absolute -top-10 -right-10 h-24 w-24 rounded-full bg-bordeaux/5 blur-2xl pointer-events-none group-hover:bg-bordeaux/10 transition-colors" />
+              <div className="absolute -top-10 -right-10 h-24 w-24 rounded-full bg-gold/10 blur-2xl pointer-events-none group-hover:bg-gold/20 transition-colors" />
               <div className="relative">
-                <Utensils className="h-6 w-6 text-bordeaux mb-4" />
-                <h3 className="font-display text-xl md:text-2xl leading-tight mb-1">
+                <Utensils className="h-6 w-6 text-gold mb-4" />
+                <h3 className="font-display text-xl md:text-2xl leading-tight mb-1 text-cream">
                   {card.label}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-snug mb-5">
+                <p className="text-sm text-cream/60 leading-snug mb-5">
                   {card.tagline}
                 </p>
-                <span className="inline-flex items-center gap-1.5 text-sm font-medium text-bordeaux link-underline">
+                <span className="inline-flex items-center gap-1.5 text-sm font-medium text-gold link-underline">
                   Bekijk kaart <ArrowRight className="h-4 w-4" />
                 </span>
               </div>
@@ -402,7 +407,7 @@ function MenuSection() {
           ))}
         </div>
 
-        <div className="text-center mt-14 reveal">
+        <div className="text-center mt-16 reveal">
           <button type="button" className="btn-primary wereserve-cta">
             Reserveer een tafel
           </button>
