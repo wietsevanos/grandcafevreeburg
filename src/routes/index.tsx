@@ -24,7 +24,6 @@ import {
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
-import heroImg from "@/assets/hero-counter.png";
 import coffeeImg from "@/assets/sfeer-coffee.png";
 import lunchImg from "@/assets/sfeer-sandwich.png";
 import cocktailsImg from "@/assets/sfeer-cocktails.png";
@@ -69,10 +68,10 @@ function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 border-b ${
         scrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border py-3"
-          : "bg-transparent py-6"
+          ? "bg-background/90 backdrop-blur-md border-border py-3"
+          : "bg-cream/80 border-transparent py-6"
       }`}
     >
       <div className="container-x flex items-center justify-between gap-6">
@@ -80,9 +79,7 @@ function Navbar() {
           <img
             src={headerLogoAsset}
             alt="Grand Café Vreeburg"
-            className={`h-7 md:h-10 w-auto transition-all duration-500 ${
-              scrolled ? "" : "brightness-0 invert"
-            }`}
+            className={`h-7 md:h-10 w-auto transition-all duration-500`}
           />
         </a>
 
@@ -92,7 +89,7 @@ function Navbar() {
               key={l.href}
               href={l.href}
               className={`link-underline transition-colors ${
-                scrolled ? "text-foreground/80 hover:text-bordeaux" : "text-cream/90 hover:text-cream"
+                scrolled ? "text-foreground/80 hover:text-bordeaux" : "text-foreground/80 hover:text-bordeaux"
               }`}
             >
               {l.label}
@@ -111,7 +108,7 @@ function Navbar() {
             aria-label="Menu"
             onClick={() => setOpen((v) => !v)}
             className={`md:hidden grid h-9 w-9 place-items-center rounded-lg border ${
-              scrolled ? "border-border text-foreground" : "border-cream/50 text-cream"
+              scrolled ? "border-border text-foreground" : "border-foreground/40 text-foreground"
             }`}
           >
             <div className="space-y-1.5">
@@ -148,25 +145,16 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <img
-        src={heroImg}
-        alt="Sfeervol interieur van Grand Café Vreeburg in Bloemendaal"
-        className="absolute inset-0 h-full w-full object-cover"
-        width={1920}
-        height={1280}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/45 to-foreground/80" />
-
-      <div className="relative z-10 container-x text-center text-cream">
-        <p className="reveal eyebrow text-gold mb-6">Welkom bij Grand Café Vreeburg</p>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cream">
+      <div className="relative z-10 container-x text-center text-foreground">
+        <p className="reveal eyebrow text-bordeaux mb-6">Welkom bij Grand Café Vreeburg</p>
         <h1 className="sr-only">Grand Café Vreeburg</h1>
         <img
           src={logoAsset}
           alt="Grand Café Vreeburg — eten & drinken"
-          className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)] brightness-0 invert"
+          className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)]"
         />
-        <p className="reveal delay-2 max-w-xl mx-auto text-cream/85 text-lg md:text-xl font-light">
+        <p className="reveal delay-2 max-w-xl mx-auto text-foreground/80 text-lg md:text-xl font-light">
           Vanaf 7 juli openen wij onze deuren aan het Kerkplein 16 in Bloemendaal.
         </p>
 
@@ -177,7 +165,7 @@ function Hero() {
           >
             Reserveer een tafel
           </button>
-          <a href="#menu" className="btn-ghost-light">
+          <a href="#menu" className="btn-ghost">
             Bekijk menukaart <ArrowRight className="h-4 w-4" />
           </a>
         </div>
@@ -186,7 +174,7 @@ function Hero() {
       <a
         href="#over"
         aria-label="Scroll naar beneden"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/80 hover:text-cream transition-colors scroll-bob"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-foreground/70 hover:text-foreground transition-colors scroll-bob"
       >
         <ChevronDown className="h-6 w-6" />
       </a>
