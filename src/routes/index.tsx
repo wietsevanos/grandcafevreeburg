@@ -24,7 +24,6 @@ import {
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
-import heroImg from "@/assets/hero-counter.png";
 import coffeeImg from "@/assets/sfeer-coffee.png";
 import lunchImg from "@/assets/sfeer-sandwich.png";
 import cocktailsImg from "@/assets/sfeer-cocktails.png";
