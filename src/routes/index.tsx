@@ -148,7 +148,7 @@ function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cream">
       <img
-        src={heroSketchAsset.url}
+        src={heroSketchAsset}
         alt=""
         aria-hidden="true"
         className="absolute left-1/2 top-[36%] md:top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[min(680px,94vw)] md:max-w-[900px] h-auto max-h-[66vh] md:max-h-[78vh] object-contain opacity-30 contrast-125 pointer-events-none select-none"
