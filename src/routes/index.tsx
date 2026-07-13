@@ -1075,9 +1075,9 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-14">
           <div className="md:col-span-2">
             <img
-              src={logoAsset}
+              src={heroSketchAsset}
               alt="Grand Café Vreeburg"
-              className="h-16 w-auto mb-5 brightness-0 invert"
+              className="h-32 w-auto mb-5 brightness-0 invert"
             />
             <p className="text-cream/60 max-w-sm text-sm leading-relaxed">
               Ontmoeten. Genieten. Samen proosten. Een warm grand café aan het Kerkplein in
