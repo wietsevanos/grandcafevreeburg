@@ -1144,7 +1144,6 @@ function Index() {
       <About />
       <Dave />
       <InstagramFeed />
-      <InstagramFeed />
       <Contact />
       <Footer />
       <MobileReserveButton />
