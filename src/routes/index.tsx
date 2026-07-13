@@ -165,14 +165,14 @@ function Hero() {
       />
       <div className="relative z-10 container-x text-center text-foreground drop-shadow-[0_1px_10px_rgba(240,237,225,0.95)]">
         <p className="reveal eyebrow text-bordeaux mb-6">
-          Volg ons op social media{" "}
           <a
             href="https://www.instagram.com/grandcafevreeburg/"
             target="_blank"
             rel="noreferrer noopener"
-            className="link-underline"
+            className="inline-flex items-center gap-2 link-underline hover:opacity-80 transition-opacity"
           >
-            @grandcafevreeburg
+            <Instagram className="h-4 w-4" />
+            Volg ons @grandcafevreeburg
           </a>
         </p>
         <h1 className="sr-only">Grand Café Vreeburg</h1>
