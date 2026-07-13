@@ -751,7 +751,7 @@ function Careers() {
             Of je nu graag in de keuken staat, energie krijgt van gasten ontvangen of liever achter de schermen zorgt dat alles op rolletjes loopt; we hebben plek voor jou.
           </p>
           <p className="text-cream/75 leading-relaxed mb-8">
-            Lijkt het je leuk om vanaf het begin onderdeel te zijn van een nieuw team, mee te denken en samen een plek neer te zetten waar gastvrijheid, kwaliteit en gezelligheid centraal staan? Dan maken we graag kennis met je!
+            Lijkt het je leuk om onderdeel te zijn van een nieuw team, mee te denken en samen een plek neer te zetten waar gastvrijheid, kwaliteit en gezelligheid centraal staan? Dan maken we graag kennis met je!
           </p>
           <a
             href="mailto:dave@grandcafevreeburg.nl"
