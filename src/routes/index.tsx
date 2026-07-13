@@ -350,14 +350,15 @@ type MenuCard = {
   label: string;
   tagline: string;
   url: string;
+  icon: typeof Utensils;
 };
 
 const MENU_CARDS: MenuCard[] = [
-  { id: "lunch", label: "Lunch", tagline: "Broodjes, salades en klassiekers", url: lunchPdf.url },
-  { id: "diner", label: "Diner", tagline: "Voor-, hoofd- en bijgerechten", url: dinerPdf.url },
-  { id: "bar-bites", label: "Bar Bites", tagline: "Om te delen bij de borrel", url: barBitesPdf.url },
-  { id: "dranken", label: "Dranken", tagline: "Koffie, fris, bier & cocktails", url: drankenPdf.url },
-  { id: "wijnen", label: "Wijnkaart", tagline: "Zorgvuldig geselecteerde wijnen", url: wijnkaartPdf.url },
+  { id: "lunch", label: "Lunch", tagline: "Broodjes, salades en klassiekers", url: lunchPdf.url, icon: Sandwich },
+  { id: "diner", label: "Diner", tagline: "Voor-, hoofd- en bijgerechten", url: dinerPdf.url, icon: Utensils },
+  { id: "bar-bites", label: "Bar Bites", tagline: "Om te delen bij de borrel", url: barBitesPdf.url, icon: Cookie },
+  { id: "dranken", label: "Dranken", tagline: "Koffie, fris, bier & cocktails", url: drankenPdf.url, icon: Martini },
+  { id: "wijnen", label: "Wijnkaart", tagline: "Zorgvuldig geselecteerde wijnen", url: wijnkaartPdf.url, icon: Wine },
 ];
 
 function MenuSection() {
