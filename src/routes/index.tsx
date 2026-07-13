@@ -59,11 +59,11 @@ function Navbar() {
 
   const links = [
     { href: "#home", label: "Home" },
-    { href: "#over", label: "Over ons" },
     { href: "#menu", label: "Menukaart" },
     { href: "#galerij", label: "Galerij" },
     { href: "#events", label: "Vieren & zakelijk" },
     { href: "#werken", label: "Werken bij" },
+    { href: "#over", label: "Over ons" },
     { href: "#contact", label: "Contact" },
   ];
 
