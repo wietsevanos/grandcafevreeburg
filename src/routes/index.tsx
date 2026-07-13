@@ -162,7 +162,7 @@ function Hero() {
           className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)]"
         />
         <p className="reveal delay-2 max-w-xl mx-auto text-foreground text-lg md:text-xl font-normal">
-          Vanaf 7 juli openen wij onze deuren aan het Kerkplein 16 in Bloemendaal.
+          U bent van harte welkom voor koffie, lunch, een borrel of diner aan het Kerkplein 16 in Bloemendaal.
         </p>
 
         <div className="reveal delay-3 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
