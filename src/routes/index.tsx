@@ -1136,11 +1136,11 @@ function Index() {
       <WeReserveWidgetClient />
       <Navbar />
       <Hero />
-      <About />
       <Gallery />
       <MenuSection />
       <Events />
       <Careers />
+      <About />
       <Dave />
       <Reviews />
       <InstagramFeed />
