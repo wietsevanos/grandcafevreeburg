@@ -1106,6 +1106,7 @@ function Footer() {
           </div>
           <p>Bloemendaal — met liefde gemaakt.</p>
         </div>
+      </div>
     </footer>
   );
 }
