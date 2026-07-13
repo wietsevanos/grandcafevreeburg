@@ -717,11 +717,8 @@ function Careers() {
               Wij zoeken <span className="italic text-gold">collega’s!</span>
             </h2>
           </div>
-          <div className="lg:col-span-5 text-cream/75 reveal-right space-y-4">
-            <p>
-              De voorbereidingen voor de opening van Grand Café Vreeburg zijn in volle gang. Daarom zijn wij op zoek naar enthousiaste collega’s die samen met ons willen bouwen aan iets moois.
-            </p>
-          </div>
+          <div className="lg:col-span-5 text-cream/75 reveal-right space-y-4" />
+
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 md:gap-6 mb-12">
