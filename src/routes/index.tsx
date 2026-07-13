@@ -1067,9 +1067,9 @@ function Footer() {
           <div>
             <p className="text-cream font-medium mb-4 text-sm uppercase tracking-wider">Menu</p>
             <ul className="space-y-2 text-sm">
-              <li><a href="#over" className="link-underline">Over ons</a></li>
               <li><a href="#menu" className="link-underline">Menukaart</a></li>
               <li><a href="#werken" className="link-underline">Werken bij</a></li>
+              <li><a href="#over" className="link-underline">Over ons</a></li>
               <li><a href="#contact" className="link-underline">Contact</a></li>
             </ul>
           </div>
