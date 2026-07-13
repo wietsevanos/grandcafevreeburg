@@ -398,7 +398,9 @@ function MenuSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 max-w-6xl mx-auto">
-          {MENU_CARDS.map((card, i) => (
+          {MENU_CARDS.map((card, i) => {
+            const Icon = card.icon;
+            return (
             <button
               key={card.id}
               type="button"
@@ -407,7 +409,7 @@ function MenuSection() {
             >
               <div className="absolute -top-10 -right-10 h-24 w-24 rounded-full bg-gold/10 blur-2xl pointer-events-none group-hover:bg-gold/20 transition-colors" />
               <div className="relative">
-                <Utensils className="h-6 w-6 text-gold mb-4" />
+                <Icon className="h-6 w-6 text-gold mb-4" />
                 <h3 className="font-display text-xl md:text-2xl leading-tight mb-1 text-cream">
                   {card.label}
                 </h3>
@@ -419,7 +421,8 @@ function MenuSection() {
                 </span>
               </div>
             </button>
-          ))}
+            );
+          })}
         </div>
 
         <div className="text-center mt-16 reveal">
