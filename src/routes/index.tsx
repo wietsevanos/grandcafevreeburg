@@ -154,7 +154,17 @@ function Hero() {
         className="absolute left-1/2 top-[36%] md:top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[min(680px,94vw)] md:max-w-[900px] h-auto max-h-[66vh] md:max-h-[78vh] object-contain opacity-30 contrast-125 pointer-events-none select-none"
       />
       <div className="relative z-10 container-x text-center text-foreground drop-shadow-[0_1px_10px_rgba(240,237,225,0.95)]">
-        <p className="reveal eyebrow text-bordeaux mb-6">Welkom bij Grand Café Vreeburg</p>
+        <p className="reveal eyebrow text-bordeaux mb-6">
+          Volg ons op social media{" "}
+          <a
+            href="https://www.instagram.com/grandcafevreeburg/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="link-underline"
+          >
+            @grandcafevreeburg
+          </a>
+        </p>
         <h1 className="sr-only">Grand Café Vreeburg</h1>
         <img
           src={logoAsset}
