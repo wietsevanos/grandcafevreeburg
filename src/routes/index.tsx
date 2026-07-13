@@ -717,8 +717,11 @@ function Careers() {
               Wij zoeken <span className="italic text-gold">collega’s!</span>
             </h2>
           </div>
-          <div className="lg:col-span-5 text-cream/75 reveal-right space-y-4" />
-
+          <div className="lg:col-span-5 text-cream/75 reveal-right space-y-4">
+            <p>
+              De voorbereidingen voor de opening van Grand Café Vreeburg zijn in volle gang. Daarom zijn wij op zoek naar enthousiaste collega’s die samen met ons willen bouwen aan iets moois.
+            </p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 md:gap-6 mb-12">
@@ -886,21 +889,18 @@ function InstagramFeed() {
       <div className="container-x">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="reveal-left">
-            <p className="eyebrow mb-4">Volg ons op social media</p>
+            <p className="eyebrow mb-4">Volg ons</p>
             <h2 className="font-display text-4xl md:text-5xl">
               @grandcafe<span className="italic text-bordeaux">vreeburg</span>
             </h2>
-            <p className="mt-4 text-muted-foreground max-w-md">
-              Blijf op de hoogte van sfeer, gerechten en nieuws — volg ons op Instagram.
-            </p>
           </div>
           <a
             href="https://www.instagram.com/grandcafevreeburg/"
             target="_blank"
             rel="noreferrer noopener"
-            className="reveal-right inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-bordeaux text-cream font-medium shadow-[var(--shadow-soft)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lift)] transition-all duration-500 self-start md:self-auto"
+            className="reveal-right inline-flex items-center gap-2 link-underline text-bordeaux font-medium"
           >
-            <Instagram className="h-5 w-5" /> Volg @grandcafevreeburg
+            <Instagram className="h-4 w-4" /> Bekijk Instagram
           </a>
         </div>
 
