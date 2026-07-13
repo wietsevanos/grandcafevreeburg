@@ -59,11 +59,11 @@ function Navbar() {
 
   const links = [
     { href: "#home", label: "Home" },
-    { href: "#over", label: "Over ons" },
     { href: "#menu", label: "Menukaart" },
     { href: "#galerij", label: "Galerij" },
     { href: "#events", label: "Vieren & zakelijk" },
     { href: "#werken", label: "Werken bij" },
+    { href: "#over", label: "Over ons" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -162,7 +162,7 @@ function Hero() {
           className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)]"
         />
         <p className="reveal delay-2 max-w-xl mx-auto text-foreground text-lg md:text-xl font-normal">
-          Vanaf 7 juli openen wij onze deuren aan het Kerkplein 16 in Bloemendaal.
+          U bent van harte welkom voor koffie, lunch, een borrel of diner aan het Kerkplein 16 in Bloemendaal.
         </p>
 
         <div className="reveal delay-3 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
@@ -1067,9 +1067,9 @@ function Footer() {
           <div>
             <p className="text-cream font-medium mb-4 text-sm uppercase tracking-wider">Menu</p>
             <ul className="space-y-2 text-sm">
-              <li><a href="#over" className="link-underline">Over ons</a></li>
               <li><a href="#menu" className="link-underline">Menukaart</a></li>
               <li><a href="#werken" className="link-underline">Werken bij</a></li>
+              <li><a href="#over" className="link-underline">Over ons</a></li>
               <li><a href="#contact" className="link-underline">Contact</a></li>
             </ul>
           </div>
@@ -1097,14 +1097,19 @@ function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-cream/10 pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-cream/50">
-          <p>© {new Date().getFullYear()} Grand Café Vreeburg. Alle rechten voorbehouden.</p>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-cream/60">
-            <span><span className="text-cream/40 mr-1.5">KVK</span><span className="text-cream/80 font-medium">42035923</span></span>
-            <span className="h-3 w-px bg-cream/20" aria-hidden />
-            <span><span className="text-cream/40 mr-1.5">BTW</span><span className="text-cream/80 font-medium">NL8694.11.937.B01</span></span>
+        <div className="border-t border-cream/10 pt-8 space-y-4 text-xs text-cream/50">
+          <p className="text-center text-cream/60 max-w-3xl mx-auto leading-relaxed">
+            Op al onze reserveringen zijn de <span className="text-cream/80">Uniforme Voorwaarden Horeca</span> van toepassing, welke op verzoek kunnen worden toegezonden.
+          </p>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p>© {new Date().getFullYear()} Grand Café Vreeburg. Alle rechten voorbehouden.</p>
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-cream/60">
+              <span><span className="text-cream/40 mr-1.5">KVK</span><span className="text-cream/80 font-medium">42035923</span></span>
+              <span className="h-3 w-px bg-cream/20" aria-hidden />
+              <span><span className="text-cream/40 mr-1.5">BTW</span><span className="text-cream/80 font-medium">NL8694.11.937.B01</span></span>
+            </div>
+            <p className="md:text-right">Bloemendaal, met liefde gemaakt.</p>
           </div>
-          <p>Bloemendaal, met liefde gemaakt.</p>
         </div>
       </div>
     </footer>
