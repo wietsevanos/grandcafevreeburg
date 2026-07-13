@@ -762,7 +762,7 @@ function Careers() {
 
 function Dave() {
   return (
-    <section className="py-28 md:py-36">
+    <section className="py-28 md:py-36 bg-secondary/40">
       <div className="container-x grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         <div className="lg:col-span-5 reveal-left order-2 lg:order-1">
           <div className="relative">
