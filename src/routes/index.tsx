@@ -790,7 +790,7 @@ function Dave() {
             Achter Grand Café Vreeburg staat een vertrouwd <span className="italic text-bordeaux">gezicht</span> in de horeca: Dave.
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-5">
-            Met zijn passie voor gastvrijheid, oog voor kwaliteit en liefde voor mooie momenten brengt hij straks een plek tot leven waar iedereen zich welkom voelt. Een grand café waar je binnenloopt voor een goede kop koffie, blijft hangen voor een gezellige borrel en graag terugkomt voor een heerlijk diner.
+            Met zijn passie voor gastvrijheid, oog voor kwaliteit en liefde voor mooie momenten brengt hij een plek tot leven waar iedereen zich welkom voelt. Een grand café waar je binnenloopt voor een goede kop koffie, blijft hangen voor een gezellige borrel en graag terugkomt voor een heerlijk diner.
           </p>
           <p className="text-muted-foreground leading-relaxed">
             Dave gelooft in kleine gebaren, eerlijke producten en een goed glas wijn op het juiste moment. We kijken ernaar uit je te verwelkomen.
