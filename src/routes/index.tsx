@@ -1097,14 +1097,19 @@ function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-cream/10 pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-cream/50">
-          <p>© {new Date().getFullYear()} Grand Café Vreeburg. Alle rechten voorbehouden.</p>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-cream/60">
-            <span><span className="text-cream/40 mr-1.5">KVK</span><span className="text-cream/80 font-medium">42035923</span></span>
-            <span className="h-3 w-px bg-cream/20" aria-hidden />
-            <span><span className="text-cream/40 mr-1.5">BTW</span><span className="text-cream/80 font-medium">NL8694.11.937.B01</span></span>
+        <div className="border-t border-cream/10 pt-8 space-y-4 text-xs text-cream/50">
+          <p className="text-center text-cream/60 max-w-3xl mx-auto leading-relaxed">
+            Op al onze reserveringen zijn de <span className="text-cream/80">Uniforme Voorwaarden Horeca</span> van toepassing, welke op verzoek kunnen worden toegezonden.
+          </p>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <p>© {new Date().getFullYear()} Grand Café Vreeburg. Alle rechten voorbehouden.</p>
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-cream/60">
+              <span><span className="text-cream/40 mr-1.5">KVK</span><span className="text-cream/80 font-medium">42035923</span></span>
+              <span className="h-3 w-px bg-cream/20" aria-hidden />
+              <span><span className="text-cream/40 mr-1.5">BTW</span><span className="text-cream/80 font-medium">NL8694.11.937.B01</span></span>
+            </div>
+            <p className="md:text-right">Bloemendaal, met liefde gemaakt.</p>
           </div>
-          <p>Bloemendaal, met liefde gemaakt.</p>
         </div>
       </div>
     </footer>
