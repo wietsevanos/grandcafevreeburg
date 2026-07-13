@@ -18,6 +18,10 @@ import {
   Briefcase,
   Presentation,
   Utensils,
+  Sandwich,
+  Cookie,
+  Martini,
+  Wine,
   Send,
   CheckCircle2,
   Calendar,
@@ -35,7 +39,7 @@ import aboutFacadeAsset from "@/assets/about-facade.png";
 import aboutLunchAsset from "@/assets/about-lunch.png";
 import historicFacade1 from "@/assets/historic-facade-1.jpg";
 import historicFacade2 from "@/assets/historic-facade-2.jpg";
-import daveImg from "@/assets/dave-portrait.jpg";
+import daveImg from "@/assets/dave-portrait-new.jpg.asset.json";
 import drinksImg from "@/assets/drinks.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import dessertImg from "@/assets/dessert.jpg";
@@ -346,14 +350,15 @@ type MenuCard = {
   label: string;
   tagline: string;
   url: string;
+  icon: typeof Utensils;
 };
 
 const MENU_CARDS: MenuCard[] = [
-  { id: "lunch", label: "Lunch", tagline: "Broodjes, salades en klassiekers", url: lunchPdf.url },
-  { id: "diner", label: "Diner", tagline: "Voor-, hoofd- en bijgerechten", url: dinerPdf.url },
-  { id: "bar-bites", label: "Bar Bites", tagline: "Om te delen bij de borrel", url: barBitesPdf.url },
-  { id: "dranken", label: "Dranken", tagline: "Koffie, fris, bier & cocktails", url: drankenPdf.url },
-  { id: "wijnen", label: "Wijnkaart", tagline: "Zorgvuldig geselecteerde wijnen", url: wijnkaartPdf.url },
+  { id: "lunch", label: "Lunch", tagline: "Broodjes, salades en klassiekers", url: lunchPdf.url, icon: Sandwich },
+  { id: "diner", label: "Diner", tagline: "Voor-, hoofd- en bijgerechten", url: dinerPdf.url, icon: Utensils },
+  { id: "bar-bites", label: "Bar Bites", tagline: "Om te delen bij de borrel", url: barBitesPdf.url, icon: Cookie },
+  { id: "dranken", label: "Dranken", tagline: "Koffie, fris, bier & cocktails", url: drankenPdf.url, icon: Martini },
+  { id: "wijnen", label: "Wijnkaart", tagline: "Zorgvuldig geselecteerde wijnen", url: wijnkaartPdf.url, icon: Wine },
 ];
 
 function MenuSection() {
@@ -393,7 +398,9 @@ function MenuSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 max-w-6xl mx-auto">
-          {MENU_CARDS.map((card, i) => (
+          {MENU_CARDS.map((card, i) => {
+            const Icon = card.icon;
+            return (
             <button
               key={card.id}
               type="button"
@@ -402,7 +409,7 @@ function MenuSection() {
             >
               <div className="absolute -top-10 -right-10 h-24 w-24 rounded-full bg-gold/10 blur-2xl pointer-events-none group-hover:bg-gold/20 transition-colors" />
               <div className="relative">
-                <Utensils className="h-6 w-6 text-gold mb-4" />
+                <Icon className="h-6 w-6 text-gold mb-4" />
                 <h3 className="font-display text-xl md:text-2xl leading-tight mb-1 text-cream">
                   {card.label}
                 </h3>
@@ -414,7 +421,8 @@ function MenuSection() {
                 </span>
               </div>
             </button>
-          ))}
+            );
+          })}
         </div>
 
         <div className="text-center mt-16 reveal">
@@ -772,7 +780,7 @@ function Dave() {
         <div className="lg:col-span-5 reveal-left order-2 lg:order-1">
           <div className="relative">
             <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)] max-w-md">
-              <img src={daveImg} alt="Dave, gastheer van Grand Café Vreeburg" loading="lazy" className="w-full h-[560px] object-cover object-top" />
+              <img src={daveImg.url} alt="Dave, gastheer van Grand Café Vreeburg" loading="lazy" className="w-full h-[560px] object-cover object-top" />
             </div>
             <div className="absolute -bottom-6 -right-2 md:-right-10 bg-cream rounded-xl p-6 max-w-[240px] shadow-[var(--shadow-lift)] border border-border">
               <Quote className="h-5 w-5 text-bordeaux mb-3" />
