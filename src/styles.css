@@ -75,7 +75,7 @@
   --ring: oklch(0.5 0.1 30);
 
   /* Brand accents */
-  --bordeaux: oklch(0.39 0.12 22);
+  --bordeaux: oklch(0.5 0.11 40);
   --forest: oklch(0.38 0.06 145);
   --gold: oklch(0.72 0.13 80);
   --terracotta: oklch(0.6 0.13 45);
@@ -191,7 +191,7 @@
   box-shadow: 0 1px 0 oklch(0.22 0.012 60 / 0.06);
   &:hover {
     transform: translateY(-2px);
-    background: oklch(0.34 0.13 22);
+    background: oklch(0.44 0.11 40);
     box-shadow: var(--shadow-lift);
   }
 }
