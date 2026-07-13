@@ -1097,10 +1097,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-cream/10 pt-8 space-y-4 text-xs text-cream/50">
-          <p className="text-center text-cream/60 max-w-3xl mx-auto leading-relaxed">
-            Op al onze reserveringen zijn de <span className="text-cream/80">Uniforme Voorwaarden Horeca</span> van toepassing, welke op verzoek kunnen worden toegezonden.
-          </p>
+        <div className="border-t border-cream/10 pt-8 space-y-3 text-xs text-cream/50">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
             <p>© {new Date().getFullYear()} Grand Café Vreeburg. Alle rechten voorbehouden.</p>
             <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-cream/60">
@@ -1110,6 +1107,9 @@ function Footer() {
             </div>
             <p className="md:text-right">Bloemendaal, met liefde gemaakt.</p>
           </div>
+          <p className="italic text-cream/35 leading-relaxed max-w-3xl">
+            Op al onze reserveringen zijn de Uniforme Voorwaarden Horeca van toepassing, welke op verzoek kunnen worden toegezonden.
+          </p>
         </div>
       </div>
     </footer>
