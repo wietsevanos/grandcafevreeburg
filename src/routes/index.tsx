@@ -1104,7 +1104,7 @@ function Footer() {
             <span className="h-3 w-px bg-cream/20" aria-hidden />
             <span><span className="text-cream/40 mr-1.5">BTW</span><span className="text-cream/80 font-medium">NL8694.11.937.B01</span></span>
           </div>
-          <p>Bloemendaal — met liefde gemaakt.</p>
+          <p>Bloemendaal, met liefde gemaakt.</p>
         </div>
       </div>
     </footer>
