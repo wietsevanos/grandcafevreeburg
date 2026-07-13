@@ -1143,7 +1143,7 @@ function Index() {
       <Careers />
       <About />
       <Dave />
-      <Reviews />
+      <InstagramFeed />
       <InstagramFeed />
       <Contact />
       <Footer />
