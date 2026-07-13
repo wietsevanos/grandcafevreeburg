@@ -780,7 +780,7 @@ function Dave() {
         <div className="lg:col-span-5 reveal-left order-2 lg:order-1">
           <div className="relative">
             <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)] max-w-md">
-              <img src={daveImg} alt="Dave, gastheer van Grand Café Vreeburg" loading="lazy" className="w-full h-[560px] object-cover object-top" />
+              <img src={daveImg.url} alt="Dave, gastheer van Grand Café Vreeburg" loading="lazy" className="w-full h-[560px] object-cover object-top" />
             </div>
             <div className="absolute -bottom-6 -right-2 md:-right-10 bg-cream rounded-xl p-6 max-w-[240px] shadow-[var(--shadow-lift)] border border-border">
               <Quote className="h-5 w-5 text-bordeaux mb-3" />
