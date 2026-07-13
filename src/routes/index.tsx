@@ -1099,6 +1099,10 @@ function Footer() {
 
         <div className="border-t border-cream/10 pt-8 flex flex-col sm:flex-row justify-between gap-4 text-xs text-cream/50">
           <p>© {new Date().getFullYear()} Grand Café Vreeburg. Alle rechten voorbehouden.</p>
+          <p className="flex flex-wrap gap-x-4 gap-y-1">
+            <span>KVK 42035923</span>
+            <span>BTW NL869411937B01</span>
+          </p>
           <p>Bloemendaal — met liefde gemaakt.</p>
         </div>
       </div>
