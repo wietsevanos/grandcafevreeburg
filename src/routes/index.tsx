@@ -886,18 +886,21 @@ function InstagramFeed() {
       <div className="container-x">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="reveal-left">
-            <p className="eyebrow mb-4">Volg ons</p>
+            <p className="eyebrow mb-4">Volg ons op social media</p>
             <h2 className="font-display text-4xl md:text-5xl">
               @grandcafe<span className="italic text-bordeaux">vreeburg</span>
             </h2>
+            <p className="mt-4 text-muted-foreground max-w-md">
+              Blijf op de hoogte van sfeer, gerechten en nieuws — volg ons op Instagram.
+            </p>
           </div>
           <a
             href="https://www.instagram.com/grandcafevreeburg/"
             target="_blank"
             rel="noreferrer noopener"
-            className="reveal-right inline-flex items-center gap-2 link-underline text-bordeaux font-medium"
+            className="reveal-right inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-bordeaux text-cream font-medium shadow-[var(--shadow-soft)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lift)] transition-all duration-500 self-start md:self-auto"
           >
-            <Instagram className="h-4 w-4" /> Bekijk Instagram
+            <Instagram className="h-5 w-5" /> Volg @grandcafevreeburg
           </a>
         </div>
 
