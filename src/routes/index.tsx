@@ -39,7 +39,7 @@ import aboutFacadeAsset from "@/assets/about-facade.png";
 import aboutLunchAsset from "@/assets/about-lunch.png";
 import historicFacade1 from "@/assets/historic-facade-1.jpg";
 import historicFacade2 from "@/assets/historic-facade-2.jpg";
-import daveImg from "@/assets/dave-portrait.jpg";
+import daveImg from "@/assets/dave-portrait-new.jpg.asset.json";
 import drinksImg from "@/assets/drinks.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import dessertImg from "@/assets/dessert.jpg";
