@@ -762,7 +762,7 @@ function Careers() {
 
 function Dave() {
   return (
-    <section className="py-28 md:py-36">
+    <section className="py-28 md:py-36 bg-secondary/40">
       <div className="container-x grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         <div className="lg:col-span-5 reveal-left order-2 lg:order-1">
           <div className="relative">
@@ -1097,7 +1097,11 @@ function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-cream/10 pt-8 space-y-3 text-xs text-cream/50">
+        <p className="italic text-cream/35 leading-relaxed max-w-3xl text-xs mb-8">
+          Op al onze reserveringen zijn de Uniforme Voorwaarden Horeca van toepassing, welke op verzoek kunnen worden toegezonden.
+        </p>
+
+        <div className="border-t border-cream/10 pt-8 text-xs text-cream/50">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
             <p>© {new Date().getFullYear()} Grand Café Vreeburg. Alle rechten voorbehouden.</p>
             <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-cream/60">
@@ -1107,9 +1111,6 @@ function Footer() {
             </div>
             <p className="md:text-right">Bloemendaal, met liefde gemaakt.</p>
           </div>
-          <p className="italic text-cream/35 leading-relaxed max-w-3xl">
-            Op al onze reserveringen zijn de Uniforme Voorwaarden Horeca van toepassing, welke op verzoek kunnen worden toegezonden.
-          </p>
         </div>
       </div>
     </footer>
@@ -1142,7 +1143,6 @@ function Index() {
       <Careers />
       <About />
       <Dave />
-      <Reviews />
       <InstagramFeed />
       <Contact />
       <Footer />
