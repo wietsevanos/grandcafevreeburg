@@ -1097,22 +1097,14 @@ function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-cream/10 pt-8 space-y-4">
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs uppercase tracking-[0.2em] text-cream/60">
-            <span className="flex items-center gap-2">
-              <span className="text-cream/40">KVK</span>
-              <span className="text-cream/80 font-medium tracking-wider">42035923</span>
-            </span>
-            <span className="hidden sm:inline-block h-3 w-px bg-cream/20" aria-hidden />
-            <span className="flex items-center gap-2">
-              <span className="text-cream/40">BTW</span>
-              <span className="text-cream/80 font-medium tracking-wider">NL8694.11.937.B01</span>
-            </span>
+        <div className="border-t border-cream/10 pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-cream/50">
+          <p>© {new Date().getFullYear()} Grand Café Vreeburg. Alle rechten voorbehouden.</p>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-cream/60">
+            <span><span className="text-cream/40 mr-1.5">KVK</span><span className="text-cream/80 font-medium">42035923</span></span>
+            <span className="h-3 w-px bg-cream/20" aria-hidden />
+            <span><span className="text-cream/40 mr-1.5">BTW</span><span className="text-cream/80 font-medium">NL8694.11.937.B01</span></span>
           </div>
-          <div className="flex flex-col sm:flex-row justify-between gap-2 text-xs text-cream/50">
-            <p>© {new Date().getFullYear()} Grand Café Vreeburg. Alle rechten voorbehouden.</p>
-            <p>Bloemendaal — met liefde gemaakt.</p>
-          </div>
+          <p>Bloemendaal — met liefde gemaakt.</p>
         </div>
       </div>
     </footer>
