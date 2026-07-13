@@ -894,12 +894,6 @@ function Reviews() {
   );
 }
 
-import ig1 from "@/assets/ig-731216876.jpg.asset.json";
-import ig2 from "@/assets/ig-717803442.jpg.asset.json";
-import ig3 from "@/assets/ig-728783672.jpg.asset.json";
-import ig4 from "@/assets/ig-729603384.jpg.asset.json";
-import ig5 from "@/assets/ig-734808000.jpg.asset.json";
-import ig6 from "@/assets/ig-731215914.jpg.asset.json";
 
 function InstagramFeed() {
   const posts = [
