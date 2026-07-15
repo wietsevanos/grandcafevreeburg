@@ -52,6 +52,12 @@ import ig3 from "@/assets/ig-728783672.jpg.asset.json";
 import ig4 from "@/assets/ig-729603384.jpg.asset.json";
 import ig5 from "@/assets/ig-734808000.jpg.asset.json";
 import ig6 from "@/assets/ig-731215914.jpg.asset.json";
+import gal1 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.22.jpeg.asset.json";
+import gal2 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.22_1.jpeg.asset.json";
+import gal3 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.22_2.jpeg.asset.json";
+import gal4 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.23.jpeg.asset.json";
+import gal5 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.23_1.jpeg.asset.json";
+import gal6 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.23_2.jpeg.asset.json";
 
 export default function IndexPage() {
   return <Index />;
@@ -299,12 +305,12 @@ function About() {
 
 function Gallery() {
   const items = [
-    { src: coffeeImg, label: "Koffie", h: "h-[420px]" },
-    { src: cocktailsImg, label: "Cocktails", h: "h-[300px]" },
-    { src: lunchImg, label: "Lunch", h: "h-[360px]" },
-    { src: dinnerImg, label: "Diner", h: "h-[440px]" },
-    { src: beersImg, label: "Wijn & Bier", h: "h-[320px]" },
-    { src: terraceImg, label: "Terras", h: "h-[400px]" },
+    { src: gal1.url, label: "Team", h: "h-[420px]" },
+    { src: gal2.url, label: "Bar Bites", h: "h-[300px]" },
+    { src: gal3.url, label: "Bar", h: "h-[360px]" },
+    { src: gal4.url, label: "Diner", h: "h-[440px]" },
+    { src: gal5.url, label: "Wijn", h: "h-[320px]" },
+    { src: gal6.url, label: "Keuken", h: "h-[400px]" },
   ];
   return (
     <section id="galerij" className="py-24 md:py-32 bg-secondary/40">
