@@ -52,6 +52,12 @@ import ig3 from "@/assets/ig-728783672.jpg.asset.json";
 import ig4 from "@/assets/ig-729603384.jpg.asset.json";
 import ig5 from "@/assets/ig-734808000.jpg.asset.json";
 import ig6 from "@/assets/ig-731215914.jpg.asset.json";
+import gal1 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.22.jpeg.asset.json";
+import gal2 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.22_1.jpeg.asset.json";
+import gal3 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.22_2.jpeg.asset.json";
+import gal4 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.23.jpeg.asset.json";
+import gal5 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.23_1.jpeg.asset.json";
+import gal6 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.23_2.jpeg.asset.json";
 
 export default function IndexPage() {
   return <Index />;
