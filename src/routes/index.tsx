@@ -305,12 +305,12 @@ function About() {
 
 function Gallery() {
   const items = [
-    { src: coffeeImg, label: "Koffie", h: "h-[420px]" },
-    { src: cocktailsImg, label: "Cocktails", h: "h-[300px]" },
-    { src: lunchImg, label: "Lunch", h: "h-[360px]" },
-    { src: dinnerImg, label: "Diner", h: "h-[440px]" },
-    { src: beersImg, label: "Wijn & Bier", h: "h-[320px]" },
-    { src: terraceImg, label: "Terras", h: "h-[400px]" },
+    { src: gal1.url, label: "Team", h: "h-[420px]" },
+    { src: gal2.url, label: "Bar Bites", h: "h-[300px]" },
+    { src: gal3.url, label: "Bar", h: "h-[360px]" },
+    { src: gal4.url, label: "Diner", h: "h-[440px]" },
+    { src: gal5.url, label: "Wijn", h: "h-[320px]" },
+    { src: gal6.url, label: "Keuken", h: "h-[400px]" },
   ];
   return (
     <section id="galerij" className="py-24 md:py-32 bg-secondary/40">
