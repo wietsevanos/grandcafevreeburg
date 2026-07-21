@@ -1125,33 +1125,41 @@ function Footer() {
                   Info@grandcafevreeburg.nl
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/grandcafevreeburg/"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 link-underline"
-                >
-                  <Instagram className="h-4 w-4" /> Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.facebook.com/grandcafevreeburg/"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 link-underline"
-                >
-                  <Facebook className="h-4 w-4" /> Facebook
-                </a>
-              </li>
             </ul>
           </div>
         </div>
 
-        <p className="italic text-cream/35 leading-relaxed max-w-3xl text-xs mb-8">
-          Op al onze reserveringen zijn de Uniforme Voorwaarden Horeca van toepassing, welke op verzoek kunnen worden toegezonden.
-        </p>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 py-8 border-t border-cream/10">
+          <div>
+            <p className="text-cream font-medium text-sm uppercase tracking-[0.2em] mb-3">Volg ons</p>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.instagram.com/grandcafevreeburg/"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Instagram"
+                className="inline-flex items-center gap-2 rounded-full border border-cream/20 hover:border-bordeaux hover:text-bordeaux px-4 py-2 text-sm text-cream/80 transition-colors"
+              >
+                <Instagram className="h-4 w-4" />
+                <span>@grandcafevreeburg</span>
+              </a>
+              <a
+                href="https://www.facebook.com/grandcafevreeburg/"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Facebook"
+                className="inline-flex items-center justify-center rounded-full border border-cream/20 hover:border-bordeaux hover:text-bordeaux h-10 w-10 text-cream/80 transition-colors"
+              >
+                <Facebook className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+          <p className="italic text-cream/40 leading-relaxed max-w-md text-xs md:text-right">
+            Op al onze reserveringen zijn de Uniforme Voorwaarden Horeca van toepassing, welke op verzoek kunnen worden toegezonden.
+          </p>
+        </div>
+
+
 
         <div className="border-t border-cream/10 pt-8 text-xs text-cream/50">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
