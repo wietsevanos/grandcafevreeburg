@@ -176,25 +176,27 @@ function Hero() {
       <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.25)_80%)] pointer-events-none" />
 
       <div className="relative z-10 container-x text-center text-cream">
-        <div className="reveal mb-8 flex items-center justify-center gap-3">
+        <div className="reveal mb-8 flex items-center justify-center gap-5 text-cream/85 text-xs tracking-[0.2em] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
           <a
             href="https://www.instagram.com/grandcafevreeburg/"
             target="_blank"
             rel="noreferrer noopener"
-            className="inline-flex items-center gap-2 rounded-full bg-foreground/40 hover:bg-foreground/60 backdrop-blur-md border border-cream/25 hover:border-cream/50 px-4 py-2 text-sm font-medium text-cream shadow-[0_4px_20px_rgba(0,0,0,0.35)] transition-all"
+            className="inline-flex items-center gap-2 hover:text-cream transition-colors"
             aria-label="Volg ons op Instagram"
           >
-            <Instagram className="h-4 w-4" />
-            <span className="tracking-wide">@grandcafevreeburg</span>
+            <Instagram className="h-3.5 w-3.5" />
+            <span>@grandcafevreeburg</span>
           </a>
+          <span aria-hidden="true" className="h-3 w-px bg-cream/40" />
           <a
             href="https://www.facebook.com/grandcafevreeburg/"
             target="_blank"
             rel="noreferrer noopener"
-            className="inline-flex items-center justify-center rounded-full bg-foreground/40 hover:bg-foreground/60 backdrop-blur-md border border-cream/25 hover:border-cream/50 h-9 w-9 text-cream shadow-[0_4px_20px_rgba(0,0,0,0.35)] transition-all"
+            className="inline-flex items-center gap-2 hover:text-cream transition-colors"
             aria-label="Volg ons op Facebook"
           >
-            <Facebook className="h-4 w-4" />
+            <Facebook className="h-3.5 w-3.5" />
+            <span>Facebook</span>
           </a>
         </div>
         <h1 className="sr-only">Grand Café Vreeburg</h1>
