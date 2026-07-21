@@ -1099,7 +1099,7 @@ function Footer() {
             <img
               src={heroSketchAsset}
               alt="Grand Café Vreeburg"
-              className="h-32 w-auto mb-5 brightness-0 invert"
+              className="h-32 w-auto mb-5 invert"
             />
             <p className="text-cream/60 max-w-sm text-sm leading-relaxed">
               Ontmoeten. Genieten. Samen proosten. Een warm grand café aan het Kerkplein in
