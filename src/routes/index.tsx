@@ -46,6 +46,7 @@ import dessertImg from "@/assets/dessert.jpg";
 import logoAsset from "@/assets/vreeburg-logo.png";
 import headerLogoAsset from "@/assets/vreeburg-logo-header.png";
 import heroSketchAsset from "@/assets/hero-sketch.png";
+import heroPhotoAsset from "@/assets/hero-interior.jpeg.asset.json";
 import ig1 from "@/assets/ig-731216876.jpg.asset.json";
 import ig2 from "@/assets/ig-717803442.jpg.asset.json";
 import ig3 from "@/assets/ig-728783672.jpg.asset.json";
@@ -88,7 +89,7 @@ function Navbar() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 border-b ${
         scrolled
           ? "bg-background/90 backdrop-blur-md border-border py-3"
-          : "bg-cream/80 border-transparent py-6"
+          : "bg-transparent border-transparent py-6"
       }`}
     >
       <div className="container-x flex items-center justify-between gap-6">
@@ -96,7 +97,7 @@ function Navbar() {
           <img
             src={headerLogoAsset}
             alt="Grand Café Vreeburg"
-            className={`h-7 md:h-10 w-auto transition-all duration-500`}
+            className={`h-7 md:h-10 w-auto transition-all duration-500 ${scrolled ? "" : "brightness-0 invert drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"}`}
           />
         </a>
 
@@ -106,7 +107,7 @@ function Navbar() {
               key={l.href}
               href={l.href}
               className={`link-underline transition-colors ${
-                scrolled ? "text-foreground/80 hover:text-bordeaux" : "text-foreground/80 hover:text-bordeaux"
+                scrolled ? "text-foreground/80 hover:text-bordeaux" : "text-cream/90 hover:text-cream drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]"
               }`}
             >
               {l.label}
@@ -125,7 +126,7 @@ function Navbar() {
             aria-label="Menu"
             onClick={() => setOpen((v) => !v)}
             className={`md:hidden grid h-9 w-9 place-items-center rounded-lg border ${
-              scrolled ? "border-border text-foreground" : "border-foreground/40 text-foreground"
+              scrolled ? "border-border text-foreground" : "border-cream/50 text-cream"
             }`}
           >
             <div className="space-y-1.5">
@@ -162,15 +163,19 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cream">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-foreground">
       <img
-        src={heroSketchAsset}
+        src={heroPhotoAsset.url}
         alt=""
         aria-hidden="true"
-        className="absolute left-1/2 top-[36%] md:top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[min(680px,94vw)] md:max-w-[900px] h-auto max-h-[66vh] md:max-h-[78vh] object-contain opacity-30 contrast-125 pointer-events-none select-none"
+        className="absolute inset-0 w-full h-full object-cover object-center scale-105 motion-safe:animate-[heroZoom_18s_ease-out_forwards] pointer-events-none select-none"
       />
-      <div className="relative z-10 container-x text-center text-foreground drop-shadow-[0_1px_10px_rgba(240,237,225,0.95)]">
-        <p className="reveal eyebrow text-bordeaux mb-6">
+      {/* Gradient overlays for legibility */}
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/50 to-foreground/85 pointer-events-none" />
+      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.35)_75%)] pointer-events-none" />
+
+      <div className="relative z-10 container-x text-center text-cream">
+        <p className="reveal eyebrow text-gold mb-6">
           <a
             href="https://www.instagram.com/grandcafevreeburg/"
             target="_blank"
@@ -185,9 +190,9 @@ function Hero() {
         <img
           src={logoAsset}
           alt="Grand Café Vreeburg — eten & drinken"
-          className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)]"
+          className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)] drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)] brightness-0 invert"
         />
-        <p className="reveal delay-2 max-w-xl mx-auto text-foreground text-lg md:text-xl font-normal">
+        <p className="reveal delay-2 max-w-xl mx-auto text-cream/95 text-lg md:text-xl font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
           U bent van harte welkom voor koffie, lunch, een borrel of diner aan het Kerkplein 16 in Bloemendaal.
         </p>
 
@@ -198,7 +203,7 @@ function Hero() {
           >
             Reserveer een tafel
           </button>
-          <a href="#menu" className="btn-ghost bg-cream/55 backdrop-blur-sm border-foreground/40 hover:bg-foreground hover:text-cream hover:border-foreground">
+          <a href="#menu" className="btn-ghost bg-cream/10 backdrop-blur-sm border-cream/50 text-cream hover:bg-cream hover:text-foreground hover:border-cream">
             Bekijk menukaart <ArrowRight className="h-4 w-4" />
           </a>
         </div>
@@ -207,7 +212,7 @@ function Hero() {
       <a
         href="#over"
         aria-label="Scroll naar beneden"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-foreground/70 hover:text-foreground transition-colors scroll-bob"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/70 hover:text-cream transition-colors scroll-bob z-10"
       >
         <ChevronDown className="h-6 w-6" />
       </a>
