@@ -264,6 +264,24 @@
   from { transform: scale(1.12); }
   to { transform: scale(1.02); }
 }
+@keyframes marquee-left {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes marquee-right {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: var(--marquee-anim, marquee-left) var(--marquee-duration, 80s) linear infinite;
+}
+.marquee-row:hover .marquee-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
 
 
 @utility reveal {
