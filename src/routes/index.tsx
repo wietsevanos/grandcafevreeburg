@@ -60,6 +60,17 @@ import gal3 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.22_2.jpeg.asset.js
 import gal4 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.23.jpeg.asset.json";
 import gal5 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.23_1.jpeg.asset.json";
 import gal6 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.23_2.jpeg.asset.json";
+import gal7 from "@/assets/WhatsApp_Image_2026-07-20_at_12.22.22.jpeg.asset.json";
+import gal8 from "@/assets/WhatsApp_Image_2026-07-20_at_12.22.22_3.jpeg.asset.json";
+import gal9 from "@/assets/WhatsApp_Image_2026-07-20_at_12.22.22_4.jpeg.asset.json";
+import gal10 from "@/assets/WhatsApp_Image_2026-07-20_at_12.22.22_5.jpeg.asset.json";
+import gal11 from "@/assets/WhatsApp_Image_2026-07-20_at_12.23.35.jpeg.asset.json";
+import gal12 from "@/assets/WhatsApp_Image_2026-07-20_at_12.24.45.jpeg.asset.json";
+import gal13 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13.jpeg.asset.json";
+import gal14 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13_1.jpeg.asset.json";
+import gal15 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13_2.jpeg.asset.json";
+import gal16 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13_3.jpeg.asset.json";
+import gal17 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13_4.jpeg.asset.json";
 
 export default function IndexPage() {
   return <Index />;
