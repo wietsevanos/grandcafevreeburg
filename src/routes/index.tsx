@@ -416,10 +416,10 @@ function Gallery() {
         {/* Side fades */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 md:w-40 bg-gradient-to-r from-secondary/90 via-secondary/60 to-transparent"
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 md:w-40"
           style={{
             background:
-              "linear-gradient(to right, hsl(var(--secondary) / 0.95), hsl(var(--secondary) / 0) 100%)",
+              "linear-gradient(to right, color-mix(in oklab, var(--secondary) 95%, transparent), color-mix(in oklab, var(--secondary) 0%, transparent))",
           }}
         />
         <div
@@ -427,7 +427,7 @@ function Gallery() {
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 md:w-40"
           style={{
             background:
-              "linear-gradient(to left, hsl(var(--secondary) / 0.95), hsl(var(--secondary) / 0) 100%)",
+              "linear-gradient(to left, color-mix(in oklab, var(--secondary) 95%, transparent), color-mix(in oklab, var(--secondary) 0%, transparent))",
           }}
         />
 
