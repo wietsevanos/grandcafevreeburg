@@ -345,6 +345,7 @@ function Gallery() {
     { src: gal13.url, w: "w-[300px] md:w-[400px]", ratio: "aspect-[3/4]" },
     { src: gal15.url, w: "w-[320px] md:w-[440px]", ratio: "aspect-[3/2]" },
     { src: gal17.url, w: "w-[280px] md:w-[380px]", ratio: "aspect-[4/5]" },
+    { src: gal18.url, w: "w-[260px] md:w-[340px]", ratio: "aspect-[3/4]" },
   ];
   const rowB = [
     { src: gal2.url, w: "w-[300px] md:w-[420px]", ratio: "aspect-[3/2]" },
@@ -355,6 +356,7 @@ function Gallery() {
     { src: gal12.url, w: "w-[280px] md:w-[380px]", ratio: "aspect-[4/5]" },
     { src: gal14.url, w: "w-[300px] md:w-[400px]", ratio: "aspect-[3/2]" },
     { src: gal16.url, w: "w-[260px] md:w-[360px]", ratio: "aspect-[3/4]" },
+    { src: gal19.url, w: "w-[300px] md:w-[400px]", ratio: "aspect-[3/4]" },
   ];
 
   const Row = ({
