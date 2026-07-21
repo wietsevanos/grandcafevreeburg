@@ -333,16 +333,70 @@ function About() {
 }
 
 function Gallery() {
-  const items = [
-    { src: gal1.url, label: "Team", h: "h-[420px]" },
-    { src: gal2.url, label: "Bar Bites", h: "h-[300px]" },
-    { src: gal3.url, label: "Bar", h: "h-[360px]" },
-    { src: gal4.url, label: "Diner", h: "h-[440px]" },
-    { src: gal5.url, label: "Wijn", h: "h-[320px]" },
-    { src: gal6.url, label: "Keuken", h: "h-[400px]" },
+  const rowA = [
+    { src: gal1.url, w: "w-[280px] md:w-[380px]", ratio: "aspect-[4/5]" },
+    { src: gal7.url, w: "w-[340px] md:w-[460px]", ratio: "aspect-[3/2]" },
+    { src: gal3.url, w: "w-[260px] md:w-[340px]", ratio: "aspect-[3/4]" },
+    { src: gal9.url, w: "w-[300px] md:w-[420px]", ratio: "aspect-[4/5]" },
+    { src: gal11.url, w: "w-[340px] md:w-[480px]", ratio: "aspect-[16/10]" },
+    { src: gal5.url, w: "w-[280px] md:w-[360px]", ratio: "aspect-[4/5]" },
+    { src: gal13.url, w: "w-[300px] md:w-[400px]", ratio: "aspect-[3/4]" },
+    { src: gal15.url, w: "w-[320px] md:w-[440px]", ratio: "aspect-[3/2]" },
+    { src: gal17.url, w: "w-[280px] md:w-[380px]", ratio: "aspect-[4/5]" },
   ];
+  const rowB = [
+    { src: gal2.url, w: "w-[300px] md:w-[420px]", ratio: "aspect-[3/2]" },
+    { src: gal8.url, w: "w-[260px] md:w-[340px]", ratio: "aspect-[3/4]" },
+    { src: gal4.url, w: "w-[320px] md:w-[440px]", ratio: "aspect-[4/5]" },
+    { src: gal10.url, w: "w-[280px] md:w-[380px]", ratio: "aspect-[3/4]" },
+    { src: gal6.url, w: "w-[340px] md:w-[480px]", ratio: "aspect-[16/10]" },
+    { src: gal12.url, w: "w-[280px] md:w-[380px]", ratio: "aspect-[4/5]" },
+    { src: gal14.url, w: "w-[300px] md:w-[400px]", ratio: "aspect-[3/2]" },
+    { src: gal16.url, w: "w-[260px] md:w-[360px]", ratio: "aspect-[3/4]" },
+  ];
+
+  const Row = ({
+    items,
+    direction,
+    duration,
+  }: {
+    items: typeof rowA;
+    direction: "left" | "right";
+    duration: number;
+  }) => {
+    const doubled = [...items, ...items];
+    return (
+      <div className="marquee-row overflow-hidden">
+        <div
+          className="marquee-track gap-4 md:gap-6"
+          style={
+            {
+              "--marquee-anim": direction === "left" ? "marquee-left" : "marquee-right",
+              "--marquee-duration": `${duration}s`,
+            } as React.CSSProperties
+          }
+        >
+          {doubled.map((it, i) => (
+            <div
+              key={i}
+              className={`${it.w} ${it.ratio} shrink-0 overflow-hidden rounded-2xl shadow-[0_10px_30px_-15px_rgba(0,0,0,0.25)]`}
+            >
+              <img
+                src={it.src}
+                alt=""
+                loading="lazy"
+                aria-hidden="true"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <section id="galerij" className="py-24 md:py-32 bg-secondary/40">
+    <section id="galerij" className="py-24 md:py-32 bg-secondary/40 overflow-hidden">
       <div className="container-x">
         <div className="grid md:grid-cols-2 gap-8 items-end mb-14">
           <div className="reveal-left">
@@ -356,24 +410,30 @@ function Gallery() {
             dag heeft zijn eigen ritme.
           </p>
         </div>
+      </div>
 
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6 [column-fill:_balance]">
-          {items.map((it, i) => (
-            <div
-              key={it.label}
-              className={`reveal-zoom delay-${(i % 4) + 1} mb-4 md:mb-6 break-inside-avoid img-zoom rounded-xl overflow-hidden relative group`}
-            >
-              <img
-                src={it.src}
-                alt={it.label}
-                loading="lazy"
-                className={`w-full ${it.h} object-cover`}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
-                <span className="text-cream font-display text-xl italic">{it.label}</span>
-              </div>
-            </div>
-          ))}
+      <div className="relative">
+        {/* Side fades */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 md:w-40 bg-gradient-to-r from-secondary/90 via-secondary/60 to-transparent"
+          style={{
+            background:
+              "linear-gradient(to right, hsl(var(--secondary) / 0.95), hsl(var(--secondary) / 0) 100%)",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 md:w-40"
+          style={{
+            background:
+              "linear-gradient(to left, hsl(var(--secondary) / 0.95), hsl(var(--secondary) / 0) 100%)",
+          }}
+        />
+
+        <div className="flex flex-col gap-4 md:gap-6">
+          <Row items={rowA} direction="left" duration={95} />
+          <Row items={rowB} direction="right" duration={110} />
         </div>
       </div>
     </section>
