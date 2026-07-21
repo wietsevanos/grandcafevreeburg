@@ -1136,6 +1136,16 @@ function Footer() {
                   <Instagram className="h-4 w-4" /> Instagram
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/grandcafevreeburg/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 link-underline"
+                >
+                  <Facebook className="h-4 w-4" /> Facebook
+                </a>
+              </li>
             </ul>
           </div>
         </div>
