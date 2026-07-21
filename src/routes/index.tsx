@@ -71,6 +71,8 @@ import gal14 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13_1.jpeg.asset.j
 import gal15 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13_2.jpeg.asset.json";
 import gal16 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13_3.jpeg.asset.json";
 import gal17 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13_4.jpeg.asset.json";
+import gal18 from "@/assets/gallery-extra-1.jpeg.asset.json";
+import gal19 from "@/assets/gallery-extra-2.jpeg.asset.json";
 
 export default function IndexPage() {
   return <Index />;
