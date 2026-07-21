@@ -9,6 +9,7 @@ import {
   Mail,
   Clock,
   Instagram,
+  Facebook,
   ArrowRight,
   Star,
   Quote,
@@ -171,11 +172,11 @@ function Hero() {
         className="absolute inset-0 w-full h-full object-cover object-center scale-105 motion-safe:animate-[heroZoom_18s_ease-out_forwards] pointer-events-none select-none"
       />
       {/* Gradient overlays for legibility */}
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/50 to-foreground/85 pointer-events-none" />
-      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.35)_75%)] pointer-events-none" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-foreground/35 via-foreground/20 to-foreground/55 pointer-events-none" />
+      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.25)_80%)] pointer-events-none" />
 
       <div className="relative z-10 container-x text-center text-cream">
-        <p className="reveal eyebrow text-gold mb-6">
+        <p className="reveal eyebrow text-gold mb-6 flex items-center justify-center gap-4">
           <a
             href="https://www.instagram.com/grandcafevreeburg/"
             target="_blank"
@@ -183,7 +184,18 @@ function Hero() {
             className="inline-flex items-center gap-2 link-underline hover:opacity-80 transition-opacity"
           >
             <Instagram className="h-4 w-4" />
-            Volg ons @grandcafevreeburg
+            @grandcafevreeburg
+          </a>
+          <span aria-hidden="true" className="h-3 w-px bg-cream/40" />
+          <a
+            href="https://www.facebook.com/grandcafevreeburg/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex items-center gap-2 link-underline hover:opacity-80 transition-opacity"
+            aria-label="Volg ons op Facebook"
+          >
+            <Facebook className="h-4 w-4" />
+            Facebook
           </a>
         </p>
         <h1 className="sr-only">Grand Café Vreeburg</h1>
@@ -1122,6 +1134,16 @@ function Footer() {
                   className="inline-flex items-center gap-2 link-underline"
                 >
                   <Instagram className="h-4 w-4" /> Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/grandcafevreeburg/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 link-underline"
+                >
+                  <Facebook className="h-4 w-4" /> Facebook
                 </a>
               </li>
             </ul>
