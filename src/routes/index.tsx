@@ -412,24 +412,15 @@ function Gallery() {
         </div>
       </div>
 
-      <div className="relative">
-        {/* Side fades */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 md:w-40"
-          style={{
-            background:
-              "linear-gradient(to right, color-mix(in oklab, var(--secondary) 95%, transparent), color-mix(in oklab, var(--secondary) 0%, transparent))",
-          }}
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 md:w-40"
-          style={{
-            background:
-              "linear-gradient(to left, color-mix(in oklab, var(--secondary) 95%, transparent), color-mix(in oklab, var(--secondary) 0%, transparent))",
-          }}
-        />
+      <div
+        className="relative"
+        style={{
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%)",
+          maskImage:
+            "linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%)",
+        }}
+      >
 
         <div className="flex flex-col gap-4 md:gap-6">
           <Row items={rowA} direction="left" duration={95} />
