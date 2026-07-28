@@ -212,8 +212,6 @@ function Hero() {
             <span>Facebook</span>
           </a>
         </div>
-
-        </div>
         <h1 className="sr-only">Grand Café Vreeburg</h1>
         <img
           src={logoAsset}
