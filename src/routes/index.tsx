@@ -189,26 +189,26 @@ function Hero() {
       <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.25)_80%)] pointer-events-none" />
 
       <div className="relative z-10 container-x text-center text-cream">
-        <div className="reveal mb-8 flex items-center justify-center gap-5 text-cream/85 text-xs tracking-[0.2em] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
+        <div className="reveal mb-6 md:mb-8 flex items-center justify-center gap-3 md:gap-5 text-cream/80 text-[10px] md:text-xs tracking-[0.15em] md:tracking-[0.2em] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
           <a
             href="https://www.instagram.com/grandcafevreeburg/"
             target="_blank"
             rel="noreferrer noopener"
-            className="inline-flex items-center gap-2 hover:text-cream transition-colors"
+            className="inline-flex items-center gap-1.5 md:gap-2 hover:text-cream transition-colors"
             aria-label="Volg ons op Instagram"
           >
-            <Instagram className="h-3.5 w-3.5" />
+            <Instagram className="h-3 w-3 md:h-3.5 md:w-3.5" />
             <span>@grandcafevreeburg</span>
           </a>
-          <span aria-hidden="true" className="h-3 w-px bg-cream/40" />
+          <span aria-hidden="true" className="h-2.5 md:h-3 w-px bg-cream/30" />
           <a
             href="https://www.facebook.com/grandcafevreeburg/"
             target="_blank"
             rel="noreferrer noopener"
-            className="inline-flex items-center gap-2 hover:text-cream transition-colors"
+            className="inline-flex items-center gap-1.5 md:gap-2 hover:text-cream transition-colors"
             aria-label="Volg ons op Facebook"
           >
-            <Facebook className="h-3.5 w-3.5" />
+            <Facebook className="h-3 w-3 md:h-3.5 md:w-3.5" />
             <span>Facebook</span>
           </a>
         </div>
