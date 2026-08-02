@@ -410,8 +410,8 @@ function Gallery() {
             </h2>
           </div>
           <p className="text-muted-foreground max-w-md md:justify-self-end reveal-right">
-            Van de eerste espresso om half tien tot het laatste glas rode wijn, elk moment van de
-            dag heeft zijn eigen ritme.
+            Van de eerste espresso tot het laatste glas rode wijn, elk moment van de dag heeft zijn
+            eigen ritme.
           </p>
         </div>
       </div>
