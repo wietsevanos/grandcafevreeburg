@@ -332,3 +332,10 @@
 @utility scroll-bob {
   animation: bob 2.4s ease-in-out infinite;
 }
+
+@utility agenda-pan {
+  animation: agenda-pan 18s ease-in-out infinite;
+}
+@utility agenda-float {
+  animation: agenda-float 6s ease-in-out infinite;
+}
