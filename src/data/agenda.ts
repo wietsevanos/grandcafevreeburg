@@ -28,7 +28,7 @@ export type AgendaEvent = {
 export const AGENDA_EVENTS: AgendaEvent[] = [
   {
     id: "live-jazz",
-    title: "Live Jazz — Hans Keune Trio",
+    title: "Live Jazz,\u00A0\nHans Keune Trio",
     category: "Live muziek",
     recurring: "Elke 3e zondag van de maand",
     time: "15:00 - 18:00",

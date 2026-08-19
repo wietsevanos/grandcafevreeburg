@@ -92,7 +92,7 @@ export function AgendaSection() {
               {featured.ev.category && (
                 <p className="eyebrow mb-4 text-bordeaux">{featured.ev.category}</p>
               )}
-              <h3 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-8 text-foreground">
+              <h3 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-8 text-foreground whitespace-pre-wrap">
                 {featured.ev.title}
               </h3>
 
