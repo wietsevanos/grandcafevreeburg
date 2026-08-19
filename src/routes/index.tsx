@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
+import { AgendaSection } from "@/components/agenda-section";
 import coffeeImg from "@/assets/sfeer-coffee.png";
 import lunchImg from "@/assets/sfeer-sandwich.png";
 import cocktailsImg from "@/assets/sfeer-cocktails.png";
@@ -91,6 +92,7 @@ function Navbar() {
   const links = [
     { href: "#home", label: "Home" },
     { href: "#menu", label: "Menukaart" },
+    { href: "#agenda", label: "Agenda" },
     { href: "#galerij", label: "Galerij" },
     { href: "#events", label: "Vieren & zakelijk" },
     { href: "#werken", label: "Werken bij" },
@@ -1267,6 +1269,7 @@ function Index() {
       <Hero />
       <Gallery />
       <MenuSection />
+      <AgendaSection />
       <Events />
       <Careers />
       <About />
