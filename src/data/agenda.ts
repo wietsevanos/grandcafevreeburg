@@ -32,8 +32,7 @@ export const AGENDA_EVENTS: AgendaEvent[] = [
     category: "Live muziek",
     recurring: "Elke 3e zondag van de maand",
     time: "15:00 - 18:00",
-    description:
-      "Elke derde zondag van de maand strijkt het Hans Keune Trio bij ons neer voor een middag vol warme, swingende jazz. Schuif aan met een glas wijn of een borrel en laat de zondag langzaam voorbijgaan.",
+    description: "",
     dates: [
       "2026-09-20",
       "2026-10-18",
@@ -44,6 +43,6 @@ export const AGENDA_EVENTS: AgendaEvent[] = [
       "2027-04-18",
     ],
     image: jazzFlyer,
-    details: ["Muzikale bijdrage € 6,50 p.p.", "Reserveren wordt aangeraden"],
+    details: [],
   },
 ];
