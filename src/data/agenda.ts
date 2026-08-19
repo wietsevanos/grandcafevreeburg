@@ -1,4 +1,4 @@
-import jazzFlyer from "@/assets/live-jazz-flyer.png.asset.json";
+import jazzFlyer from "@/assets/live-jazz-flyer.jpg";
 
 export type AgendaEvent = {
   /** Unieke id */
