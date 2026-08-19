@@ -43,7 +43,7 @@ export const AGENDA_EVENTS: AgendaEvent[] = [
       "2027-03-21",
       "2027-04-18",
     ],
-    image: jazzFlyer.url,
+    image: jazzFlyer,
     details: ["Muzikale bijdrage € 6,50 p.p.", "Reserveren wordt aangeraden"],
   },
 ];
