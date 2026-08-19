@@ -58,7 +58,7 @@ export function AgendaSection() {
   const next = featured.dates[0];
 
   return (
-    <section id="agenda" className="py-24 md:py-32 bg-foreground text-cream overflow-hidden">
+    <section id="agenda" className="py-24 md:py-32 bg-secondary text-foreground overflow-hidden">
       <div className="container-x">
         <div className="max-w-xl mb-12 md:mb-16 reveal">
           <p className="eyebrow mb-4">Agenda</p>
@@ -67,25 +67,22 @@ export function AgendaSection() {
           </h2>
         </div>
 
-        <article className="reveal delay-1 group relative bg-cream/[0.03] border border-cream/10 rounded-3xl overflow-hidden shadow-[0_2px_4px_rgba(0,0,0,0.2),0_20px_40px_-16px_rgba(0,0,0,0.5)] agenda-float">
+        <article className="reveal delay-1 group relative bg-cream border border-border rounded-3xl overflow-hidden shadow-[var(--shadow-lift)] agenda-float">
           <div className="grid lg:grid-cols-2">
             {/* Flyer */}
             <button
               type="button"
               onClick={() => setFlyer(featured.ev)}
               aria-label={`Flyer ${featured.ev.title} vergroten`}
-              className="relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[28rem] overflow-hidden cursor-zoom-in"
+              className="relative flex items-center justify-center p-6 md:p-10 lg:p-12 bg-cream cursor-zoom-in"
             >
-              <div className="absolute inset-[-8%] agenda-pan">
-                <img
-                  src={featured.ev.image}
-                  alt={`Flyer ${featured.ev.title}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-foreground/60" />
-              <span className="absolute bottom-4 left-4 lg:hidden inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-foreground/70 backdrop-blur-sm text-[0.65rem] uppercase tracking-[0.18em] text-cream/90">
+              <img
+                src={featured.ev.image}
+                alt={`Flyer ${featured.ev.title}`}
+                loading="lazy"
+                className="w-full h-auto max-h-[60vh] lg:max-h-[32rem] object-contain rounded-xl shadow-[0_4px_24px_-8px_rgba(0,0,0,0.18)]"
+              />
+              <span className="absolute bottom-4 left-1/2 -translate-x-1/2 lg:hidden inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-foreground/80 backdrop-blur-sm text-[0.65rem] uppercase tracking-[0.18em] text-cream/90">
                 Vergroot flyer
               </span>
             </button>
@@ -95,11 +92,11 @@ export function AgendaSection() {
               {featured.ev.category && (
                 <p className="eyebrow mb-4 text-bordeaux">{featured.ev.category}</p>
               )}
-              <h3 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-8">
+              <h3 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-8 text-foreground">
                 {featured.ev.title}
               </h3>
 
-              <div className="space-y-4 mb-10 text-cream/85 text-base md:text-lg">
+              <div className="space-y-4 mb-10 text-muted-foreground text-base md:text-lg">
                 <div className="flex items-start gap-4">
                   <CalendarDays className="h-5 w-5 md:h-6 md:w-6 text-bordeaux mt-0.5 shrink-0" />
                   <span>{formatLong(next)}</span>
@@ -119,13 +116,13 @@ export function AgendaSection() {
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <button type="button" className="btn-ghost-light">
+                <button type="button" className="btn-primary">
                   Reserveer een tafel
                 </button>
                 <button
                   type="button"
                   onClick={() => setFlyer(featured.ev)}
-                  className="btn-ghost-light"
+                  className="btn-ghost"
                 >
                   Bekijk flyer
                 </button>
@@ -136,12 +133,12 @@ export function AgendaSection() {
 
         {/* Dates ticker */}
         {featured.dates.length > 1 && (
-          <div className="mt-10 marquee-row overflow-hidden py-5 border-t border-cream/10">
+          <div className="mt-10 marquee-row overflow-hidden py-5 border-t border-foreground/10">
             <div className="marquee-track" style={{ "--marquee-duration": "38s" } as React.CSSProperties}>
               {[...featured.dates, ...featured.dates].map((d) => (
                 <span
                   key={d}
-                  className="inline-flex items-center gap-2 px-6 md:px-8 text-cream/60 whitespace-nowrap text-sm md:text-base"
+                  className="inline-flex items-center gap-2 px-6 md:px-8 text-foreground/60 whitespace-nowrap text-sm md:text-base"
                 >
                   <CalendarDays className="h-4 w-4 text-bordeaux" />
                   {formatShort(d)}
