@@ -115,14 +115,18 @@ export function AgendaSection() {
                 )}
               </div>
 
-              <div className="flex flex-wrap gap-3">
-                <button type="button" className="btn-primary">
-                  Reserveer een tafel
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  className="btn-primary w-full min-w-0 h-12 px-2 sm:px-5 text-xs sm:text-[0.9rem] whitespace-nowrap tracking-tight"
+                >
+                  <span className="sm:hidden">Reserveer</span>
+                  <span className="hidden sm:inline">Reserveer een tafel</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setFlyer(featured.ev)}
-                  className="btn-ghost"
+                  className="btn-ghost w-full min-w-0 h-12 px-2 sm:px-5 text-xs sm:text-[0.9rem] whitespace-nowrap tracking-tight"
                 >
                   Bekijk flyer
                 </button>
