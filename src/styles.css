@@ -272,6 +272,18 @@
   from { transform: translate3d(-50%, 0, 0); }
   to { transform: translate3d(0, 0, 0); }
 }
+@keyframes agenda-pan {
+  0%, 100% { transform: scale(1.06) translate(0, 0); }
+  50% { transform: scale(1.12) translate(-1.5%, -1%); }
+}
+@keyframes agenda-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes agenda-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
 .marquee-track {
   display: flex;
   width: max-content;
@@ -281,6 +293,8 @@
 .marquee-row:hover .marquee-track { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
+  .agenda-pan { animation: none; }
+  .agenda-float { animation: none; }
 }
 
 
@@ -317,4 +331,11 @@
 
 @utility scroll-bob {
   animation: bob 2.4s ease-in-out infinite;
+}
+
+@utility agenda-pan {
+  animation: agenda-pan 18s ease-in-out infinite;
+}
+@utility agenda-float {
+  animation: agenda-float 6s ease-in-out infinite;
 }
