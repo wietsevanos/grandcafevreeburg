@@ -164,14 +164,14 @@ export function AgendaSection() {
                       type="button"
                       onClick={() => setFlyer(ev)}
                       aria-label={`Flyer ${ev.title} vergroten`}
-                      className="hidden lg:block p-6 md:p-8 lg:pl-0 cursor-zoom-in"
+                      className="hidden lg:flex items-center p-6 md:p-8 lg:pl-0 cursor-zoom-in"
                     >
-                      <span className="img-zoom block rounded-xl border border-border overflow-hidden h-full">
+                      <span className="img-zoom block rounded-xl border border-border overflow-hidden">
                         <img
                           src={ev.image}
                           alt={`Flyer ${ev.title}`}
                           loading="lazy"
-                          className="h-full max-h-[26rem] w-auto object-contain bg-cream"
+                          className="max-h-[26rem] w-auto object-contain bg-cream block"
                         />
                       </span>
                     </button>
