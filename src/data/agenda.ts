@@ -1,6 +1,3 @@
-import jazzFlyer from "@/assets/live-jazz-flyer.jpg";
-import quizFlyer from "@/assets/quiz-time-flyer.png";
-
 export type AgendaEvent = {
   id: string;
   image: string;
@@ -9,10 +6,10 @@ export type AgendaEvent = {
 export const AGENDA_EVENTS: AgendaEvent[] = [
   {
     id: "live-jazz",
-    image: jazzFlyer,
+    image: "/agenda/live-jazz-flyer.jpg",
   },
   {
     id: "quiz-time",
-    image: quizFlyer,
+    image: "/agenda/quiz-time-flyer.png",
   },
 ];
