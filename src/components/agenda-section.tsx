@@ -66,7 +66,7 @@ export function AgendaSection() {
                 type="button"
                 onClick={() => setFlyer(ev)}
                 aria-label="Flyer vergroten"
-                className={`reveal delay-${Math.min(i + 1, 5)} group relative block w-full rounded-3xl p-[1px] bg-gradient-to-b from-border to-transparent hover:from-bordeaux/50 transition-colors duration-500 cursor-zoom-in`}
+                className="group relative block w-full rounded-3xl p-[1px] bg-gradient-to-b from-border to-transparent hover:from-bordeaux/50 transition-colors duration-500 cursor-zoom-in"
               >
                 <span className="block relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-cream shadow-[var(--shadow-soft)] transition-all duration-500 group-hover:-translate-y-1.5 group-hover:shadow-[var(--shadow-lift)]">
                   <img
