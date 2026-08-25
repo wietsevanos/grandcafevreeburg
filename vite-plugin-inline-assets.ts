@@ -17,8 +17,13 @@ async function walk(dir: string): Promise<string[]> {
 }
 
 export function inlineAssets(): Plugin {
+  let isBuild = false;
+
   return {
     name: "inline-lovable-assets",
+    configResolved(config) {
+      isBuild = config.command === "build";
+    },
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
         if (!req.url) {
@@ -50,8 +55,9 @@ export function inlineAssets(): Plugin {
         }
       });
     },
-    apply: "build",
     async closeBundle() {
+      if (!isBuild) return;
+
       const outDir = path.resolve("dist");
       const srcDir = path.resolve("src");
       const files = await walk(srcDir);
