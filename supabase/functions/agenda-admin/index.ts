@@ -68,12 +68,11 @@ Deno.serve(async (req) => {
     return json({ events: [] });
   }
 
-  const rows = images.map((image, index) => ({ image_data: image, sort_order: index }));
+  const rows = images.map((image) => ({ image_data: image }));
   const { data, error: insertError } = await client
     .from("agenda_items")
     .insert(rows)
-    .select("id,image_data")
-    .order("sort_order", { ascending: true });
+    .select("id,image_data");
 
   if (insertError) {
     console.error("agenda insert failed", insertError);

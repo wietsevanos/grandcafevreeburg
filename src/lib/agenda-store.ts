@@ -23,7 +23,6 @@ async function loadEvents(): Promise<AgendaEvent[]> {
   const { data, error } = await supabase
     .from(TABLE)
     .select("id,image_data")
-    .order("sort_order", { ascending: true })
     .order("created_at", { ascending: true });
 
   if (error) {
