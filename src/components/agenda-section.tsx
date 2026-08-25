@@ -1,47 +1,19 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Settings2, X } from "lucide-react";
 import { type AgendaEvent } from "@/data/agenda";
 import { useAgendaStore } from "@/lib/agenda-store";
 import { AgendaAdmin } from "@/components/agenda-admin";
 
-function parse(d: string) {
-  const [y, m, day] = d.split("-").map(Number);
-  return new Date(y, (m ?? 1) - 1, day ?? 1);
-}
-
-function upcomingDates(ev: AgendaEvent) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return ev.dates
-    .filter((d) => parse(d).getTime() >= today.getTime())
-    .sort((a, b) => parse(a).getTime() - parse(b).getTime());
-}
-
 export function AgendaSection() {
   const [flyer, setFlyer] = useState<AgendaEvent | null>(null);
   const [admin, setAdmin] = useState(false);
-  const { events: all } = useAgendaStore();
-
-  const events = useMemo(
-    () =>
-      all
-        .map((ev) => ({ ev, dates: upcomingDates(ev) }))
-        // Zonder datums blijft een evenement altijd staan
-        .filter((e) => e.ev.dates.length === 0 || e.dates.length > 0)
-        .sort((a, b) => {
-          const at = a.dates[0] ? parse(a.dates[0]).getTime() : Infinity;
-          const bt = b.dates[0] ? parse(b.dates[0]).getTime() : Infinity;
-          return at - bt;
-        }),
-    [all],
-  );
+  const { events } = useAgendaStore();
 
   return (
     <section
       id="agenda"
       className="relative py-24 md:py-32 bg-secondary text-foreground overflow-hidden"
     >
-      {/* zachte warme gloed */}
       <div
         aria-hidden
         className="pointer-events-none absolute -top-24 -right-16 h-80 w-80 rounded-full blur-3xl opacity-30"
@@ -61,7 +33,7 @@ export function AgendaSection() {
               Wat staat er <span className="italic text-bordeaux">op het programma</span>
             </h2>
             <p className="mt-5 text-muted-foreground text-base md:text-lg">
-              Een greep uit onze komende avonden. Klik op een flyer om deze te vergroten.
+              Een rustige selectie van avonden en activiteiten bij Grand Café Vreeburg.
             </p>
           </div>
 
@@ -88,22 +60,21 @@ export function AgendaSection() {
               events.length === 1 ? "max-w-xl mx-auto" : "sm:grid-cols-2 lg:grid-cols-3"
             }`}
           >
-            {events.map(({ ev }, i) => (
+            {events.map((ev, i) => (
               <button
                 key={ev.id}
                 type="button"
                 onClick={() => setFlyer(ev)}
-                aria-label={`Flyer ${ev.title} vergroten`}
+                aria-label="Flyer vergroten"
                 className={`reveal delay-${Math.min(i + 1, 5)} group relative block w-full rounded-3xl p-[1px] bg-gradient-to-b from-border to-transparent hover:from-bordeaux/50 transition-colors duration-500 cursor-zoom-in`}
               >
                 <span className="block relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-cream shadow-[var(--shadow-soft)] transition-all duration-500 group-hover:-translate-y-1.5 group-hover:shadow-[var(--shadow-lift)]">
                   <img
                     src={ev.image}
-                    alt={`Flyer ${ev.title}`}
+                    alt="Programma flyer"
                     loading="lazy"
                     className="w-full h-auto object-contain transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
                   />
-                  {/* subtiele glans die over de flyer loopt */}
                   <span
                     aria-hidden
                     className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent"
@@ -130,7 +101,7 @@ export function AgendaSection() {
           onClick={() => setFlyer(null)}
           role="dialog"
           aria-modal="true"
-          aria-label={`Flyer ${flyer.title}`}
+          aria-label="Programma flyer"
         >
           <button
             type="button"
@@ -142,7 +113,7 @@ export function AgendaSection() {
           </button>
           <img
             src={flyer.image}
-            alt={`Flyer ${flyer.title}`}
+            alt="Programma flyer"
             onClick={(e) => e.stopPropagation()}
             className="max-h-[90vh] max-w-full w-auto object-contain rounded-xl shadow-[var(--shadow-lift)] animate-in zoom-in-95 duration-300"
           />
