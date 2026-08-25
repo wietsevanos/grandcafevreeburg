@@ -3,6 +3,7 @@ import path from "node:path";
 import type { Plugin } from "vite";
 
 const CDN_BASE = "https://bloemendaal-cafe-craft.lovable.app";
+const ASSET_PATH_PREFIX = "/__l5e/assets-v1/";
 
 async function walk(dir: string): Promise<string[]> {
   const out: string[] = [];
@@ -18,6 +19,37 @@ async function walk(dir: string): Promise<string[]> {
 export function inlineAssets(): Plugin {
   return {
     name: "inline-lovable-assets",
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if (!req.url) {
+          next();
+          return;
+        }
+
+        const { pathname } = new URL(req.url, "http://localhost");
+        if (!pathname.startsWith(ASSET_PATH_PREFIX)) {
+          next();
+          return;
+        }
+
+        try {
+          const assetResponse = await fetch(`${CDN_BASE}${pathname}`);
+          if (!assetResponse.ok) {
+            next();
+            return;
+          }
+
+          const contentType = assetResponse.headers.get("content-type");
+          const cacheControl = assetResponse.headers.get("cache-control");
+          if (contentType) res.setHeader("Content-Type", contentType);
+          if (cacheControl) res.setHeader("Cache-Control", cacheControl);
+          res.statusCode = assetResponse.status;
+          res.end(Buffer.from(await assetResponse.arrayBuffer()));
+        } catch {
+          next();
+        }
+      });
+    },
     apply: "build",
     async closeBundle() {
       const outDir = path.resolve("dist");
