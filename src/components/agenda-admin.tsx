@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { ImagePlus, Loader2, Lock, RotateCcw, Trash2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Check, ImagePlus, Loader2, Lock, Trash2 } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -18,14 +18,20 @@ export function AgendaAdmin({
   open: boolean;
   onOpenChange: (v: boolean) => void;
 }) {
-  const { events, hiddenCount, addEvent, removeEvent, restoreAll } = useAgendaStore();
+  const { events, saving, error: saveError, replaceEvents } = useAgendaStore();
   const [code, setCode] = useState("");
   const [error, setError] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
-  const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
+  const [images, setImages] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
+  const [saved, setSaved] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (open && unlocked) {
+      setImages(events.map((event) => event.image));
+    }
+  }, [events, open, unlocked]);
 
   function close(v: boolean) {
     onOpenChange(v);
@@ -33,8 +39,8 @@ export function AgendaAdmin({
       setCode("");
       setError(false);
       setUnlocked(false);
-      setTitle("");
-      setDate("");
+      setImages([]);
+      setSaved(false);
     }
   }
 
@@ -43,6 +49,7 @@ export function AgendaAdmin({
     if (code === CODE) {
       setUnlocked(true);
       setError(false);
+      setImages(events.map((event) => event.image));
     } else {
       setError(true);
       setCode("");
@@ -50,23 +57,23 @@ export function AgendaAdmin({
   }
 
   async function onFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
+    const files = Array.from(e.target.files ?? []);
     e.target.value = "";
-    if (!file) return;
+    if (files.length === 0) return;
+
     setBusy(true);
+    setSaved(false);
     try {
-      const image = await fileToImage(file);
-      addEvent({
-        id: `custom-${Date.now()}`,
-        title: title.trim() || "Evenement",
-        image,
-        dates: date ? [date] : [],
-      });
-      setTitle("");
-      setDate("");
+      const nextImages = await Promise.all(files.map((file) => fileToImage(file)));
+      setImages((current) => [...current, ...nextImages]);
     } finally {
       setBusy(false);
     }
+  }
+
+  async function save() {
+    const ok = await replaceEvents(images);
+    if (ok) setSaved(true);
   }
 
   return (
@@ -100,72 +107,44 @@ export function AgendaAdmin({
           <div className="space-y-6">
             <DialogHeader>
               <DialogTitle className="font-display text-2xl">Programma beheren</DialogTitle>
-              <DialogDescription>
-                Voeg een flyer toe of verwijder een evenement. Wijzigingen zijn direct zichtbaar.
-              </DialogDescription>
+              <DialogDescription>Voeg foto’s toe, verwijder wat weg mag en klik op opslaan.</DialogDescription>
             </DialogHeader>
 
-            <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-3">
-                <input
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  placeholder="Naam evenement"
-                  className="h-11 px-4 rounded-xl bg-background border border-border text-sm outline-none focus:border-bordeaux transition-colors"
-                />
-                <input
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  aria-label="Datum (optioneel)"
-                  className="h-11 px-4 rounded-xl bg-background border border-border text-sm outline-none focus:border-bordeaux transition-colors"
-                />
-              </div>
-              <input
-                ref={fileRef}
-                type="file"
-                accept="image/*"
-                onChange={onFile}
-                className="hidden"
-              />
-              <button
-                type="button"
-                disabled={busy}
-                onClick={() => fileRef.current?.click()}
-                className="w-full h-24 rounded-2xl border border-dashed border-border hover:border-bordeaux hover:bg-secondary/60 transition-colors flex flex-col items-center justify-center gap-1.5 text-sm text-muted-foreground disabled:opacity-60"
-              >
-                {busy ? (
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                ) : (
-                  <ImagePlus className="h-5 w-5" />
-                )}
-                <span>{busy ? "Bezig met toevoegen…" : "Kies een foto of flyer"}</span>
-              </button>
-              <p className="text-xs text-muted-foreground">
-                Zonder datum blijft het evenement staan tot je het verwijdert.
-              </p>
-            </div>
+            <input
+              ref={fileRef}
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={onFile}
+              className="hidden"
+            />
+            <button
+              type="button"
+              disabled={busy || saving}
+              onClick={() => fileRef.current?.click()}
+              className="w-full h-24 rounded-2xl border border-dashed border-border hover:border-bordeaux hover:bg-secondary/60 transition-colors flex flex-col items-center justify-center gap-1.5 text-sm text-muted-foreground disabled:opacity-60"
+            >
+              {busy ? <Loader2 className="h-5 w-5 animate-spin" /> : <ImagePlus className="h-5 w-5" />}
+              <span>{busy ? "Foto’s worden klaargezet…" : "Foto’s toevoegen"}</span>
+            </button>
 
-            <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
-              {events.length === 0 && (
-                <p className="text-sm text-muted-foreground">Nog geen evenementen.</p>
+            <div className="grid grid-cols-3 gap-3 max-h-72 overflow-y-auto pr-1">
+              {images.length === 0 && (
+                <p className="col-span-3 text-sm text-muted-foreground text-center py-8">
+                  Nog geen foto’s toegevoegd.
+                </p>
               )}
-              {events.map((ev) => (
-                <div
-                  key={ev.id}
-                  className="flex items-center gap-3 p-2 rounded-2xl border border-border bg-secondary/40"
-                >
-                  <img
-                    src={ev.image}
-                    alt=""
-                    className="h-12 w-12 rounded-xl object-cover shrink-0"
-                  />
-                  <span className="flex-1 text-sm truncate">{ev.title}</span>
+              {images.map((image, index) => (
+                <div key={`${image.slice(0, 40)}-${index}`} className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-secondary border border-border">
+                  <img src={image} alt="" className="h-full w-full object-cover" />
                   <button
                     type="button"
-                    onClick={() => removeEvent(ev.id)}
-                    aria-label={`${ev.title} verwijderen`}
-                    className="p-2 rounded-full text-muted-foreground hover:text-destructive hover:bg-background transition-colors"
+                    onClick={() => {
+                      setSaved(false);
+                      setImages((current) => current.filter((_, i) => i !== index));
+                    }}
+                    aria-label="Foto verwijderen"
+                    className="absolute right-2 top-2 p-2 rounded-full bg-background/90 text-muted-foreground shadow-[var(--shadow-soft)] hover:text-destructive transition-colors"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>
@@ -173,16 +152,23 @@ export function AgendaAdmin({
               ))}
             </div>
 
-            {hiddenCount > 0 && (
-              <button
-                type="button"
-                onClick={restoreAll}
-                className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <RotateCcw className="h-3.5 w-3.5" />
-                Verwijderde standaard-evenementen terugzetten
-              </button>
+            {saveError && <p className="text-sm text-destructive">{saveError}</p>}
+            {saved && (
+              <p className="inline-flex items-center gap-2 text-sm text-forest">
+                <Check className="h-4 w-4" />
+                Opgeslagen en zichtbaar op de website.
+              </p>
             )}
+
+            <button
+              type="button"
+              onClick={save}
+              disabled={busy || saving}
+              className="btn-primary w-full h-12 disabled:opacity-60"
+            >
+              {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+              Opslaan
+            </button>
           </div>
         )}
       </DialogContent>

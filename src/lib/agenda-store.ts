@@ -1,89 +1,114 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { AGENDA_EVENTS, type AgendaEvent } from "@/data/agenda";
+import { supabase } from "@/integrations/supabase/client";
 
-const KEY = "vreeburg.agenda.v1";
+const TABLE = "agenda_items";
 
-type Store = {
-  /** Zelf toegevoegde evenementen (flyer als data-URL) */
-  custom: AgendaEvent[];
-  /** Verborgen standaard-evenementen */
-  hidden: string[];
+type AgendaRow = {
+  id: string;
+  image_data: string;
 };
 
-const EMPTY: Store = { custom: [], hidden: [] };
+const listeners = new Set<() => void>();
 
-function read(): Store {
-  try {
-    const raw = localStorage.getItem(KEY);
-    if (!raw) return EMPTY;
-    const p = JSON.parse(raw) as Partial<Store>;
-    return { custom: p.custom ?? [], hidden: p.hidden ?? [] };
-  } catch {
-    return EMPTY;
-  }
+function notify() {
+  listeners.forEach((listener) => listener());
 }
 
-const listeners = new Set<() => void>();
-function write(next: Store) {
-  localStorage.setItem(KEY, JSON.stringify(next));
-  listeners.forEach((l) => l());
+function fallbackEvents(): AgendaEvent[] {
+  return AGENDA_EVENTS.map((event) => ({ ...event }));
+}
+
+async function loadEvents(): Promise<AgendaEvent[]> {
+  const { data, error } = await supabase
+    .from(TABLE)
+    .select("id,image_data")
+    .order("sort_order", { ascending: true })
+    .order("created_at", { ascending: true });
+
+  if (error) {
+    console.warn("Programma laden mislukt", error);
+    return fallbackEvents();
+  }
+
+  const rows = (data ?? []) as AgendaRow[];
+  if (rows.length === 0) return fallbackEvents();
+
+  return rows.map((row) => ({
+    id: row.id,
+    image: row.image_data,
+  }));
 }
 
 export function useAgendaStore() {
-  const [store, setStore] = useState<Store>(EMPTY);
+  const [events, setEvents] = useState<AgendaEvent[]>(fallbackEvents());
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const refresh = useCallback(async () => {
+    setLoading(true);
+    const nextEvents = await loadEvents();
+    setEvents(nextEvents);
+    setLoading(false);
+  }, []);
 
   useEffect(() => {
-    const sync = () => setStore(read());
-    sync();
-    listeners.add(sync);
-    window.addEventListener("storage", sync);
+    refresh();
+    listeners.add(refresh);
+
     return () => {
-      listeners.delete(sync);
-      window.removeEventListener("storage", sync);
+      listeners.delete(refresh);
     };
-  }, []);
+  }, [refresh]);
 
-  const addEvent = useCallback((ev: AgendaEvent) => {
-    const s = read();
-    write({ ...s, custom: [...s.custom, ev] });
-  }, []);
+  const replaceEvents = useCallback(async (images: string[]) => {
+    setSaving(true);
+    setError(null);
 
-  const removeEvent = useCallback((id: string) => {
-    const s = read();
-    const isCustom = s.custom.some((e) => e.id === id);
-    write({
-      custom: isCustom ? s.custom.filter((e) => e.id !== id) : s.custom,
-      hidden: isCustom || s.hidden.includes(id) ? s.hidden : [...s.hidden, id],
+    const { data, error: functionError } = await supabase.functions.invoke("agenda-admin", {
+      body: { code: "2468", images },
     });
+
+    if (functionError) {
+      setError("Opslaan is niet gelukt. Probeer het opnieuw.");
+      setSaving(false);
+      return false;
+    }
+
+    const response = data as { events?: AgendaRow[]; error?: string } | null;
+    if (response?.error || !response?.events) {
+      setError("Opslaan is niet gelukt. Probeer het opnieuw.");
+      setSaving(false);
+      return false;
+    }
+
+    const nextEvents = response.events.map((row) => ({ id: row.id, image: row.image_data }));
+    setEvents(nextEvents);
+    setSaving(false);
+    notify();
+    return true;
   }, []);
 
-  const restoreAll = useCallback(() => {
-    const s = read();
-    write({ ...s, hidden: [] });
-  }, []);
-
-  const events: AgendaEvent[] = [
-    ...AGENDA_EVENTS.filter((e) => !store.hidden.includes(e.id)),
-    ...store.custom,
-  ];
-
-  return { events, hiddenCount: store.hidden.length, addEvent, removeEvent, restoreAll };
+  return useMemo(
+    () => ({ events, loading, saving, error, refresh, replaceEvents }),
+    [events, loading, saving, error, refresh, replaceEvents],
+  );
 }
 
-/** Verkleint een gekozen afbeelding en geeft een data-URL terug. */
-export async function fileToImage(file: File, maxWidth = 1400): Promise<string> {
-  const dataUrl = await new Promise<string>((res, rej) => {
-    const fr = new FileReader();
-    fr.onload = () => res(String(fr.result));
-    fr.onerror = () => rej(new Error("read"));
-    fr.readAsDataURL(file);
+export async function fileToImage(file: File, maxWidth = 1600): Promise<string> {
+  const dataUrl = await new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result));
+    reader.onerror = () => reject(new Error("read"));
+    reader.readAsDataURL(file);
   });
 
-  const img = await new Promise<HTMLImageElement>((res, rej) => {
-    const i = new Image();
-    i.onload = () => res(i);
-    i.onerror = () => rej(new Error("img"));
-    i.src = dataUrl;
+  const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(new Error("img"));
+    image.src = dataUrl;
   });
 
   if (img.width <= maxWidth) return dataUrl;
