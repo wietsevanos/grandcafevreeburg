@@ -1,38 +1,36 @@
 import jazzFlyer from "@/assets/live-jazz-flyer.jpg";
+import quizFlyer from "@/assets/quiz-time-flyer.png";
 
 export type AgendaEvent = {
   /** Unieke id */
   id: string;
-  /** Naam van het evenement */
+  /** Korte titel (alleen voor toegankelijkheid / alt-tekst) */
   title: string;
-  /** Korte omschrijving */
-  description: string;
-  /** Tijd, bv. "15:00 - 18:00" */
-  time?: string;
-  /** Losse label boven de titel, bv. "Live muziek", "Pubquiz", "Comedy" */
-  category?: string;
-  /** Terugkerend? Dan worden alle datums getoond */
-  recurring?: string;
-  /** Alle datums (ISO yyyy-mm-dd) waarop het evenement plaatsvindt */
+  /** De flyer of foto van het evenement */
+  image: string;
+  /**
+   * Alle datums (ISO yyyy-mm-dd) waarop het evenement plaatsvindt.
+   * Datums in het verleden vallen automatisch weg; is de lijst leeg,
+   * dan verdwijnt het evenement van de website.
+   */
   dates: string[];
-  /** Optionele afbeelding of flyer */
-  image?: string;
-  /** Optionele extra informatie, bv. prijs of aanmelden */
-  details?: string[];
 };
 
 /**
- * Nieuw evenement toevoegen? Voeg simpelweg een object toe aan deze lijst.
- * Datums in het verleden worden automatisch weggelaten.
+ * BEHEER
+ * ------
+ * Foto/evenement toevoegen:
+ *   1. Zet de flyer in `src/assets/` en importeer hem bovenaan dit bestand.
+ *   2. Voeg een object toe aan de lijst hieronder met id, title, image en dates.
+ *
+ * Foto/evenement verwijderen:
+ *   Verwijder het object uit de lijst (of laat de datums verlopen).
  */
 export const AGENDA_EVENTS: AgendaEvent[] = [
   {
     id: "live-jazz",
-    title: "Live Jazz,\u00A0\nHans Keune Trio",
-    category: "Live muziek",
-    recurring: "Elke 3e zondag van de maand",
-    time: "15:00 - 18:00",
-    description: "",
+    title: "Live Jazz — Hans Keune Trio",
+    image: jazzFlyer,
     dates: [
       "2026-09-20",
       "2026-10-18",
@@ -42,7 +40,11 @@ export const AGENDA_EVENTS: AgendaEvent[] = [
       "2027-03-21",
       "2027-04-18",
     ],
-    image: jazzFlyer,
-    details: [],
+  },
+  {
+    id: "quiz-time",
+    title: "Quiz Time",
+    image: quizFlyer,
+    dates: ["2026-10-14", "2026-11-11"],
   },
 ];
