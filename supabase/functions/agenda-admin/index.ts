@@ -60,6 +60,7 @@ Deno.serve(async (req) => {
 
   const { error: deleteError } = await client.from("agenda_items").delete().neq("id", "00000000-0000-0000-0000-000000000000");
   if (deleteError) {
+    console.error("agenda delete failed", deleteError);
     return json({ error: "delete_failed" }, 500);
   }
 
@@ -75,7 +76,8 @@ Deno.serve(async (req) => {
     .order("sort_order", { ascending: true });
 
   if (insertError) {
-    return json({ error: "insert_failed" }, 500);
+    console.error("agenda insert failed", insertError);
+    return json({ error: "insert_failed", details: insertError.message }, 500);
   }
 
   return json({ events: data ?? [] });
