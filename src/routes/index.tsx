@@ -30,24 +30,15 @@ import {
 import { useReveal } from "@/hooks/use-reveal";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
 import { AgendaSection } from "@/components/agenda-section";
-import coffeeImg from "@/assets/sfeer-coffee.png";
-import lunchImg from "@/assets/sfeer-sandwich.png";
-import cocktailsImg from "@/assets/sfeer-cocktails.png";
-import dinnerImg from "@/assets/sfeer-burger.png";
-import terraceImg from "@/assets/sfeer-terras.png";
-import beersImg from "@/assets/sfeer-beers.png";
+import cocktailsImg from "@/assets/sfeer-cocktails.webp";
 
-import aboutFacadeAsset from "@/assets/about-facade.png";
-import aboutLunchAsset from "@/assets/about-lunch.png";
-import historicFacade1 from "@/assets/historic-facade-1.jpg";
-import historicFacade2 from "@/assets/historic-facade-2.jpg";
+import historicFacade1 from "@/assets/historic-facade-1.webp";
+import historicFacade2 from "@/assets/historic-facade-2.webp";
 import daveImg from "@/assets/dave-portrait-new.jpg.asset.json";
-import drinksImg from "@/assets/drinks.jpg";
-import interiorImg from "@/assets/interior.jpg";
-import dessertImg from "@/assets/dessert.jpg";
-import logoAsset from "@/assets/vreeburg-logo.png";
-import headerLogoAsset from "@/assets/vreeburg-logo-header.png";
-import heroSketchAsset from "@/assets/hero-sketch.png";
+import interiorImg from "@/assets/interior.webp";
+import logoAsset from "@/assets/vreeburg-logo.webp";
+import headerLogoAsset from "@/assets/vreeburg-logo-header.webp";
+import heroSketchAsset from "@/assets/hero-sketch.webp";
 import heroPhotoAsset from "@/assets/hero-interior.jpeg.asset.json";
 import ig1 from "@/assets/ig-731216876.jpg.asset.json";
 import ig2 from "@/assets/ig-717803442.jpg.asset.json";
@@ -113,6 +104,8 @@ function Navbar() {
           <img
             src={headerLogoAsset}
             alt="Grand Café Vreeburg"
+            width={917}
+            height={203}
             className={`h-7 md:h-10 w-auto transition-all duration-500 ${scrolled ? "" : "brightness-0 invert drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"}`}
           />
         </a>
@@ -218,6 +211,8 @@ function Hero() {
         <img
           src={logoAsset}
           alt="Grand Café Vreeburg — eten & drinken"
+          width={917}
+          height={543}
           className="reveal delay-1 mx-auto mb-6 w-[min(560px,82vw)] drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)] brightness-0 invert"
         />
         <p className="reveal delay-2 max-w-xl mx-auto text-cream/95 text-lg md:text-xl font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
@@ -821,7 +816,7 @@ function Careers() {
   return (
     <section id="werken" className="py-28 md:py-36 bg-foreground text-cream relative overflow-hidden">
       <div className="absolute inset-0 opacity-15">
-        <img src={interiorImg} alt="" className="w-full h-full object-cover" />
+        <img src={interiorImg} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-br from-foreground via-foreground/95 to-foreground/85" />
 

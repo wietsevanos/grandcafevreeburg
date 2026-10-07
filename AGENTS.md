@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep menu PDFs as source-controlled files in `public/menus` with stable category paths so standalone DirectAdmin exports include the documents without relying on external asset hosting.
+- Store bundled site images in src/assets as WebP (lossless for logos/transparent art) and delete unused originals, because every file in the build ships to the DirectAdmin hosting.
