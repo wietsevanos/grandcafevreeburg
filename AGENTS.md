@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep menu PDFs as source-controlled files in `public/menus` with stable category paths so standalone DirectAdmin exports include the documents without relying on external asset hosting.
