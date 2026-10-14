@@ -62,13 +62,13 @@ export function ChristmasAnnouncement() {
           href={CHRISTMAS_MENU_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 rounded-full border border-cream/30 px-3.5 py-1.5 text-xs font-medium text-cream hover:bg-cream hover:text-foreground transition-colors"
+          className="inline-flex items-center gap-1 rounded-full border border-cream/30 px-3 md:px-3.5 py-1.5 text-xs whitespace-nowrap font-medium text-cream hover:bg-cream hover:text-foreground transition-colors"
         >
           Bekijk het kerstmenu <ArrowRight className="h-3 w-3" />
         </a>
         <button
           type="button"
-          className="wereserve-cta rounded-full bg-primary px-3.5 py-1.5 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+          className="wereserve-cta rounded-full bg-bordeaux px-3 md:px-3.5 py-1.5 text-xs font-medium text-cream whitespace-nowrap hover:opacity-90 transition-opacity"
         >
           Reserveer voor kerst
         </button>
