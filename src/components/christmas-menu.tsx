@@ -51,7 +51,7 @@ export function ChristmasAnnouncement() {
     <div className="mt-8 md:mt-10 flex flex-col items-center gap-2 text-cream [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
       <div className="flex items-center gap-3">
         <span className="h-px w-8 bg-gold/60" />
-        <HollyMark className="h-4 w-8 text-gold" />
+        <HollyMark className="h-6 w-12 text-gold" />
         <span className="h-px w-8 bg-gold/60" />
       </div>
       <p className="font-display italic text-lg md:text-xl">Kerstmenu 2026 · 24, 25 &amp; 26 december</p>
