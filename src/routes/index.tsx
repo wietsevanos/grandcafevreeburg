@@ -184,7 +184,7 @@ function Hero() {
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-foreground/35 via-foreground/20 to-foreground/55 pointer-events-none" />
       <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.25)_80%)] pointer-events-none" />
 
-      <div className="relative z-10 container-x text-center text-cream">
+      <div className="relative z-10 container-x text-center text-cream pt-28 pb-20 md:pt-32">
         <div className="reveal mb-6 md:mb-8 flex items-center justify-center gap-3 md:gap-5 text-cream/80 text-[10px] md:text-xs tracking-[0.15em] md:tracking-[0.2em] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
           <a
             href="https://www.instagram.com/grandcafevreeburg/"
