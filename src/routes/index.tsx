@@ -30,6 +30,7 @@ import {
 import { useReveal } from "@/hooks/use-reveal";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
 import { AgendaSection } from "@/components/agenda-section";
+import { ChristmasAnnouncement, ChristmasMenuCard } from "@/components/christmas-menu";
 import cocktailsImg from "@/assets/sfeer-cocktails.webp";
 
 import historicFacade1 from "@/assets/historic-facade-1.webp";
@@ -230,6 +231,8 @@ function Hero() {
             Bekijk menukaart <ArrowRight className="h-4 w-4" />
           </a>
         </div>
+
+        <ChristmasAnnouncement />
       </div>
 
       <a
@@ -517,6 +520,9 @@ function MenuSection() {
             );
           })}
         </div>
+
+        <ChristmasMenuCard />
+
 
         <div className="text-center mt-16 reveal">
           <button type="button" className="btn-primary wereserve-cta">
