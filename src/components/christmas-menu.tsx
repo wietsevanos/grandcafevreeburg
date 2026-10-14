@@ -43,24 +43,33 @@ function HollyMark({ className = "" }: { className?: string }) {
   );
 }
 
-/** Rustige regel in de hero. */
+/** Compacte glazen aankondiging in de hero. */
 export function ChristmasAnnouncement() {
   const active = useChristmasActive();
   if (!active) return null;
   return (
-    <div className="mt-8 md:mt-10 flex flex-col items-center gap-2 text-cream [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
-      <div className="flex items-center gap-3">
-        <span className="h-px w-8 bg-gold/60" />
-        <HollyMark className="h-6 w-12 text-gold" />
-        <span className="h-px w-8 bg-gold/60" />
+    <div className="mt-8 md:mt-10 mx-auto w-fit max-w-full rounded-2xl border border-cream/20 bg-foreground/30 backdrop-blur-md px-4 py-3 md:px-5 text-cream shadow-[0_16px_40px_-20px_rgba(0,0,0,0.6)] flex flex-col md:flex-row items-center gap-3 md:gap-5">
+      <div className="flex items-center gap-2.5">
+        <HollyMark className="h-4 w-8 text-gold shrink-0" />
+        <div className="text-left leading-tight">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-gold">Kerstmenu 2026</p>
+          <p className="text-xs md:text-sm text-cream/85">24, 25 &amp; 26 december · € 75 p.p.</p>
+        </div>
       </div>
-      <p className="font-display italic text-lg md:text-xl">Kerstmenu 2026 · 24, 25 &amp; 26 december</p>
-      <div className="flex items-center gap-4 text-sm">
-        <a href={CHRISTMAS_MENU_URL} target="_blank" rel="noopener noreferrer" className="link-underline text-cream/90 hover:text-cream">
-          Bekijk het kerstmenu
+      <span className="hidden md:block h-6 w-px bg-cream/20" aria-hidden="true" />
+      <div className="flex items-center gap-2">
+        <a
+          href={CHRISTMAS_MENU_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 rounded-full border border-cream/30 px-3 md:px-3.5 py-1.5 text-xs whitespace-nowrap font-medium text-cream hover:bg-cream hover:text-foreground transition-colors"
+        >
+          Bekijk het kerstmenu <ArrowRight className="h-3 w-3" />
         </a>
-        <span className="h-3 w-px bg-cream/40" aria-hidden="true" />
-        <button type="button" className="wereserve-cta link-underline text-gold hover:text-cream">
+        <button
+          type="button"
+          className="wereserve-cta rounded-full bg-bordeaux px-3 md:px-3.5 py-1.5 text-xs font-medium text-cream whitespace-nowrap hover:opacity-90 transition-opacity"
+        >
           Reserveer voor kerst
         </button>
       </div>
