@@ -26,13 +26,15 @@ function str(value: unknown, { max = 2000 }: { max?: number } = {}): string | nu
   return trimmed;
 }
 
+const AMP = String.fromCharCode(38);
+
 function escapeHtml(value: string): string {
   return value
-    .replace(/&/g, "&")
-    .replace(/</g, "<")
-    .replace(/>/g, ">")
-    .replace(/"/g, """)
-    .replace(/'/g, "&#39;");
+    .replace(/&/g, AMP + "amp;")
+    .replace(/</g, AMP + "lt;")
+    .replace(/>/g, AMP + "gt;")
+    .replace(/"/g, AMP + "quot;")
+    .replace(/'/g, AMP + "#39;");
 }
 
 Deno.serve(async (req) => {
