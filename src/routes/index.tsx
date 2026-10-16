@@ -612,13 +612,33 @@ type RequestFormProps = {
 function RequestForm({ kind, idPrefix, accent = "bordeaux" }: RequestFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const values = Object.fromEntries(new FormData(form).entries());
     setLoading(true);
-    // TODO: hook up to backend endpoint
-    await new Promise((r) => setTimeout(r, 700));
+    setFailed(false);
+
+    const { error } = await supabase.functions.invoke("request-form", {
+      body: {
+        kind,
+        naam: values.naam,
+        email: values.email,
+        telefoon: values.telefoon || null,
+        datum: values.datum,
+        personen: values.personen ? Number(values.personen) : null,
+        bericht: values.bericht || null,
+      },
+    });
+
     setLoading(false);
+    if (error) {
+      setFailed(true);
+      return;
+    }
+    form.reset();
     setSubmitted(true);
   };
 
