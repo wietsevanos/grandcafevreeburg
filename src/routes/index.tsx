@@ -28,6 +28,7 @@ import {
   Calendar,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
+import { supabase } from "@/integrations/supabase/client";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
 import { AgendaSection } from "@/components/agenda-section";
 import { ChristmasAnnouncement, ChristmasMenuCard } from "@/components/christmas-menu";
