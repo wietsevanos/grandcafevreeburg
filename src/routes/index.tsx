@@ -28,6 +28,7 @@ import {
   Calendar,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
+import { supabase } from "@/integrations/supabase/client";
 import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
 import { AgendaSection } from "@/components/agenda-section";
 import { ChristmasAnnouncement, ChristmasMenuCard } from "@/components/christmas-menu";
@@ -611,13 +612,33 @@ type RequestFormProps = {
 function RequestForm({ kind, idPrefix, accent = "bordeaux" }: RequestFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const values = Object.fromEntries(new FormData(form).entries());
     setLoading(true);
-    // TODO: hook up to backend endpoint
-    await new Promise((r) => setTimeout(r, 700));
+    setFailed(false);
+
+    const { error } = await supabase.functions.invoke("request-form", {
+      body: {
+        kind,
+        naam: values.naam,
+        email: values.email,
+        telefoon: values.telefoon || null,
+        datum: values.datum,
+        personen: values.personen ? Number(values.personen) : null,
+        bericht: values.bericht || null,
+      },
+    });
+
     setLoading(false);
+    if (error) {
+      setFailed(true);
+      return;
+    }
+    form.reset();
     setSubmitted(true);
   };
 
@@ -679,7 +700,13 @@ function RequestForm({ kind, idPrefix, accent = "bordeaux" }: RequestFormProps) 
         </div>
       </div>
 
-      <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      {failed && (
+        <p className="mt-6 text-sm text-bordeaux" role="alert">
+          Het versturen is niet gelukt. Probeer het opnieuw, bel ons of mail naar info@grandcafevreeburg.nl.
+        </p>
+      )}
+
+      <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <p className="text-xs text-muted-foreground">We reageren meestal binnen 24 uur.</p>
         <button type="submit" disabled={loading} className={btnClass}>
           {loading ? "Versturen…" : "Aanvraag versturen"} <Send className="h-4 w-4" />

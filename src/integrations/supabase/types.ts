@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      aanvragen: {
+        Row: {
+          bericht: string | null
+          created_at: string
+          datum: string
+          email: string
+          id: string
+          kind: string
+          naam: string
+          personen: number
+          telefoon: string | null
+        }
+        Insert: {
+          bericht?: string | null
+          created_at?: string
+          datum: string
+          email: string
+          id?: string
+          kind: string
+          naam: string
+          personen: number
+          telefoon?: string | null
+        }
+        Update: {
+          bericht?: string | null
+          created_at?: string
+          datum?: string
+          email?: string
+          id?: string
+          kind?: string
+          naam?: string
+          personen?: number
+          telefoon?: string | null
+        }
+        Relationships: []
+      }
       agenda_items: {
         Row: {
           created_at: string
