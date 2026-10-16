@@ -700,7 +700,13 @@ function RequestForm({ kind, idPrefix, accent = "bordeaux" }: RequestFormProps) 
         </div>
       </div>
 
-      <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      {failed && (
+        <p className="mt-6 text-sm text-bordeaux" role="alert">
+          Het versturen is niet gelukt. Probeer het opnieuw, bel ons of mail naar info@grandcafevreeburg.nl.
+        </p>
+      )}
+
+      <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <p className="text-xs text-muted-foreground">We reageren meestal binnen 24 uur.</p>
         <button type="submit" disabled={loading} className={btnClass}>
           {loading ? "Versturen…" : "Aanvraag versturen"} <Send className="h-4 w-4" />
