@@ -10,6 +10,7 @@ const AgendaAdmin = lazy(() =>
 export function AgendaSection() {
   const [flyer, setFlyer] = useState<AgendaEvent | null>(null);
   const [admin, setAdmin] = useState(false);
+  const [adminMounted, setAdminMounted] = useState(false);
   const { events, loading } = useAgendaStore();
 
   return (
@@ -42,7 +43,10 @@ export function AgendaSection() {
 
           <button
             type="button"
-            onClick={() => setAdmin(true)}
+            onClick={() => {
+              setAdminMounted(true);
+              setAdmin(true);
+            }}
             className="reveal group inline-flex items-center gap-2 h-10 px-4 rounded-full border border-border/80 bg-background/60 backdrop-blur-sm text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground hover:border-bordeaux/60 transition-colors"
           >
             <Settings2 className="h-3.5 w-3.5 transition-transform duration-500 group-hover:rotate-90" />
@@ -125,7 +129,7 @@ export function AgendaSection() {
         </div>
       )}
 
-      {admin && (
+      {adminMounted && (
         <Suspense fallback={null}>
           <AgendaAdmin open={admin} onOpenChange={setAdmin} />
         </Suspense>

@@ -17,13 +17,15 @@ export function TheForkWidget() {
     host.id = "tf-reserve-widget-host";
     document.body.appendChild(host);
 
-    if (!document.getElementById("tf-widget-font")) {
+    // Lettertype, logo en reserveringspagina pas laden bij de eerste klik op een reserveerknop.
+    const loadFont = () => {
+      if (document.getElementById("tf-widget-font")) return;
       const fontLink = document.createElement("link");
       fontLink.id = "tf-widget-font";
       fontLink.rel = "stylesheet";
       fontLink.href = "https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap";
       document.head.appendChild(fontLink);
-    }
+    };
 
     const root = host.attachShadow({ mode: "open" });
     root.innerHTML = `
@@ -52,7 +54,7 @@ export function TheForkWidget() {
     <div class="widget" id="w" role="dialog" aria-label="Reserveren">
       <div class="widget-head">
         <div class="head-left">
-          <img class="logo" style="width:20px;height:20px" src="${LOGO}" alt="TheFork">
+          <img class="logo" id="tf-logo" style="width:20px;height:20px" alt="TheFork">
           <span class="sep"></span>Reserveren
         </div>
         <div class="head-right">
@@ -60,18 +62,27 @@ export function TheForkWidget() {
           <button class="close" id="close-btn" aria-label="Sluiten">&#215;</button>
         </div>
       </div>
-      <iframe id="wframe" src="${WIDGET_URL}" allow="payment *" title="Reserveren bij Grand Café Vreeburg"></iframe>
+      <iframe id="wframe" allow="payment *" title="Reserveren bij Grand Café Vreeburg"></iframe>
     </div>`;
 
     const ov = root.getElementById("ov")!;
     const w = root.getElementById("w")!;
     const wframe = root.getElementById("wframe") as HTMLIFrameElement;
-    const open = () => { w.classList.add("active"); ov.classList.add("active"); };
+    const logo = root.getElementById("tf-logo") as HTMLImageElement;
+    const open = () => {
+      if (!wframe.getAttribute("src")) {
+        loadFont();
+        logo.src = LOGO;
+        wframe.src = WIDGET_URL;
+      }
+      w.classList.add("active");
+      ov.classList.add("active");
+    };
     const close = () => { w.classList.remove("active"); ov.classList.remove("active"); };
     ov.addEventListener("click", close);
     root.getElementById("close-btn")!.addEventListener("click", close);
     root.getElementById("back")!.addEventListener("click", () => {
-      try { wframe.contentWindow?.history.back(); } catch { wframe.src = wframe.src; }
+      try { wframe.contentWindow?.history.back(); } catch { wframe.src = WIDGET_URL; }
     });
 
     const onClick = (e: Event) => {

@@ -71,10 +71,21 @@ export function useAgendaStore() {
   }, []);
 
   useEffect(() => {
-    refresh();
+    // Programma ophalen zodra de pagina klaar is met de eerste weergave.
+    let cancelled = false;
+    const start = () => {
+      if (!cancelled) refresh();
+    };
+    if (cache !== null || document.readyState === "complete") {
+      start();
+    } else {
+      window.addEventListener("load", start, { once: true });
+    }
     listeners.add(refresh);
 
     return () => {
+      cancelled = true;
+      window.removeEventListener("load", start);
       listeners.delete(refresh);
     };
   }, [refresh]);
