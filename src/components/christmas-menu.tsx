@@ -11,7 +11,7 @@ export function isChristmasActive(now: number = Date.now()) {
 }
 
 export function useChristmasActive() {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(() => isChristmasActive());
   useEffect(() => {
     const now = Date.now();
     setActive(isChristmasActive(now));

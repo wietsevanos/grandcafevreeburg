@@ -28,7 +28,6 @@ import {
   Calendar,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
-import { supabase } from "@/integrations/supabase/client";
 import { TheForkWidget } from "@/components/thefork-widget";
 import { AgendaSection } from "@/components/agenda-section";
 import { ChristmasAnnouncement, ChristmasMenuCard } from "@/components/christmas-menu";
@@ -36,37 +35,39 @@ import cocktailsImg from "@/assets/sfeer-cocktails.webp";
 
 import historicFacade1 from "@/assets/historic-facade-1.webp";
 import historicFacade2 from "@/assets/historic-facade-2.webp";
-import daveImg from "@/assets/dave-portrait-new.jpg.asset.json";
+const daveImg = responsiveImage("dave");
 import interiorImg from "@/assets/interior.webp";
 import logoAsset from "@/assets/vreeburg-logo.webp";
 import headerLogoAsset from "@/assets/vreeburg-logo-header.webp";
-import heroSketchAsset from "@/assets/hero-sketch.webp";
-import heroPhotoAsset from "@/assets/hero-interior.jpeg.asset.json";
-import ig1 from "@/assets/ig-731216876.jpg.asset.json";
-import ig2 from "@/assets/ig-717803442.jpg.asset.json";
-import ig3 from "@/assets/ig-728783672.jpg.asset.json";
-import ig4 from "@/assets/ig-729603384.jpg.asset.json";
-import ig5 from "@/assets/ig-734808000.jpg.asset.json";
-import ig6 from "@/assets/ig-731215914.jpg.asset.json";
-import gal1 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.22.jpeg.asset.json";
-import gal2 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.22_1.jpeg.asset.json";
-import gal3 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.22_2.jpeg.asset.json";
-import gal4 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.23.jpeg.asset.json";
-import gal5 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.23_1.jpeg.asset.json";
-import gal6 from "@/assets/WhatsApp_Image_2026-07-15_at_14.16.23_2.jpeg.asset.json";
-import gal7 from "@/assets/WhatsApp_Image_2026-07-20_at_12.22.22.jpeg.asset.json";
-import gal8 from "@/assets/WhatsApp_Image_2026-07-20_at_12.22.22_3.jpeg.asset.json";
-import gal9 from "@/assets/WhatsApp_Image_2026-07-20_at_12.22.22_4.jpeg.asset.json";
-import gal10 from "@/assets/WhatsApp_Image_2026-07-20_at_12.22.22_5.jpeg.asset.json";
-import gal11 from "@/assets/WhatsApp_Image_2026-07-20_at_12.23.35.jpeg.asset.json";
-import gal12 from "@/assets/WhatsApp_Image_2026-07-20_at_12.24.45.jpeg.asset.json";
-import gal13 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13.jpeg.asset.json";
-import gal14 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13_1.jpeg.asset.json";
-import gal15 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13_2.jpeg.asset.json";
-import gal16 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13_3.jpeg.asset.json";
-import gal17 from "@/assets/WhatsApp_Image_2026-07-20_at_12.30.13_4.jpeg.asset.json";
-import gal18 from "@/assets/gallery-extra-1.jpeg.asset.json";
-import gal19 from "@/assets/gallery-extra-2.jpeg.asset.json";
+import { responsiveImage } from "@/lib/responsive-images";
+const footerSketch = responsiveImage("footer-sketch");
+const headerLogoSmall = responsiveImage("logo-header");
+const heroPhotoAsset = responsiveImage("hero");
+const ig1 = responsiveImage("ig1");
+const ig2 = responsiveImage("ig2");
+const ig3 = responsiveImage("ig3");
+const ig4 = responsiveImage("ig4");
+const ig5 = responsiveImage("ig5");
+const ig6 = responsiveImage("ig6");
+const gal1 = responsiveImage("gal1");
+const gal2 = responsiveImage("gal2");
+const gal3 = responsiveImage("gal3");
+const gal4 = responsiveImage("gal4");
+const gal5 = responsiveImage("gal5");
+const gal6 = responsiveImage("gal6");
+const gal7 = responsiveImage("gal7");
+const gal8 = responsiveImage("gal8");
+const gal9 = responsiveImage("gal9");
+const gal10 = responsiveImage("gal10");
+const gal11 = responsiveImage("gal11");
+const gal12 = responsiveImage("gal12");
+const gal13 = responsiveImage("gal13");
+const gal14 = responsiveImage("gal14");
+const gal15 = responsiveImage("gal15");
+const gal16 = responsiveImage("gal16");
+const gal17 = responsiveImage("gal17");
+const gal18 = responsiveImage("gal18");
+const gal19 = responsiveImage("gal19");
 
 export default function IndexPage() {
   return <Index />;
@@ -105,6 +106,8 @@ function Navbar() {
         <a href="#home" aria-label="Grand Café Vreeburg" className="flex items-center">
           <img
             src={headerLogoAsset}
+            srcSet={`${headerLogoSmall.url} 460w, ${headerLogoAsset} 917w`}
+            sizes="(min-width: 768px) 181px, 127px"
             alt="Grand Café Vreeburg"
             width={917}
             height={203}
@@ -177,6 +180,12 @@ function Hero() {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-foreground">
       <img
         src={heroPhotoAsset.url}
+        srcSet={heroPhotoAsset.srcSet}
+        sizes="(min-aspect-ratio: 3/2) 105vw, 158vh"
+        width={1920}
+        height={1279}
+        fetchPriority="high"
+        decoding="async"
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover object-center scale-105 motion-safe:animate-[heroZoom_18s_ease-out_forwards] pointer-events-none select-none"
@@ -335,29 +344,36 @@ function About() {
   );
 }
 
+/** "w-[280px] md:w-[380px]" -> sizes-attribuut met dezelfde breedtes. */
+function tileSizes(w: string) {
+  const base = w.match(/(?:^|\s)w-\[(\d+)px\]/)?.[1];
+  const md = w.match(/md:w-\[(\d+)px\]/)?.[1];
+  return md ? `(min-width: 768px) ${md}px, ${base}px` : `${base}px`;
+}
+
 function Gallery() {
   const rowA = [
-    { src: gal1.url, w: "w-[280px] md:w-[380px]", ratio: "aspect-[4/5]" },
-    { src: gal7.url, w: "w-[340px] md:w-[460px]", ratio: "aspect-[3/2]" },
-    { src: gal3.url, w: "w-[260px] md:w-[340px]", ratio: "aspect-[3/4]" },
-    { src: gal9.url, w: "w-[300px] md:w-[420px]", ratio: "aspect-[4/5]" },
-    { src: gal11.url, w: "w-[340px] md:w-[480px]", ratio: "aspect-[16/10]" },
-    { src: gal5.url, w: "w-[280px] md:w-[360px]", ratio: "aspect-[4/5]" },
-    { src: gal13.url, w: "w-[300px] md:w-[400px]", ratio: "aspect-[3/4]" },
-    { src: gal15.url, w: "w-[320px] md:w-[440px]", ratio: "aspect-[3/2]" },
-    { src: gal17.url, w: "w-[280px] md:w-[380px]", ratio: "aspect-[4/5]" },
-    { src: gal18.url, w: "w-[260px] md:w-[340px]", ratio: "aspect-[3/4]" },
+    { src: gal1.url, srcSet: gal1.srcSet, w: "w-[280px] md:w-[380px]", ratio: "aspect-[4/5]" },
+    { src: gal7.url, srcSet: gal7.srcSet, w: "w-[340px] md:w-[460px]", ratio: "aspect-[3/2]" },
+    { src: gal3.url, srcSet: gal3.srcSet, w: "w-[260px] md:w-[340px]", ratio: "aspect-[3/4]" },
+    { src: gal9.url, srcSet: gal9.srcSet, w: "w-[300px] md:w-[420px]", ratio: "aspect-[4/5]" },
+    { src: gal11.url, srcSet: gal11.srcSet, w: "w-[340px] md:w-[480px]", ratio: "aspect-[16/10]" },
+    { src: gal5.url, srcSet: gal5.srcSet, w: "w-[280px] md:w-[360px]", ratio: "aspect-[4/5]" },
+    { src: gal13.url, srcSet: gal13.srcSet, w: "w-[300px] md:w-[400px]", ratio: "aspect-[3/4]" },
+    { src: gal15.url, srcSet: gal15.srcSet, w: "w-[320px] md:w-[440px]", ratio: "aspect-[3/2]" },
+    { src: gal17.url, srcSet: gal17.srcSet, w: "w-[280px] md:w-[380px]", ratio: "aspect-[4/5]" },
+    { src: gal18.url, srcSet: gal18.srcSet, w: "w-[260px] md:w-[340px]", ratio: "aspect-[3/4]" },
   ];
   const rowB = [
-    { src: gal2.url, w: "w-[300px] md:w-[420px]", ratio: "aspect-[3/2]" },
-    { src: gal8.url, w: "w-[260px] md:w-[340px]", ratio: "aspect-[3/4]" },
-    { src: gal4.url, w: "w-[320px] md:w-[440px]", ratio: "aspect-[4/5]" },
-    { src: gal10.url, w: "w-[280px] md:w-[380px]", ratio: "aspect-[3/4]" },
-    { src: gal6.url, w: "w-[340px] md:w-[480px]", ratio: "aspect-[16/10]" },
-    { src: gal12.url, w: "w-[280px] md:w-[380px]", ratio: "aspect-[4/5]" },
-    { src: gal14.url, w: "w-[300px] md:w-[400px]", ratio: "aspect-[3/2]" },
-    { src: gal16.url, w: "w-[260px] md:w-[360px]", ratio: "aspect-[3/4]" },
-    { src: gal19.url, w: "w-[300px] md:w-[400px]", ratio: "aspect-[3/4]" },
+    { src: gal2.url, srcSet: gal2.srcSet, w: "w-[300px] md:w-[420px]", ratio: "aspect-[3/2]" },
+    { src: gal8.url, srcSet: gal8.srcSet, w: "w-[260px] md:w-[340px]", ratio: "aspect-[3/4]" },
+    { src: gal4.url, srcSet: gal4.srcSet, w: "w-[320px] md:w-[440px]", ratio: "aspect-[4/5]" },
+    { src: gal10.url, srcSet: gal10.srcSet, w: "w-[280px] md:w-[380px]", ratio: "aspect-[3/4]" },
+    { src: gal6.url, srcSet: gal6.srcSet, w: "w-[340px] md:w-[480px]", ratio: "aspect-[16/10]" },
+    { src: gal12.url, srcSet: gal12.srcSet, w: "w-[280px] md:w-[380px]", ratio: "aspect-[4/5]" },
+    { src: gal14.url, srcSet: gal14.srcSet, w: "w-[300px] md:w-[400px]", ratio: "aspect-[3/2]" },
+    { src: gal16.url, srcSet: gal16.srcSet, w: "w-[260px] md:w-[360px]", ratio: "aspect-[3/4]" },
+    { src: gal19.url, srcSet: gal19.srcSet, w: "w-[300px] md:w-[400px]", ratio: "aspect-[3/4]" },
   ];
 
   const Row = ({
@@ -388,8 +404,11 @@ function Gallery() {
             >
               <img
                 src={it.src}
+                srcSet={it.srcSet}
+                sizes={tileSizes(it.w)}
                 alt=""
                 loading="lazy"
+                decoding="async"
                 aria-hidden="true"
                 className="h-full w-full object-cover"
               />
@@ -621,6 +640,7 @@ function RequestForm({ kind, idPrefix, accent = "bordeaux" }: RequestFormProps) 
     setLoading(true);
     setFailed(false);
 
+    const { supabase } = await import("@/integrations/supabase/client");
     const { error } = await supabase.functions.invoke("request-form", {
       body: {
         kind,
@@ -906,7 +926,7 @@ function Dave() {
         <div className="lg:col-span-5 reveal-left order-2 lg:order-1">
           <div className="relative">
             <div className="img-zoom rounded-xl overflow-hidden shadow-[var(--shadow-lift)] max-w-md">
-              <img src={daveImg.url} alt="Dave, gastheer van Grand Café Vreeburg" loading="lazy" className="w-full h-[560px] object-cover object-top" />
+              <img src={daveImg.url} srcSet={daveImg.srcSet} sizes="(min-width: 448px) 448px, 100vw" decoding="async" alt="Dave, gastheer van Grand Café Vreeburg" loading="lazy" className="w-full h-[560px] object-cover object-top" />
             </div>
             <div className="absolute -bottom-6 -right-2 md:-right-10 bg-cream rounded-xl p-6 max-w-[240px] shadow-[var(--shadow-lift)] border border-border">
               <Quote className="h-5 w-5 text-bordeaux mb-3" />
@@ -1017,12 +1037,12 @@ function Reviews() {
 
 function InstagramFeed() {
   const posts = [
-    { img: ig1.url, caption: "Hiring! Join the team" },
-    { img: ig2.url, caption: "Grand Café Vreeburg" },
-    { img: ig3.url, caption: "Proost 🥂" },
-    { img: ig4.url, caption: "Kerkplein 16" },
-    { img: ig5.url, caption: "Ons team" },
-    { img: ig6.url, caption: "Sfeer bij Vreeburg" },
+    { img: ig1.url, srcSet: ig1.srcSet, caption: "Hiring! Join the team" },
+    { img: ig2.url, srcSet: ig2.srcSet, caption: "Grand Café Vreeburg" },
+    { img: ig3.url, srcSet: ig3.srcSet, caption: "Proost 🥂" },
+    { img: ig4.url, srcSet: ig4.srcSet, caption: "Kerkplein 16" },
+    { img: ig5.url, srcSet: ig5.srcSet, caption: "Ons team" },
+    { img: ig6.url, srcSet: ig6.srcSet, caption: "Sfeer bij Vreeburg" },
   ];
   return (
     <section className="py-28 md:py-32">
@@ -1053,7 +1073,7 @@ function InstagramFeed() {
               rel="noreferrer noopener"
               className={`reveal-zoom delay-${(i % 4) + 1} img-zoom rounded-xl overflow-hidden relative group aspect-square block`}
             >
-              <img src={p.img} alt={p.caption} loading="lazy" className="w-full h-full object-cover" />
+              <img src={p.img} srcSet={p.srcSet} sizes="(min-width: 1024px) 16vw, (min-width: 768px) 33vw, 50vw" alt={p.caption} loading="lazy" decoding="async" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center text-cream p-3 text-center">
                 <Instagram className="h-6 w-6" />
               </div>
@@ -1195,7 +1215,13 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-14">
           <div className="md:col-span-2">
             <img
-              src={heroSketchAsset}
+              src={footerSketch.url}
+              srcSet={footerSketch.srcSet}
+              sizes="136px"
+              width={1080}
+              height={1020}
+              loading="lazy"
+              decoding="async"
               alt="Grand Café Vreeburg"
               className="h-32 w-auto mb-5 invert"
             />

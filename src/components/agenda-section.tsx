@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Settings2, X } from "lucide-react";
 import { type AgendaEvent } from "@/data/agenda";
 import { useAgendaStore } from "@/lib/agenda-store";
-import { AgendaAdmin } from "@/components/agenda-admin";
+// Beheer pas laden als iemand op "Beheer" klikt.
+const AgendaAdmin = lazy(() =>
+  import("@/components/agenda-admin").then((m) => ({ default: m.AgendaAdmin })),
+);
 
 export function AgendaSection() {
   const [flyer, setFlyer] = useState<AgendaEvent | null>(null);
   const [admin, setAdmin] = useState(false);
-  const { events } = useAgendaStore();
+  const [adminMounted, setAdminMounted] = useState(false);
+  const { events, loading } = useAgendaStore();
 
   return (
     <section
@@ -39,7 +43,10 @@ export function AgendaSection() {
 
           <button
             type="button"
-            onClick={() => setAdmin(true)}
+            onClick={() => {
+              setAdminMounted(true);
+              setAdmin(true);
+            }}
             className="reveal group inline-flex items-center gap-2 h-10 px-4 rounded-full border border-border/80 bg-background/60 backdrop-blur-sm text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground hover:border-bordeaux/60 transition-colors"
           >
             <Settings2 className="h-3.5 w-3.5 transition-transform duration-500 group-hover:rotate-90" />
@@ -47,7 +54,9 @@ export function AgendaSection() {
           </button>
         </div>
 
-        {events.length === 0 ? (
+        {loading && events.length === 0 ? (
+          <div aria-hidden className="min-h-[420px]" />
+        ) : events.length === 0 ? (
           <div className="reveal max-w-xl mx-auto text-center py-16 rounded-3xl border border-dashed border-border bg-background/50">
             <p className="font-display text-2xl">Binnenkort meer</p>
             <p className="mt-2 text-sm text-muted-foreground">
@@ -120,7 +129,11 @@ export function AgendaSection() {
         </div>
       )}
 
-      <AgendaAdmin open={admin} onOpenChange={setAdmin} />
+      {adminMounted && (
+        <Suspense fallback={null}>
+          <AgendaAdmin open={admin} onOpenChange={setAdmin} />
+        </Suspense>
+      )}
     </section>
   );
 }
