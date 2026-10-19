@@ -87,7 +87,7 @@ export function ChristmasMenuCard() {
         >
           Bekijk het kerstmenu <ArrowRight className="h-4 w-4" />
         </a>
-        <button type="button" className="btn-primary wereserve-cta">Reserveer voor kerst</button>
+        <button type="button" className="btn-primary reserve-cta">Reserveer voor kerst</button>
       </div>
     </div>
   );

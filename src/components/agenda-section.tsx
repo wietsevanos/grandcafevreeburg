@@ -89,7 +89,7 @@ export function AgendaSection() {
         )}
 
         <div className="mt-12 flex justify-center reveal">
-          <button type="button" className="btn-primary wereserve-cta h-12 px-7">
+          <button type="button" className="btn-primary reserve-cta h-12 px-7">
             Reserveer een tafel
           </button>
         </div>

@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { supabase } from "@/integrations/supabase/client";
-import { WeReserveWidgetClient } from "@/components/wereserve-widget-client";
+import { TheForkWidget } from "@/components/thefork-widget";
 import { AgendaSection } from "@/components/agenda-section";
 import { ChristmasAnnouncement, ChristmasMenuCard } from "@/components/christmas-menu";
 import cocktailsImg from "@/assets/sfeer-cocktails.webp";
@@ -129,7 +129,7 @@ function Navbar() {
         <div className="flex items-center gap-2 md:gap-3">
           <button
             type="button"
-            className="hidden md:inline-flex btn-primary px-4 py-2 text-xs md:text-sm wereserve-cta"
+            className="hidden md:inline-flex btn-primary px-4 py-2 text-xs md:text-sm reserve-cta"
           >
             Reserveren
           </button>
@@ -162,7 +162,7 @@ function Navbar() {
           ))}
           <button
             type="button"
-            className="btn-primary w-full wereserve-cta"
+            className="btn-primary w-full reserve-cta"
           >
             Reserveren
           </button>
@@ -224,7 +224,7 @@ function Hero() {
         <div className="reveal delay-3 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
           <button
             type="button"
-            className="btn-primary wereserve-cta"
+            className="btn-primary reserve-cta"
           >
             Reserveer een tafel
           </button>
@@ -526,7 +526,7 @@ function MenuSection() {
 
 
         <div className="text-center mt-16 reveal">
-          <button type="button" className="btn-primary wereserve-cta">
+          <button type="button" className="btn-primary reserve-cta">
             Reserveer een tafel
           </button>
         </div>
@@ -1109,7 +1109,7 @@ function Contact() {
           </p>
           <button
             type="button"
-            className="btn-primary mb-10 wereserve-cta"
+            className="btn-primary mb-10 reserve-cta"
           >
             Direct reserveren
           </button>
@@ -1279,7 +1279,7 @@ function MobileReserveButton() {
   return (
     <button
       type="button"
-      className="md:hidden fixed bottom-4 right-4 z-50 inline-flex items-center gap-2 rounded-full btn-primary px-4 py-3 shadow-lg wereserve-cta"
+      className="md:hidden fixed bottom-4 right-4 z-50 inline-flex items-center gap-2 rounded-full btn-primary px-4 py-3 shadow-lg reserve-cta"
       aria-label="Reserveer een tafel"
     >
       <Calendar className="h-4 w-4" />
@@ -1292,7 +1292,7 @@ function Index() {
   useReveal();
   return (
     <main className="bg-background text-foreground">
-      <WeReserveWidgetClient />
+      <TheForkWidget />
       <Navbar />
       <Hero />
       <Gallery />
