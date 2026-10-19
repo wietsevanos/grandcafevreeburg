@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AGENDA_EVENTS, type AgendaEvent } from "@/data/agenda";
-import { supabase } from "@/integrations/supabase/client";
+
+// De database-client pas laden wanneer hij nodig is, zodat hij de eerste weergave niet vertraagt.
+const getSupabase = () => import("@/integrations/supabase/client").then((m) => m.supabase);
 
 const TABLE = "agenda_items";
 
@@ -19,7 +21,23 @@ function fallbackEvents(): AgendaEvent[] {
   return AGENDA_EVENTS.map((event) => ({ ...event }));
 }
 
+// Eén gedeelde ophaalactie voor alle onderdelen die het programma tonen.
+let cache: AgendaEvent[] | null = null;
+let inflight: Promise<AgendaEvent[]> | null = null;
+
+function loadEventsShared(force = false): Promise<AgendaEvent[]> {
+  if (!force && cache) return Promise.resolve(cache);
+  if (!force && inflight) return inflight;
+  inflight = loadEvents().then((events) => {
+    cache = events;
+    inflight = null;
+    return events;
+  });
+  return inflight;
+}
+
 async function loadEvents(): Promise<AgendaEvent[]> {
+  const supabase = await getSupabase();
   const { data, error } = await supabase
     .from(TABLE)
     .select("id,image_data")
@@ -40,14 +58,14 @@ async function loadEvents(): Promise<AgendaEvent[]> {
 }
 
 export function useAgendaStore() {
-  const [events, setEvents] = useState<AgendaEvent[]>(fallbackEvents());
-  const [loading, setLoading] = useState(true);
+  const [events, setEvents] = useState<AgendaEvent[]>(cache ?? []);
+  const [loading, setLoading] = useState(cache === null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const refresh = useCallback(async () => {
-    setLoading(true);
-    const nextEvents = await loadEvents();
+  const refresh = useCallback(async (force = false) => {
+    if (force || cache === null) setLoading(true);
+    const nextEvents = await loadEventsShared(force);
     setEvents(nextEvents);
     setLoading(false);
   }, []);
@@ -65,6 +83,7 @@ export function useAgendaStore() {
     setSaving(true);
     setError(null);
 
+    const supabase = await getSupabase();
     const { data, error: functionError } = await supabase.functions.invoke("agenda-admin", {
       body: { code: "2468", images },
     });
@@ -83,6 +102,7 @@ export function useAgendaStore() {
     }
 
     const nextEvents = response.events.map((row) => ({ id: row.id, image: row.image_data }));
+    cache = nextEvents;
     setEvents(nextEvents);
     setSaving(false);
     notify();
