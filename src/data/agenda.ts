@@ -10,6 +10,6 @@ export const AGENDA_EVENTS: AgendaEvent[] = [
   },
   {
     id: "quiz-time",
-    image: "/agenda/quiz-time-flyer.png",
+    image: "/agenda/quiz-time-flyer.webp",
   },
 ];
