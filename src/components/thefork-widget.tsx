@@ -47,8 +47,10 @@ export function TheForkWidget() {
       .close { cursor: pointer; font-size: 22px; line-height: 1; border: none; background: none; color: #fff; opacity: .85; padding: 0; }
       .close:hover { opacity: 1; }
       iframe { display: block; flex: 1; min-height: 0; width: 100%; border: none; }
-      @media (max-width: 760px) { .widget { width: calc(100% - 40px); right: 20px; } }
-      @media (max-width: 480px) { .widget { top: 14px; bottom: 22px; left: 14px; right: 14px; width: auto; border-radius: 16px; border-bottom: 2px solid ${COLOR}; transform: translateY(10px); } .widget.active { bottom: 14px; transform: translateY(0); } }
+      @media (max-width: 760px) {
+        .widget { left: 0; right: 0; margin: 0 auto; width: calc(100vw - 32px); max-width: 420px; top: 16px; bottom: 24px; border-radius: 16px; transform: translateY(10px); }
+        .widget.active { bottom: 16px; transform: translateY(0); }
+      }
     </style>
     <div class="overlay" id="ov"></div>
     <div class="widget" id="w" role="dialog" aria-label="Reserveren">
