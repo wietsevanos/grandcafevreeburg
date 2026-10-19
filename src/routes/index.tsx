@@ -28,7 +28,6 @@ import {
   Calendar,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
-import { supabase } from "@/integrations/supabase/client";
 import { TheForkWidget } from "@/components/thefork-widget";
 import { AgendaSection } from "@/components/agenda-section";
 import { ChristmasAnnouncement, ChristmasMenuCard } from "@/components/christmas-menu";
@@ -641,6 +640,7 @@ function RequestForm({ kind, idPrefix, accent = "bordeaux" }: RequestFormProps) 
     setLoading(true);
     setFailed(false);
 
+    const { supabase } = await import("@/integrations/supabase/client");
     const { error } = await supabase.functions.invoke("request-form", {
       body: {
         kind,

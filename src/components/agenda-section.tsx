@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Settings2, X } from "lucide-react";
 import { type AgendaEvent } from "@/data/agenda";
 import { useAgendaStore } from "@/lib/agenda-store";
-import { AgendaAdmin } from "@/components/agenda-admin";
+// Beheer pas laden als iemand op "Beheer" klikt.
+const AgendaAdmin = lazy(() =>
+  import("@/components/agenda-admin").then((m) => ({ default: m.AgendaAdmin })),
+);
 
 export function AgendaSection() {
   const [flyer, setFlyer] = useState<AgendaEvent | null>(null);
   const [admin, setAdmin] = useState(false);
-  const { events } = useAgendaStore();
+  const { events, loading } = useAgendaStore();
 
   return (
     <section
@@ -47,7 +50,9 @@ export function AgendaSection() {
           </button>
         </div>
 
-        {events.length === 0 ? (
+        {loading && events.length === 0 ? (
+          <div aria-hidden className="min-h-[420px]" />
+        ) : events.length === 0 ? (
           <div className="reveal max-w-xl mx-auto text-center py-16 rounded-3xl border border-dashed border-border bg-background/50">
             <p className="font-display text-2xl">Binnenkort meer</p>
             <p className="mt-2 text-sm text-muted-foreground">
@@ -120,7 +125,11 @@ export function AgendaSection() {
         </div>
       )}
 
-      <AgendaAdmin open={admin} onOpenChange={setAdmin} />
+      {admin && (
+        <Suspense fallback={null}>
+          <AgendaAdmin open={admin} onOpenChange={setAdmin} />
+        </Suspense>
+      )}
     </section>
   );
 }
