@@ -77,9 +77,8 @@ export function ChristmasMenuCard() {
           Kerstmenu <span className="italic text-gold">2026</span>
         </h3>
         <p className="text-sm text-cream/60">
-          Kerstbrunch · 25 &amp; 26 december · € 49,50 per persoon
-          <br className="hidden md:block" />
-          Kerstdiner · 24, 25 &amp; 26 december · € 75,00 per persoon
+          <span className="block">Kerstbrunch · 25 &amp; 26 december · € 49,50 per persoon</span>
+          <span className="block">Kerstdiner · 24, 25 &amp; 26 december · € 75,00 per persoon</span>
         </p>
       </div>
       <div className="relative flex flex-col sm:flex-row gap-3">
