@@ -48,7 +48,7 @@ export function ChristmasAnnouncement() {
         <HollyMark className="h-9 w-9 shrink-0" />
         <div className="text-left leading-tight">
           <p className="text-[10px] uppercase tracking-[0.2em] text-gold">Kerstmenu 2026</p>
-          <p className="text-xs md:text-sm text-cream/85">24, 25 &amp; 26 december · € 75 p.p.</p>
+          <p className="text-xs md:text-sm text-cream/85">Kerstbrunch &amp; kerstdiner · 24 t/m 26 december</p>
         </div>
       </div>
       <span className="hidden md:block h-6 w-px bg-cream/20" aria-hidden="true" />
@@ -76,7 +76,11 @@ export function ChristmasMenuCard() {
         <h3 className="font-display text-2xl md:text-3xl text-cream mb-1">
           Kerstmenu <span className="italic text-gold">2026</span>
         </h3>
-        <p className="text-sm text-cream/60">24, 25 &amp; 26 december · € 75,00 per persoon</p>
+        <p className="text-sm text-cream/60">
+          Kerstbrunch · 25 &amp; 26 december · € 49,50 per persoon
+          <br className="hidden md:block" />
+          Kerstdiner · 24, 25 &amp; 26 december · € 75,00 per persoon
+        </p>
       </div>
       <div className="relative flex flex-col sm:flex-row gap-3">
         <a
