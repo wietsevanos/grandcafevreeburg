@@ -32,6 +32,7 @@ import { ChristmasTheme, ChristmasGreeting } from "@/components/christmas-theme"
 import { TheForkWidget } from "@/components/thefork-widget";
 import { AgendaSection } from "@/components/agenda-section";
 import { ChristmasAnnouncement, ChristmasMenuCard } from "@/components/christmas-menu";
+import { JazzChristmasAnnouncement } from "@/components/jazz-christmas-announcement";
 import cocktailsImg from "@/assets/sfeer-cocktails.webp";
 
 import historicFacade1 from "@/assets/historic-facade-1.webp";
@@ -1323,6 +1324,7 @@ function Index() {
       <TheForkWidget />
       <Navbar />
       <Hero />
+      <JazzChristmasAnnouncement />
       <Gallery />
       <MenuSection />
       <AgendaSection />

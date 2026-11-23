@@ -84,6 +84,7 @@ export function AgendaSection() {
               <Button
                 variant="ghost"
                 key={ev.id}
+                id={ev.id === CHRISTMAS_JAZZ_EVENT.id ? "jazz-christmas-special" : undefined}
                 type="button"
                 onClick={() => setFlyer(ev)}
                 aria-label={ev.title ? `${ev.title} · 20 december 2026 — flyer vergroten` : "Flyer vergroten"}
