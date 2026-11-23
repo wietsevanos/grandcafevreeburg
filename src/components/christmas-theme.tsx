@@ -181,7 +181,7 @@ function ChristmasMusic() {
 
     const wantsMusic = () => {
       try {
-        return localStorage.getItem(PREF_KEY) !== "off";
+        return sessionStorage.getItem(PREF_KEY) !== "off";
       } catch {
         return true;
       }
@@ -216,10 +216,10 @@ function ChristmasMusic() {
     const audio = audioRef.current;
     if (!audio) return;
     if (audio.paused) {
-      try { localStorage.setItem(PREF_KEY, "on"); } catch { /* */ }
+      try { sessionStorage.setItem(PREF_KEY, "on"); } catch { /* */ }
       audio.play().catch(() => setPlaying(false));
     } else {
-      try { localStorage.setItem(PREF_KEY, "off"); } catch { /* */ }
+      try { sessionStorage.setItem(PREF_KEY, "off"); } catch { /* */ }
       audio.pause();
     }
   };
@@ -232,7 +232,7 @@ function ChristmasMusic() {
       onClick={toggle}
       aria-pressed={playing}
       aria-label={playing ? "Kerstmuziek aan — klik om uit te zetten" : "Kerstmuziek uit — klik om aan te zetten"}
-      className="xmas-music fixed z-50 right-4 bottom-[calc(76px+env(safe-area-inset-bottom))] md:right-6 md:bottom-6 inline-flex items-center gap-2 rounded-full border border-gold/50 bg-foreground/95 text-champagne h-11 w-11 md:w-auto justify-center md:px-4 shadow-[0_10px_28px_-12px_rgba(0,0,0,0.6)] backdrop-blur transition-all duration-300 hover:border-gold hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="xmas-music fixed z-50 left-4 bottom-[calc(16px+env(safe-area-inset-bottom))] md:left-auto md:right-6 md:bottom-6 inline-flex items-center gap-2 rounded-full border border-gold/50 bg-foreground/95 text-champagne h-11 w-11 md:w-auto justify-center md:px-4 shadow-[0_10px_28px_-12px_rgba(0,0,0,0.6)] backdrop-blur transition-all duration-300 hover:border-gold hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <MusicIcon playing={playing} />
       <span className="hidden md:inline text-xs tracking-wide">{label}</span>
