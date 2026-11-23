@@ -54,6 +54,11 @@ export function PineBranch({ className = "", lights = true, ornaments = true }: 
           <stop offset="0" stopColor="var(--champagne)" />
           <stop offset="1" stopColor="var(--gold)" />
         </radialGradient>
+        <radialGradient id="xmas-bauble-red" cx="0.35" cy="0.35">
+          <stop offset="0" stopColor="#d9616a" />
+          <stop offset="0.55" stopColor="var(--xmas-red)" />
+          <stop offset="1" stopColor="#4a0d12" />
+        </radialGradient>
       </defs>
       {BRANCH.stems.map(([a, b, c, w], i) => (
         <path key={i} d={`M${a[0]} ${a[1]} Q${b[0]} ${b[1]} ${c[0]} ${c[1]}`} stroke="var(--pine-stem)" strokeWidth={w * 1.4} fill="none" strokeLinecap="round" />
@@ -78,6 +83,13 @@ export function PineBranch({ className = "", lights = true, ornaments = true }: 
         <>
           <line x1="150" y1="50" x2="150" y2="96" stroke="var(--gold)" strokeWidth="0.8" />
           <circle cx="150" cy="104" r="8" fill="url(#xmas-bauble)" />
+          <line x1="232" y1="80" x2="232" y2="150" stroke="var(--gold)" strokeWidth="0.8" />
+          <circle cx="232" cy="160" r="10" fill="url(#xmas-bauble-red)" />
+          <circle cx="229" cy="156" r="2.5" fill="#fff" opacity="0.35" />
+          <line x1="70" y1="40" x2="70" y2="128" stroke="var(--gold)" strokeWidth="0.8" />
+          <circle cx="70" cy="136" r="7" fill="url(#xmas-bauble-red)" />
+          <line x1="320" y1="110" x2="320" y2="150" stroke="var(--gold)" strokeWidth="0.8" />
+          <circle cx="320" cy="157" r="6.5" fill="url(#xmas-bauble)" />
           <GoldStar x={292} y={86} s={9} />
         </>
       )}
@@ -130,6 +142,26 @@ export function LightString({ className = "", count = 18 }: { className?: string
         <g key={i} className="xmas-twinkle" style={{ animationDelay: `${(i * 0.61) % 4}s` }}>
           <ellipse cx={x} cy={y} rx="7" ry="9" fill="var(--xmas-light)" opacity="0.25" />
           <ellipse cx={x} cy={y} rx="1.6" ry="2.2" fill="var(--xmas-light)" />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+/** Losse hangende kerstballen (goud en rood) aan dunne gouden draadjes. */
+export function HangingBaubles({ className = "", items }: { className?: string; items: { x: number; len: number; r: number; red?: boolean }[] }) {
+  return (
+    <svg viewBox="0 0 100 220" className={`pointer-events-none ${className}`} aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="hb-gold" cx="0.35" cy="0.35"><stop offset="0" stopColor="var(--champagne)" /><stop offset="1" stopColor="var(--gold)" /></radialGradient>
+        <radialGradient id="hb-red" cx="0.35" cy="0.35"><stop offset="0" stopColor="#d9616a" /><stop offset="0.55" stopColor="var(--xmas-red)" /><stop offset="1" stopColor="#4a0d12" /></radialGradient>
+      </defs>
+      {items.map((b, i) => (
+        <g key={i} className="xmas-sway" style={{ animationDelay: `${i * 0.9}s`, transformOrigin: `${b.x}px 0px` }}>
+          <line x1={b.x} y1="0" x2={b.x} y2={b.len} stroke="var(--gold)" strokeWidth="0.6" />
+          <rect x={b.x - 2} y={b.len - 1} width="4" height="3" rx="0.8" fill="var(--gold)" />
+          <circle cx={b.x} cy={b.len + b.r + 1} r={b.r} fill={b.red ? "url(#hb-red)" : "url(#hb-gold)"} />
+          <circle cx={b.x - b.r * 0.35} cy={b.len + b.r * 0.6} r={b.r * 0.25} fill="#fff" opacity="0.4" />
         </g>
       ))}
     </svg>

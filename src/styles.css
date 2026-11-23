@@ -355,9 +355,9 @@
 html.xmas #galerij,
 html.xmas #contact,
 html.xmas main > footer { position: relative; }
-html.xmas #galerij > *:not(.xmas-decor),
-html.xmas #contact > *:not(.xmas-decor),
-html.xmas main > footer > *:not(.xmas-decor) { position: relative; z-index: 2; }
+html.xmas #galerij > *:not(.xmas-decor):not(.absolute):not(.fixed),
+html.xmas #contact > *:not(.xmas-decor):not(.absolute):not(.fixed),
+html.xmas main > footer > *:not(.xmas-decor):not(.absolute):not(.fixed) { position: relative; z-index: 2; }
 .xmas-navline {
   position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; pointer-events: none;
   background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 80%, transparent), transparent);
@@ -386,3 +386,59 @@ html.xmas .xmas-highlight {
   border-color: color-mix(in oklab, var(--gold) 60%, transparent);
   box-shadow: 0 0 0 1px color-mix(in oklab, var(--gold) 18%, transparent), 0 0 36px -10px color-mix(in oklab, var(--gold) 55%, transparent), 0 16px 40px -20px rgba(0,0,0,.6);
 }
+
+/* ===== Kersteditie: uitgebreide restyle (alleen met html.xmas) ===== */
+:root { --xmas-red: #9b1c26; --xmas-green: #12291b; --xmas-green-2: #1b3a27; }
+html.xmas {
+  --bordeaux: #a3222c;
+  --gold: oklch(0.8 0.11 85);
+}
+html.xmas .xmas-gold-text {
+  background: linear-gradient(100deg, #b8893a, #f3dfae 45%, #c99a45 70%, #f3dfae);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: none; filter: drop-shadow(0 2px 10px rgba(0,0,0,.55));
+}
+/* donkere secties -> diep kerstgroen */
+html.xmas #menu, html.xmas #werken, html.xmas main > footer {
+  background: radial-gradient(ellipse at top, var(--xmas-green-2), var(--xmas-green) 70%);
+}
+/* lichte secties afwisselend groen */
+html.xmas #galerij, html.xmas #agenda {
+  background: radial-gradient(ellipse at 50% 0%, #22482f, var(--xmas-green) 75%);
+  color: var(--cream);
+}
+html.xmas #galerij .text-muted-foreground, html.xmas #agenda .text-muted-foreground { color: color-mix(in oklab, var(--cream) 72%, transparent); }
+html.xmas #galerij .text-bordeaux, html.xmas #agenda .text-bordeaux,
+html.xmas #menu .text-bordeaux, html.xmas #werken .text-bordeaux { color: var(--gold); }
+html.xmas #galerij .eyebrow, html.xmas #agenda .eyebrow, html.xmas #menu .eyebrow, html.xmas #werken .eyebrow { color: var(--gold); }
+html.xmas #agenda .text-foreground { color: var(--cream); }
+html.xmas #agenda .border-border\/80, html.xmas #agenda .border-dashed { border-color: color-mix(in oklab, var(--gold) 45%, transparent); }
+html.xmas #agenda .bg-background\/60, html.xmas #agenda .bg-background\/50 { background: color-mix(in oklab, var(--xmas-green) 60%, transparent); }
+/* lichte secties: warme champagne tint */
+html.xmas #events, html.xmas #contact { background: linear-gradient(to bottom, #f5ecd9, #efe3c8); }
+html.xmas #events .bg-card { border-color: color-mix(in oklab, var(--gold) 55%, transparent); box-shadow: 0 0 0 1px color-mix(in oklab, var(--gold) 20%, transparent), 0 20px 40px -24px rgba(90,40,10,.35); }
+html.xmas #events .eyebrow, html.xmas #contact .eyebrow { color: var(--xmas-red); }
+html.xmas #agenda, html.xmas #events, html.xmas #werken, html.xmas #menu { overflow: hidden; }
+html.xmas #agenda > *:not(.xmas-decor):not(.absolute):not(.fixed), html.xmas #events > *:not(.xmas-decor):not(.absolute):not(.fixed),
+html.xmas #werken > *:not(.xmas-decor):not(.absolute):not(.fixed), html.xmas #menu > *:not(.xmas-decor):not(.absolute):not(.fixed),
+html.xmas #over > *:not(.xmas-decor):not(.absolute):not(.fixed) { position: relative; z-index: 2; }
+html.xmas #over { position: relative; }
+/* knoppen: bordeaux met gouden gloed */
+html.xmas .btn-primary { box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--gold) 45%, transparent); }
+html.xmas .btn-primary:hover { box-shadow: inset 0 0 0 1px var(--gold), 0 8px 26px -8px color-mix(in oklab, var(--gold) 70%, transparent); }
+/* kerstmenu extra feestelijk */
+html.xmas .xmas-highlight { background-image: linear-gradient(120deg, color-mix(in oklab, var(--xmas-red) 38%, transparent), color-mix(in oklab, var(--xmas-green) 55%, transparent)); position: relative; }
+html.xmas .xmas-highlight::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,230,170,.18) 50%, transparent 70%);
+  background-size: 250% 100%; animation: xmasShine 6s ease-in-out infinite;
+}
+@keyframes xmasShine { 0% { background-position: 150% 0 } 60%,100% { background-position: -100% 0 } }
+.xmas-navline { height: 2px; }
+.xmas-sway { animation: xmasSway 6s ease-in-out infinite; }
+@keyframes xmasSway { 0%,100% { transform: rotate(-2.5deg) } 50% { transform: rotate(2.5deg) } }
+html.xmas body { overflow-x: clip; }
+@media (prefers-reduced-motion: reduce) {
+  .xmas-sway, html.xmas .xmas-highlight::after { animation: none; }
+}
+html.xmas #contact, html.xmas main > footer, html.xmas #over { overflow: hidden; }

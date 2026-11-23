@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useChristmasTheme } from "@/lib/christmas-theme";
-import { GoldDivider, LightString, PineBranch, Star } from "@/components/christmas-decor";
+import { GoldDivider, HangingBaubles, LightString, PineBranch, Star } from "@/components/christmas-decor";
 
 const MUSIC_SRC = "/audio/kerstmuziek.mp3";
 const PREF_KEY = "vreeburg-kerstmuziek";
@@ -27,11 +27,14 @@ export function ChristmasGreeting() {
   const active = useChristmasTheme();
   if (!active) return null;
   return (
-    <p className="reveal mb-5 flex items-center justify-center gap-3 font-display italic text-champagne text-base md:text-lg [text-shadow:0_1px_10px_rgba(0,0,0,0.6)]">
-      <Star className="h-2.5 w-2.5" />
-      Vier de feestdagen bij Vreeburg
-      <Star className="h-2.5 w-2.5" />
-    </p>
+    <div className="reveal mb-4 md:mb-7 text-center [text-shadow:0_2px_14px_rgba(0,0,0,0.65)]">
+      <p className="font-display italic text-gold xmas-gold-text text-[2.1rem] sm:text-5xl md:text-6xl leading-none">Fijne feestdagen</p>
+      <p className="mt-2 flex items-center justify-center gap-2 md:gap-3 whitespace-nowrap text-champagne text-[9.5px] sm:text-[11px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.28em]">
+        <Star className="h-2.5 w-2.5" />
+        Vier de feestdagen bij Vreeburg
+        <Star className="h-2.5 w-2.5" />
+      </p>
+    </div>
   );
 }
 
@@ -47,7 +50,7 @@ function useTargets(selectors: string[]) {
 const corner = "absolute z-[1] pointer-events-none";
 
 function SectionDecor() {
-  const [home, header, gallery, menu, agenda, events, werken, contact, footer] = useTargets([
+  const [home, header, gallery, menu, agenda, events, werken, over, contact, footer] = useTargets([
     "#home",
     "header",
     "#galerij",
@@ -55,53 +58,85 @@ function SectionDecor() {
     "#agenda",
     "#events",
     "#werken",
+    "#over",
     "#contact",
     "main > footer",
   ]);
   const p = (el: Element | null, node: React.ReactNode) => (el ? createPortal(node, el) : null);
+  const branchL = (cls: string, opts: { ornaments?: boolean } = {}) => (
+    <PineBranch ornaments={opts.ornaments ?? false} className={`${corner} ${cls}`} />
+  );
+  const branchR = (cls: string, opts: { ornaments?: boolean } = {}) => (
+    <PineBranch ornaments={opts.ornaments ?? false} className={`${corner} -scale-x-100 ${cls}`} />
+  );
   return (
     <>
       {p(
         home,
         <div aria-hidden="true" className="xmas-decor">
-          <div className="absolute inset-x-0 top-0 h-48 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_top,rgba(255,214,150,0.16),transparent_70%)]" />
-          <PineBranch className={`${corner} -left-6 -top-4 w-[62vw] max-w-[440px] md:w-[34vw] drop-shadow-[0_8px_18px_rgba(0,0,0,0.45)]`} />
-          <PineBranch className={`${corner} -right-6 -top-4 w-[62vw] max-w-[440px] md:w-[34vw] -scale-x-100 drop-shadow-[0_8px_18px_rgba(0,0,0,0.45)]`} />
+          <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_top,rgba(255,200,120,0.22),transparent_55%),linear-gradient(to_bottom,rgba(22,48,31,0.55),transparent_35%,transparent_70%,rgba(22,48,31,0.7))]" />
+          <LightString className="absolute inset-x-0 top-[58px] md:top-[84px] h-7 md:h-9 w-full z-[1]" count={26} />
+          {/* bovenhoeken: rijke takken; op mobiel smaller en hoger zodat logo en tekst vrij blijven */}
+          {branchL("-left-10 -top-6 w-[64vw] max-w-[620px] md:w-[44vw] drop-shadow-[0_10px_22px_rgba(0,0,0,0.5)]", { ornaments: true })}
+          {branchR("-right-10 -top-6 w-[64vw] max-w-[620px] md:w-[44vw] drop-shadow-[0_10px_22px_rgba(0,0,0,0.5)]", { ornaments: true })}
+          {branchL("hidden md:block -left-16 top-[22%] w-[22vw] max-w-[300px] rotate-[18deg] opacity-90")}
+          {branchR("hidden md:block -right-16 top-[22%] w-[22vw] max-w-[300px] -rotate-[18deg] opacity-90")}
+          <HangingBaubles className="hidden md:block absolute left-[3%] top-[70px] h-[260px] w-[120px] z-[1]" items={[{ x: 20, len: 120, r: 11, red: true }, { x: 60, len: 70, r: 8 }, { x: 88, len: 160, r: 9 }]} />
+          <HangingBaubles className="hidden md:block absolute right-[3%] top-[70px] h-[260px] w-[120px] z-[1]" items={[{ x: 12, len: 150, r: 9 }, { x: 44, len: 80, r: 11, red: true }, { x: 82, len: 120, r: 8 }]} />
+          {branchL("md:hidden -left-12 bottom-14 w-[52vw] rotate-[-160deg] opacity-80 scale-y-[-1]")}
+          {branchR("md:hidden -right-12 bottom-14 w-[52vw] rotate-[160deg] opacity-80 scale-y-[-1]")}
           <div className="xmas-snowglow absolute inset-0 z-[1] pointer-events-none" />
         </div>,
       )}
       {p(header, <span aria-hidden="true" className="xmas-decor xmas-navline" />)}
-      {p(gallery, <GoldDivider className="xmas-decor absolute top-10 md:top-14 inset-x-0 z-[1]" />)}
+      {p(
+        gallery,
+        <div aria-hidden="true" className="xmas-decor">
+          <LightString className="absolute inset-x-0 top-0 h-8 w-full z-[1]" count={24} />
+          {branchR("-right-10 -top-4 w-[44vw] max-w-[340px]", { ornaments: true })}
+          <GoldDivider className="absolute bottom-8 inset-x-0 z-[1]" />
+        </div>,
+      )}
       {p(
         menu,
         <div aria-hidden="true" className="xmas-decor">
-          <PineBranch lights className={`${corner} -right-8 -top-6 w-[46vw] max-w-[320px] -scale-x-100 opacity-90`} ornaments={false} />
-          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 h-64 w-[80%] rounded-full bg-gold/10 blur-3xl pointer-events-none" />
+          {branchL("-left-10 -top-5 w-[48vw] max-w-[380px]", { ornaments: true })}
+          {branchR("-right-10 -top-5 w-[48vw] max-w-[380px]", { ornaments: true })}
+          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 h-64 w-[80%] rounded-full bg-gold/15 blur-3xl pointer-events-none" />
         </div>,
       )}
       {p(
         agenda,
         <div aria-hidden="true" className="xmas-decor">
-          <Star className={`${corner} left-[8%] top-12 h-3 w-3 opacity-70`} />
-          <Star className={`${corner} right-[10%] top-20 h-2 w-2 opacity-60`} />
-          <Star className={`${corner} right-[18%] bottom-16 h-2.5 w-2.5 opacity-50`} />
+          {branchL("-left-10 -top-4 w-[40vw] max-w-[320px]", { ornaments: true })}
+          <Star className={`${corner} right-[8%] top-16 h-4 w-4`} />
+          <Star className={`${corner} right-[16%] top-28 h-2.5 w-2.5 opacity-70`} />
+          <Star className={`${corner} left-[10%] bottom-16 h-3 w-3 opacity-60`} />
         </div>,
       )}
-      {p(events, <LightString className="xmas-decor absolute inset-x-0 top-0 h-8 md:h-10 w-full z-[1]" count={22} />)}
+      {p(
+        events,
+        <div aria-hidden="true" className="xmas-decor">
+          <LightString className="absolute inset-x-0 top-0 h-8 md:h-10 w-full z-[1]" count={22} />
+          {branchR("-right-10 -bottom-2 w-[36vw] max-w-[280px] scale-y-[-1] opacity-90")}
+        </div>,
+      )}
       {p(
         werken,
         <div aria-hidden="true" className="xmas-decor">
-          <div className="absolute -top-20 right-[8%] h-72 w-72 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
-          <Star className={`${corner} right-[12%] top-16 h-4 w-4`} />
+          <div className="absolute -top-20 right-[8%] h-72 w-72 rounded-full bg-gold/15 blur-3xl pointer-events-none" />
+          {branchR("-right-10 -top-4 w-[44vw] max-w-[340px]", { ornaments: true })}
+          <Star className={`${corner} left-[10%] top-14 h-4 w-4`} />
         </div>,
       )}
-      {p(
-        contact,
-        <PineBranch aria-hidden className={`xmas-decor ${corner} -left-6 -top-3 w-[44vw] max-w-[300px] opacity-95`} ornaments={false} />,
-      )}
+      {p(over, <GoldDivider className="xmas-decor absolute top-8 md:top-12 inset-x-0 z-[1]" />)}
+      {p(contact, <div aria-hidden="true" className="xmas-decor">{branchL("-left-8 -top-3 w-[42vw] max-w-[320px]", { ornaments: true })}</div>)}
       {p(
         footer,
-        <PineBranch className={`xmas-decor ${corner} -right-6 -top-3 w-[44vw] max-w-[300px] -scale-x-100 opacity-90`} ornaments={false} />,
+        <div aria-hidden="true" className="xmas-decor">
+          <LightString className="absolute inset-x-0 top-0 h-8 w-full z-[1]" count={24} />
+          {branchR("-right-8 -top-3 w-[42vw] max-w-[320px]", { ornaments: true })}
+        </div>,
       )}
     </>
   );
@@ -178,7 +213,7 @@ function ChristmasMusic() {
       onClick={toggle}
       aria-pressed={playing}
       aria-label={playing ? "Kerstmuziek aan — klik om uit te zetten" : "Kerstmuziek uit — klik om aan te zetten"}
-      className="xmas-music fixed z-50 bottom-4 left-4 md:left-auto md:right-6 md:bottom-6 inline-flex items-center gap-2 rounded-full border border-gold/50 bg-foreground/95 text-champagne h-11 w-11 md:w-auto justify-center md:px-4 shadow-[0_10px_28px_-12px_rgba(0,0,0,0.6)] backdrop-blur transition-all duration-300 hover:border-gold hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="xmas-music fixed z-50 right-4 bottom-[calc(76px+env(safe-area-inset-bottom))] md:right-6 md:bottom-6 inline-flex items-center gap-2 rounded-full border border-gold/50 bg-foreground/95 text-champagne h-11 w-11 md:w-auto justify-center md:px-4 shadow-[0_10px_28px_-12px_rgba(0,0,0,0.6)] backdrop-blur transition-all duration-300 hover:border-gold hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <MusicIcon playing={playing} />
       <span className="hidden md:inline text-xs tracking-wide">{label}</span>
