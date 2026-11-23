@@ -3,7 +3,18 @@ import { createPortal } from "react-dom";
 import { useChristmasTheme } from "@/lib/christmas-theme";
 import { GoldDivider, HangingBaubles, LightString, PineBranch, Star } from "@/components/christmas-decor";
 
-const MUSIC_SRC = "/audio/kerstmuziek.mp3";
+const TRACKS = ["/audio/merry-christmas-everyone.mp3", "/audio/last-christmas.mp3", "/audio/sleigh-ride.mp3"];
+
+/** Geschudde volgorde; begint nooit met het nummer dat net speelde. */
+function shuffled(last?: string) {
+  const a = [...TRACKS];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  if (last && a[0] === last) [a[0], a[a.length - 1]] = [a[a.length - 1], a[0]];
+  return a;
+}
 const PREF_KEY = "vreeburg-kerstmuziek";
 
 /** Hele kersteditie: decoraties per sectie + achtergrondmuziek. Verdwijnt vanzelf na de kerstperiode. */
@@ -27,9 +38,9 @@ export function ChristmasGreeting() {
   const active = useChristmasTheme();
   if (!active) return null;
   return (
-    <div className="reveal mb-4 md:mb-7 text-center [text-shadow:0_2px_14px_rgba(0,0,0,0.65)]">
-      <p className="font-display italic text-gold xmas-gold-text text-[2.1rem] sm:text-5xl md:text-6xl leading-none">Fijne feestdagen</p>
-      <p className="mt-2 flex items-center justify-center gap-2 md:gap-3 whitespace-nowrap text-champagne text-[9.5px] sm:text-[11px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.28em]">
+    <div className="absolute inset-x-0 bottom-full mb-2 md:mb-3 pointer-events-none normal-case tracking-normal text-center [text-shadow:0_2px_14px_rgba(0,0,0,0.65)]">
+      <p className="font-display italic text-gold xmas-gold-text text-[1.65rem] md:text-4xl leading-none">Fijne feestdagen</p>
+      <p className="hidden mt-2 items-center justify-center gap-2 md:gap-3 whitespace-nowrap text-champagne text-[9.5px] sm:text-[11px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.28em]">
         <Star className="h-2.5 w-2.5" />
         Vier de feestdagen bij Vreeburg
         <Star className="h-2.5 w-2.5" />
@@ -149,10 +160,18 @@ function ChristmasMusic() {
 
   useEffect(() => {
     const audio = new Audio();
-    audio.src = MUSIC_SRC;
-    audio.loop = true;
+    let queue = shuffled();
+    let current = queue.shift()!;
+    audio.src = current;
+    const onEnded = () => {
+      if (!queue.length) queue = shuffled(current);
+      current = queue.shift()!;
+      audio.src = current;
+      audio.play().catch(() => {});
+    };
+    audio.addEventListener("ended", onEnded);
     audio.volume = 0.2;
-    audio.preload = "auto";
+    audio.preload = "metadata";
     audioRef.current = audio;
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
