@@ -10,9 +10,17 @@ describe("Christmas agenda addition", () => {
     assert.equal(CHRISTMAS_JAZZ_EVENT.date, "2026-12-20");
   });
 
+  test("the special sits in second place, after the first regular event", () => {
+    assert.deepEqual(withChristmasJazz(existing, true), [existing[0], CHRISTMAS_JAZZ_EVENT, existing[1]]);
+  });
+
   test("all existing events and their dates remain unchanged", () => {
-    assert.deepEqual(withChristmasJazz(existing, true).slice(1), existing);
     assert.equal(existing[0].date, "2027-01-17");
+    assert.deepEqual(withChristmasJazz(existing, true).filter((event) => event.id !== CHRISTMAS_JAZZ_EVENT.id), existing);
+  });
+
+  test("with no regular events the special is shown on its own", () => {
+    assert.deepEqual(withChristmasJazz([], true), [CHRISTMAS_JAZZ_EVENT]);
   });
 
   test("the normal agenda is restored at Amsterdam midnight on 1 January", () => {

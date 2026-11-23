@@ -7,3 +7,4 @@
 - [x] Kersteditie van de bestaande jazzposter gemaakt en als extra agenda-evenement toegevoegd; bestaande evenementen behouden.
 - [x] Kerstmenu vervangen door de nieuwe originele PDF, byte-identiek; aankondiging bevat alleen de nieuwe datum en prijs, geen oude brunchvermelding.
 - [x] Beide PDF-knoppen en vergrote poster getest op desktop en mobiel; originele PDF visueel gecontroleerd zonder opmaakproblemen (PDF-skill); drie datum/behoudtests geslaagd; kersteditie en extra jazzposter verdwijnen automatisch op 1 januari 2027, reguliere evenementen blijven gelijk.
+- [x] Kerstjazzposter van plek 1 naar plek 2 in het programmaraster gezet; volgorde getest in de live-preview en met de agenda-test.
