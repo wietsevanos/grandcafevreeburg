@@ -43,7 +43,7 @@ export function ChristmasAnnouncement() {
   const active = useChristmasActive();
   if (!active) return null;
   return (
-    <div className="mt-8 md:mt-10 mx-auto w-fit max-w-full rounded-2xl border border-cream/20 bg-foreground/30 backdrop-blur-md px-4 py-3 md:px-5 text-cream shadow-[0_16px_40px_-20px_rgba(0,0,0,0.6)] flex flex-col md:flex-row items-center gap-3 md:gap-5">
+    <div className="xmas-highlight mt-8 md:mt-10 mx-auto w-fit max-w-full rounded-2xl border border-cream/20 bg-foreground/30 backdrop-blur-md px-4 py-3 md:px-5 text-cream shadow-[0_16px_40px_-20px_rgba(0,0,0,0.6)] flex flex-col md:flex-row items-center gap-3 md:gap-5">
       <div className="flex items-center gap-3">
         <HollyMark className="h-9 w-9 shrink-0" />
         <div className="text-left leading-tight">
@@ -69,7 +69,7 @@ export function ChristmasMenuCard() {
   const active = useChristmasActive();
   if (!active) return null;
   return (
-    <div className="max-w-6xl mx-auto mt-5 rounded-2xl border border-gold/30 bg-cream/[0.04] p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:justify-between text-center md:text-left relative overflow-hidden">
+    <div className="xmas-highlight max-w-6xl mx-auto mt-5 rounded-2xl border border-gold/30 bg-cream/[0.04] p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:justify-between text-center md:text-left relative overflow-hidden">
       <div className="absolute -top-12 -left-12 h-40 w-40 rounded-full bg-bordeaux/20 blur-3xl pointer-events-none" />
       <div className="relative">
         <HollyMark className="h-12 w-12 mb-3 mx-auto md:mx-0" />

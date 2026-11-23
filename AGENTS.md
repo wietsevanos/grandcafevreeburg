@@ -16,3 +16,4 @@
 - Reservations use the TheFork widget (src/components/thefork-widget.tsx); any button with class `reserve-cta` opens it, so there is one booking system and new buttons need no extra wiring.
 - Photos are served as responsive WebP variants in src/assets/img (<name>-<width>.webp) via src/lib/responsive-images.ts with srcset/sizes; original CDN pointers live in design-sources/originals so they are not shipped in dist. Regenerate variants from the originals, never from an existing variant.
 - Heavy or rarely used code (database client, agenda admin, TheFork iframe) loads on demand so it never delays the first paint.
+- The seasonal Christmas edition is one central switch (src/lib/christmas-theme.ts) toggling html.xmas and portal-mounted decorations, so it disappears completely by date without editing original components.
