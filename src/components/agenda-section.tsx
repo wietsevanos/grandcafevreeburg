@@ -1,7 +1,10 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Settings2, X } from "lucide-react";
 import { type AgendaEvent } from "@/data/agenda";
 import { useAgendaStore } from "@/lib/agenda-store";
+import { Button } from "@/components/ui/button";
+import { CHRISTMAS_JAZZ_EVENT, withChristmasJazz } from "@/data/christmas-jazz";
+import { useChristmasTheme } from "@/lib/christmas-theme";
 // Beheer pas laden als iemand op "Beheer" klikt.
 const AgendaAdmin = lazy(() =>
   import("@/components/agenda-admin").then((m) => ({ default: m.AgendaAdmin })),
@@ -11,7 +14,15 @@ export function AgendaSection() {
   const [flyer, setFlyer] = useState<AgendaEvent | null>(null);
   const [admin, setAdmin] = useState(false);
   const [adminMounted, setAdminMounted] = useState(false);
-  const { events, loading } = useAgendaStore();
+  const { events: regularEvents, loading } = useAgendaStore();
+  const christmasActive = useChristmasTheme();
+  const events = withChristmasJazz(regularEvents, christmasActive);
+
+  useEffect(() => {
+    if (!christmasActive) {
+      setFlyer((current) => current?.id === CHRISTMAS_JAZZ_EVENT.id ? null : current);
+    }
+  }, [christmasActive]);
 
   return (
     <section
@@ -69,18 +80,19 @@ export function AgendaSection() {
               events.length === 1 ? "max-w-xl mx-auto" : "sm:grid-cols-2 lg:grid-cols-3"
             }`}
           >
-            {events.map((ev, i) => (
-              <button
+            {events.map((ev) => (
+              <Button
+                variant="ghost"
                 key={ev.id}
                 type="button"
                 onClick={() => setFlyer(ev)}
-                aria-label="Flyer vergroten"
-                className="group relative block w-full rounded-3xl p-[1px] bg-gradient-to-b from-border to-transparent hover:from-bordeaux/50 transition-colors duration-500 cursor-zoom-in"
+                aria-label={ev.title ? `${ev.title} · 20 december 2026 — flyer vergroten` : "Flyer vergroten"}
+                className={`group relative block h-auto w-full whitespace-normal rounded-3xl p-[1px] bg-gradient-to-b from-border to-transparent hover:from-bordeaux/50 transition-colors duration-500 cursor-zoom-in ${ev.id === CHRISTMAS_JAZZ_EVENT.id ? "ring-2 ring-gold/60" : ""}`}
               >
                 <span className="block relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-cream shadow-[var(--shadow-soft)] transition-all duration-500 group-hover:-translate-y-1.5 group-hover:shadow-[var(--shadow-lift)]">
                   <img
                     src={ev.image}
-                    alt="Programma flyer"
+                    alt={ev.title ? `${ev.title} · 20 december 2026 · Christmas songs` : "Programma flyer"}
                     loading="lazy"
                     className="w-full h-auto object-contain transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
                   />
@@ -92,7 +104,7 @@ export function AgendaSection() {
                     Vergroot flyer
                   </span>
                 </span>
-              </button>
+              </Button>
             ))}
           </div>
         )}
@@ -122,7 +134,7 @@ export function AgendaSection() {
           </button>
           <img
             src={flyer.image}
-            alt="Programma flyer"
+            alt={flyer.title ? `${flyer.title} · 20 december 2026 · Christmas songs` : "Programma flyer"}
             onClick={(e) => e.stopPropagation()}
             className="max-h-[90vh] max-w-full w-auto object-contain rounded-xl shadow-[var(--shadow-lift)] animate-in zoom-in-95 duration-300"
           />

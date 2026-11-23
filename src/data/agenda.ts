@@ -1,6 +1,8 @@
 export type AgendaEvent = {
   id: string;
   image: string;
+  title?: string;
+  date?: string;
 };
 
 export const AGENDA_EVENTS: AgendaEvent[] = [
